@@ -26,7 +26,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="g-recaptcha" data-sitekey="<?php echo $GLOBAL['recaptcha']; ?>"></div>
+                <div class="g-recaptcha" data-sitekey="<?php echo $GLOBAL['user_recaptcha']; ?>"></div>
               </div>
               <div class="row">
                 <div class="col-8">
@@ -45,6 +45,8 @@
 
 <script type="text/javascript">
   var onloadCallback = function() {
-    
+    console.log("------");
+    console.log("callback");
+    console.log("------");
   };
 </script>
