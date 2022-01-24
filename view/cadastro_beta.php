@@ -26,10 +26,13 @@
                 </div>
               </div>
               <div class="row">
+                <div class="g-recaptcha" data-sitekey="<?php echo $GLOBAL['recaptcha']; ?>"></div>
+              </div>
+              <div class="row">
                 <div class="col-8">
                 </div>
                 <div class="col-4">
-                  <button type="submit" class="btn btn-primary btn-block"><?php echo $DICIONARIO['sign_in'] ?></button>
+                  <button class="display-none" type="submit" class="btn btn-primary btn-block"><?php echo $DICIONARIO['sign_in'] ?></button>
                 </div>
               </div>
             </form>
@@ -39,3 +42,9 @@
     </div>
   </div>
 </body>
+
+<script type="text/javascript">
+  var onloadCallback = function() {
+    
+  };
+</script>

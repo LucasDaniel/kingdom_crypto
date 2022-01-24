@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="css/icheck-bootstrap.min.css">
 <!-- Theme style -->
 <link rel="stylesheet" href="css/adminlte.min.css">
+<!-- Recaptcha google -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <?php
 
