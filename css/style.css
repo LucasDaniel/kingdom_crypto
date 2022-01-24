@@ -12,3 +12,35 @@
 .display-none {
     display: none;
 }
+
+.f-left {
+    float: left;
+}
+
+.d-inline {
+    display: inline-block;
+}
+
+.m-top-1em {
+    margin-top: 1em;
+}
+
+.p-1em {
+    padding: 1em;
+}
+
+.m-right-1em {
+    margin-right: 1em;
+}
+
+.bgc-transparent {
+    background-color: transparent !important;
+}
+
+.m-left-0px {
+    margin-left: 0px !important;
+}
+
+.m-top-12px {
+    margin-top: 12px !important;
+}

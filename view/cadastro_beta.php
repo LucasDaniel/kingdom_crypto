@@ -2,6 +2,9 @@
 <body class="hold-transition login-page background_index">
   <div class="row">
     <div class="col-8">
+      <div class="login-logo t_white">
+        <?php echo $DICIONARIO['presetation_video'] ?>
+      </div>
       <video width="700" controls autoplay>
         <source src="https://kingrespectcrypto.com/resources/video/apresentacao.mp4" type="video/mp4">
         Your browser does not support HTML video.
@@ -25,10 +28,10 @@
                   </div>
                 </div>
               </div>
-              <div class="row">
+              <div class="row m-left-0px">
                 <div class="g-recaptcha" name="recaptcha" data-sitekey="<?php echo $GLOBAL['site_recaptcha']; ?>"></div>
               </div>
-              <div class="row">
+              <div class="row m-top-12px">
                 <div class="col-8">
                 </div>
                 <div class="col-4">
@@ -41,7 +44,13 @@
       </div>
     </div>
   </div>
+  <?php require_once("redes_sociais.php"); ?>
 </body>
+
+<!--
+  https://twitter.com/kingrespectcryp
+  https://www.youtube.com/channel/UCyhZdrEARIQjk-QnBaLTf2w/videos
+-->
 
 <script type="text/javascript">
   function valida() {

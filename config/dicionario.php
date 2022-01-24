@@ -13,6 +13,7 @@ $DICIONARIO['sign_in'] = 'Sign In';
 $DICIONARIO['email'] = 'Email';
 $DICIONARIO['password'] = 'Password';
 $DICIONARIO['remember_me'] = 'Remember Me';
-$DICIONARIO['discovery_project'] = 'Watch the video to learn more about the project';
+$DICIONARIO['discovery_project'] = 'Watch the vídeo to learn more about the project';
+$DICIONARIO['presetation_video'] = 'Presentation Vídeo';
 
 ?>
