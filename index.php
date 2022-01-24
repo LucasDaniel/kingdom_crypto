@@ -1,6 +1,7 @@
 <?php
 
 require_once("config/imports.php");
+require_once("database/connect.php");
 
 ?>
 
