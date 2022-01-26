@@ -47,11 +47,6 @@
   <?php require_once("redes_sociais.php"); ?>
 </body>
 
-<!--
-  https://twitter.com/kingrespectcryp
-  https://www.youtube.com/channel/UCyhZdrEARIQjk-QnBaLTf2w/videos
--->
-
 <script type="text/javascript">
   function valida() {
     if (grecaptcha.getResponse() == "") {

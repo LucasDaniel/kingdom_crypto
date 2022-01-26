@@ -11,6 +11,6 @@ require_once("database/connect.php");
     <title><?php echo $GLOBAL['title'] ?></title>
     <meta charset="utf-8">
   </head>
-  <?php require_once("view/register.php"); ?>
+  <?php require_once("view/activateaccount.php"); ?>
   <?php require_once("config/importsjs.html"); ?>
 </html>

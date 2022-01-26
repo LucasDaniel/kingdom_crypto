@@ -15,5 +15,7 @@ $DICIONARIO['password'] = 'Password';
 $DICIONARIO['remember_me'] = 'Remember Me';
 $DICIONARIO['discovery_project'] = 'Watch the vídeo to learn more about the project';
 $DICIONARIO['presetation_video'] = 'Presentation Vídeo';
+$DICIONARIO['register'] = 'Register';
+$DICIONARIO['resend'] = "Resend password";
 
 ?>
