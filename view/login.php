@@ -9,7 +9,7 @@
       <div class="card-body login-card-body">
         <p class="login-box-msg"><?php echo $DICIONARIO['make_login'] ?></p>
 
-        <form action="../../index3.html" method="post">
+        <form action="https://kingrespectcrypto.com/controller/login.php" method="post">
           <div class="input-group mb-3">
             <input type="email" class="form-control" placeholder="<?php echo $DICIONARIO['email'] ?>">
             <div class="input-group-append">
