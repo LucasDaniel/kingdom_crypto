@@ -17,5 +17,6 @@ $DICIONARIO['discovery_project'] = 'Watch the vídeo to learn more about the pro
 $DICIONARIO['presetation_video'] = 'Presentation Vídeo';
 $DICIONARIO['register'] = 'Register';
 $DICIONARIO['resend'] = "Resend password";
+$DICIONARIO['play'] = "Play";
 
 ?>

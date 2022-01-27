@@ -29,16 +29,28 @@
         if (($result->success == 1) && ($msg == "")) {
 
             $email = $_POST['email'];
-            $email = $_POST['PASSWORD'];
+            $password = $_POST['password'];
 
             $query = "SELECT * FROM user WHERE email LIKE '$email' AND password LIKE '$password' ";
             if ((mysqli_num_rows(mysqli_query($conn, $query)) > 0) && ($msg == "")) {
-                header('Location: http://www.google.com.br');
-                //parei aqui - fazer o login do jogador e iniciar o jogo
+                $row = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
+                
+                $id = $row['id'];
+                $time_stamp = time(); //Pega o timestamp
+                $randomico = rand(1, 9);
+                $hash = md5($id.$time_stamp.$randomico);
+                $data = date("Y-m-d H:i:s");
+
+                $query = "UPDATE user SET last_login='$data', last_hash='$data', hash='$hash' WHERE id = $id";
+                if (mysqli_query($conn, $query)) {
+                    setcookie("hash", $hash, time()+600);
+                    $msg = "Sessão inciada com sucesso";
+                } else {
+                    $msg = "ERROR CREATE HASH";
+                }
             } else {
                 $msg = "ERROR EMAIL AND/OR PASSWORD!";
             }
-
         } else {
             if ($msg == "") $msg = "ERROR CAPTCHA 1!";
         }
@@ -56,8 +68,16 @@
                 <div class="row">
                     <p class="login-box-msg"><?php echo $msg ?></p>
                 </div>
+                <form action="https://kingrespectcrypto.com/home.php" method="post">
+                    <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                    <div class="row m-top-12px">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block" name="submit"><?php echo $DICIONARIO['play'] ?></button>
+                        </div>
+                    </div>
+                </form>
                 <div class="row">
-                <p class="login-box-msg"><a href="https://kingrespectcrypto.com/login.php">Back to login</a></p>
+                    <p class="login-box-msg"><a href="https://kingrespectcrypto.com/login.php">Back to login</a></p>
                 </div>
             </div>
         </div>
