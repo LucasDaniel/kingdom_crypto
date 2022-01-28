@@ -1,8 +1,8 @@
 <?php
 
-require_once("config/verifyhash.php");
 require_once("config/imports.php");
 require_once("database/connect.php");
+require_once("config/verifyhash.php");
 
 ?>
 
@@ -12,6 +12,9 @@ require_once("database/connect.php");
     <title><?php echo $GLOBAL['title'] ?></title>
     <meta charset="utf-8">
   </head>
-  <?php require_once("view/home.php"); ?>
+  <?php 
+    if (!$expirou) require_once("view/home.php"); 
+    else require_once("view/hashexpires.php"); 
+  ?>
   <?php require_once("config/importsjs.html"); ?>
 </html>

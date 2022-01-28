@@ -12,7 +12,6 @@
     if ((empty($_POST['g-recaptcha-response'])) && ($msg == "")) { 
         $msg = "ERROR CAPTCHA 2!";
     } else {
-
         $url = "https://www.google.com/recaptcha/api/siteverify";
         $secret = $GLOBAL['user_recaptcha'];
         $response = $_POST['g-recaptcha-response'];
@@ -35,16 +34,22 @@
             if ((mysqli_num_rows(mysqli_query($conn, $query)) > 0) && ($msg == "")) {
                 $row = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
                 
-                $id = $row['id'];
+                $id         = $row['id'];
                 $time_stamp = time(); //Pega o timestamp
-                $randomico = rand(1, 9);
-                $hash = md5($id.$time_stamp.$randomico);
-                $data = date("Y-m-d H:i:s");
+                $randomico  = rand(1, 9);
+                $hash       = md5($id.$time_stamp.$randomico);
+                $data       = date("Y-m-d H:i:s");
+                $time15     = date("Y-m-d H:i:s",strtotime('+15 minutes', strtotime($data)));
 
-                $query = "UPDATE user SET last_login='$data', last_hash='$data', hash='$hash' WHERE id = $id";
+                $query = "UPDATE user SET last_login='$data', last_hash='$data', hash_expires='$time15', hash='$hash' WHERE id = $id";
                 if (mysqli_query($conn, $query)) {
-                    setcookie("hash", $hash, time()+600);
-                    $msg = "Sessão inciada com sucesso";
+                    $query = "SELECT * FROM house WHERE id_user = $id";
+                    if (mysqli_num_rows(mysqli_query($conn, $query)) > 0) { //se tiver criado uma casa, nao precisa criar uma casa
+                        $row = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
+                        $msg = "Sessão inciada com sucesso";
+                    } else {
+                        $msg = "Primeira vez aqui";
+                    }
                 } else {
                     $msg = "ERROR CREATE HASH";
                 }
@@ -58,6 +63,7 @@
 
 ?>
 
+<?php if ($msg != "Primeira vez aqui") { ?>
 <body class="hold-transition login-page background_index">
     <div class="login-box">
         <div class="login-logo t_white">
@@ -68,6 +74,7 @@
                 <div class="row">
                     <p class="login-box-msg"><?php echo $msg ?></p>
                 </div>
+                <?php if ($msg == "Sessão inciada com sucesso") { ?>
                 <form action="https://kingrespectcrypto.com/home.php" method="post">
                     <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
                     <div class="row m-top-12px">
@@ -76,6 +83,7 @@
                         </div>
                     </div>
                 </form>
+                <?php } ?>
                 <div class="row">
                     <p class="login-box-msg"><a href="https://kingrespectcrypto.com/login.php">Back to login</a></p>
                 </div>
@@ -83,3 +91,52 @@
         </div>
   </div>
 </body>
+<?php } else { //Vai mostrar as profissões para iniciar ?>
+<body class="hold-transition login-page background_index">
+    <div class="login-box">
+        <div class="login-logo t_white">
+            <?php echo $GLOBAL['title'] ?>
+        </div>
+        <div class="card">
+            <div class="card-body login-card-body">
+                <div class="row">
+                    <p class="login-box-msg">Escolha a profissão do seu primeiro servo</p>
+                </div>
+                <form action="https://kingrespectcrypto.com/controller/criarconta.php" method="post">
+                    <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                    <?php // 1=lenhador, 2=pescador, 3=minerador, 4=aventureiro ?>
+                    <input type="hidden" id="p" name="p" value="1">
+                    <div class="row m-top-12px">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block" name="submit">Lenhador</button>
+                        </div>
+                    </div>
+                </form>
+                <form action="https://kingrespectcrypto.com/controller/criarconta.php" method="post">
+                    <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                    <?php // 1=lenhador, 2=pescador, 3=minerador, 4=aventureiro ?>
+                    <input type="hidden" id="p" name="p" value="2">
+                    <div class="row m-top-12px">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block" name="submit">Pescador</button>
+                        </div>
+                    </div>
+                </form>
+                <form action="https://kingrespectcrypto.com/controller/criarconta.php" method="post">
+                    <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                    <?php // 1=lenhador, 2=pescador, 3=minerador, 4=aventureiro ?>
+                    <input type="hidden" id="p" name="p" value="3">
+                    <div class="row m-top-12px">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block" name="submit">Minerador</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <p class="login-box-msg"><a href="https://kingrespectcrypto.com/login.php">Back to login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<?php } ?>

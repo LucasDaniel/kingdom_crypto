@@ -44,3 +44,29 @@
 .m-top-12px {
     margin-top: 12px !important;
 }
+
+.logo {
+    background-color: aqua;
+    width: 9%;
+    height: 100px;
+    text-align: center;
+}
+
+.material {
+    background-color: blue;
+    width: 15%;
+    height: 100px;
+    text-align: center;
+}
+
+.config {
+    background-color: black;
+    width: 9%;
+    height: 100px;
+}
+
+.deslogar {
+    background-color: green;
+    width: 7%;
+    height: 100px;
+}
