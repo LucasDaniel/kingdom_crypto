@@ -41,6 +41,10 @@
     margin-left: 0px !important;
 }
 
+.m-left-1em {
+    margin-left: 1em !important;
+}
+
 .m-top-12px {
     margin-top: 12px !important;
 }
@@ -69,4 +73,27 @@
     background-color: green;
     width: 7%;
     height: 100px;
+}
+
+.quartos {
+    width: 830px;
+    height: 400px;
+    float: left;
+}
+
+.quarto {
+    background-color: blueviolet;
+    width: 150px;
+    height: 150px;
+    float: left;
+    margin-right: 1em;
+    margin-top: 1em;
+}
+
+.tela-acao {
+    width: 200px;
+    height: 316px;
+    margin-top: 1em;
+    background-color: white;
+    float: left;
 }
