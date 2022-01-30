@@ -34,6 +34,7 @@
     if ($msg == "") {
 
         $hash = $_POST['h'];
+        $c = $_POST['c'];
 
         $query = "SELECT * FROM user WHERE hash LIKE '$hash'";
         if ((mysqli_num_rows(mysqli_query($conn, $query)) > 0) && ($msg == "")) {
@@ -61,31 +62,37 @@
                 $c = $_POST['c'];
                 $cama = $rowHouse[$c];
                 $preco = 5 + ($cama*2);
-                
-                if ($cama < 10) {
-                    if ($respeito >= $preco) {
-                        $msg = "To improve the bed you need $preco of respect.";
-                        $vaiEvoluir = true;
-                    } else {
-                        $msg = "Improved bed to max level";
-                    }
-                } else {
-                    $msg = "Bed could be improved. Do you have enough resources. ($preco respect)";
-                }
+                $dif = $respeito-$preco;
 
-                //pegou o usuario e atualizou o hash, vai pegar os valores que precisa pra atualizar a cama
-                //select nos resources
-                //caso não tenha o que precisa, mostra um aviso e um botão pra voltar pra tela de home, utilizando o hash
-                //caso tenha, pergunta se deseja fazer esse upgrade pagando x e y e mostra o recaptcha do google.
-                //ao selecionar o recaptcha, envia pra outra tela de confirmação de compra
-                //na tela de confirmação de compra, verifica de novo se possui
-                //faz os updates e mostra um botão de concluido e um botão pra voltar pra tela home com o hash
+                $query = "UPDATE resources SET respeito=$dif, last_update='$data' WHERE id = $id";
+                //parei aqui, fazendo a modificação no banco quando fizer upgrade
+                if (mysqli_query($conn, $query)) {
                 
+                    if ($cama < 10) {
+                        if ($respeito >= $preco) {
+                            $msg = "To improve the bed you need $preco of respect.";
+                            $vaiEvoluir = true;
+                        } else {
+                            $msg = "Improved bed to max level";
+                        }
+                    } else {
+                        $msg = "Bed could be improved. Do you have enough resources. ($preco respect)";
+                    }
+
+                    //pegou o usuario e atualizou o hash, vai pegar os valores que precisa pra atualizar a cama
+                    //select nos resources
+                    //caso não tenha o que precisa, mostra um aviso e um botão pra voltar pra tela de home, utilizando o hash
+                    //caso tenha, pergunta se deseja fazer esse upgrade pagando x e y e mostra o recaptcha do google.
+                    //ao selecionar o recaptcha, envia pra outra tela de confirmação de compra
+                    //na tela de confirmação de compra, verifica de novo se possui
+                    //faz os updates e mostra um botão de concluido e um botão pra voltar pra tela home com o hash
+                    
+                } else {
+                    $msg = "Sessão expirou 1";
+                }
             } else {
-                $msg = "Sessão expirou 1";
+                $msg = "Sessão expirou";
             }
-        } else {
-            $msg = "Sessão expirou";
         }
     }
 ?>
@@ -100,38 +107,14 @@
                 <div class="row">
                     <p class="login-box-msg"><?php echo $msg ?></p>
                 </div>
-                <?php if (!$vaiEvoluir) { ?>
-                    <form action="https://kingrespectcrypto.com/home.php" method="post">
-                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-                        <div class="row m-top-12px">
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit">Voltar a tela principal</button>
-                            </div>
+                <form action="https://kingrespectcrypto.com/home.php" method="post">
+                    <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                    <div class="row m-top-12px">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block" name="submit">Voltar a tela principal</button>
                         </div>
-                    </form>
-                <?php } else { ?>
-                    <form action="https://kingrespectcrypto.com/upgradecamaaction.php" method="post">
-                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-                        <input type="hidden" id="c" name="c" value="<?php echo $c ?>">
-                        <div class="row m-left-0px">
-                            <div class="g-recaptcha" name="recaptcha" data-sitekey="<?php echo $GLOBAL['site_recaptcha']; ?>"></div>
-                        </div>
-                        <div class="row m-top-12px">
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit" onclick="return valida()">Improve bed</button>
-                            </div>
-                        </div>
-                    </form>
-                    <script type="text/javascript">
-                        function valida() {
-                            if (grecaptcha.getResponse() == "") {
-                            alert("Recaptcha not checked.");
-                            return false;
-                            } 
-                            return true;
-                        }
-                    </script>
-                <?php } ?>
+                    </div>
+                </form>
             </div>
         </div>
   </div>

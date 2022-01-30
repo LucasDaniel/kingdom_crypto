@@ -1,12 +1,5 @@
 <?php
 
-var_dump($rowHouse);
-echo "<br><br>";
-var_dump($rowsCharacters);
-echo "<br><br>";
-var_dump($rowResources);
-echo "<br><br>";
-
 ?>
 <body class="background_index">
   <div class="logo f-left">logo</div>
@@ -38,16 +31,26 @@ echo "<br><br>";
       Cama: <?php echo $rowHouse['cama'.($i+1)]; ?><br>
       Profissão: <?php echo $rowsCharacters[$i]['profissao']; ?><br>
       Equipamento: <?php echo $rowsCharacters[$i]['equipamento']; ?>
-      <form action="https://kingrespectcrypto.com/controller/upgradecama.php" method="post">
-        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+      <?php if ($rowHouse['cama'.($i+1)] < 10) { ?>
+        <form action="https://kingrespectcrypto.com/controller/upgradecama.php" method="post">
+          <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+          <input type="hidden" id="c" name="c" value="<?php echo 'cama'.($i+1) ?>">
+          <div class="row m-top-12px">
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary btn-block" name="submit">Bed Upgrade</button>
+            </div>
+          </div>
+        </form>
+      <?php } else { ?>
         <div class="row m-top-12px">
           <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block" name="submit">Bed Upgrade</button>
+            <button type="submit" class="btn btn-primary btn-disabled" disabled>Bed MAX level</button>
           </div>
         </div>
-      </form>
+      <?php } ?>
       <form action="https://kingrespectcrypto.com/controller/upgradeequip.php" method="post">
         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+        <input type="hidden" id="e" name="e" value="<?php echo $rowsCharacters[$i]['equipamento'] ?>">
         <div class="row m-top-12px">
           <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block" name="submit">Equip Upgrade</button>
@@ -56,6 +59,7 @@ echo "<br><br>";
       </form>
       <form action="https://kingrespectcrypto.com/controller/cutwood.php" method="post">
         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+        <input type="hidden" id="e" name="e" value="<?php echo $rowsCharacters[$i]['profissao'] ?>">
         <div class="row m-top-12px">
           <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block" name="submit">Cut Wood</button>
@@ -64,6 +68,7 @@ echo "<br><br>";
       </form>
       <form action="https://kingrespectcrypto.com/controller/catchfish.php" method="post">
         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+        <input type="hidden" id="e" name="e" value="<?php echo $rowsCharacters[$i]['profissao'] ?>">
         <div class="row m-top-12px">
           <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block" name="submit">Catch Fish</button>
@@ -72,6 +77,7 @@ echo "<br><br>";
       </form>
       <form action="https://kingrespectcrypto.com/controller/minestoneiron.php" method="post">
         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+        <input type="hidden" id="e" name="e" value="<?php echo $rowsCharacters[$i]['profissao'] ?>">
         <div class="row m-top-12px">
           <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block" name="submit">Mine stone and iron</button>
@@ -80,6 +86,7 @@ echo "<br><br>";
       </form>
       <form action="https://kingrespectcrypto.com/controller/huntmonsters.php" method="post">
         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+        <input type="hidden" id="e" name="e" value="<?php echo $rowsCharacters[$i]['profissao'] ?>">
         <div class="row m-top-12px">
           <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block" name="submit">Hunt Monsters</button>
@@ -88,11 +95,6 @@ echo "<br><br>";
       </form>
     </div>
   <?php } 
-  /*
-  Parei aqui
-  - mostrar os botões das ações que posso fazer com o personagem
-  - Clicar em uma div que não tem personagem e mostrar botão para compra-lo
-  */
   ?>
 
 </body>
