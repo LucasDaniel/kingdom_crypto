@@ -8,11 +8,14 @@
     $vaiEvoluir = false;
 
     if (($_POST['h'] == '' || $_POST['h'] == null) && ($msg == "")) { $msg = "ERROR HASH!"; }
-    if (($_POST['c'] == '' || $_POST['c'] == null) && ($msg == "")) { $msg = "ERROR CAMA!"; }
+    if (($_POST['e'] == '' || $_POST['e'] == null) && ($msg == "")) { $msg = "ERROR EQUIP!"; }
+    if (($_POST['ie'] == '' || $_POST['ie'] == null) && ($msg == "")) { $msg = "ERROR CHARACTER!"; }
 
     if ($msg == "") {
 
         $hash = $_POST['h'];
+        $e = $_POST['e'];   //lv equip
+        $ie = $_POST['ie']; //id character
 
         $query = "SELECT * FROM user WHERE hash LIKE '$hash'";
         if ((mysqli_num_rows(mysqli_query($conn, $query)) > 0) && ($msg == "")) {
@@ -32,36 +35,20 @@
                 $query = "SELECT * FROM resources WHERE id_user = ".$rowUser['id'];
                 $rowResources = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
                 
-                $query = "SELECT * FROM house WHERE id_user = ".$rowUser['id'];
-                $rowHouse = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
-                
                 //Valores para a logica
                 $respeito = $rowResources['respeito'];
-                $c = $_POST['c'];
-                $cama = $rowHouse[$c];
-                $preco = 5 + ($cama*2);
-                echo "cama: ".$cama;
-                echo "respeito: ".$respeito;
-                echo "preco: ".$preco;
-                if ($cama < 10) {
+                $equip = $_POST['e'];
+                $preco = 5 + ($equip*2);
+                if ($equip < 10) {
                     if ($respeito >= $preco) {
-                        $msg = "To improve the bed you need $preco of respect.";
+                        $msg = "To improve the equip you need $preco of respect.";
                         $vaiEvoluir = true;
                     } else {
                         $msg = "Bed could be improved. Do you have enough resources. ($preco respect)";
                     }
                 } else {
-                    $msg = "Improved bed to max level";
+                    $msg = "Improved equip to max level";
                 }
-
-                //pegou o usuario e atualizou o hash, vai pegar os valores que precisa pra atualizar a cama
-                //select nos resources
-                //caso não tenha o que precisa, mostra um aviso e um botão pra voltar pra tela de home, utilizando o hash
-                //caso tenha, pergunta se deseja fazer esse upgrade pagando x e y e mostra o recaptcha do google.
-                //ao selecionar o recaptcha, envia pra outra tela de confirmação de compra
-                //na tela de confirmação de compra, verifica de novo se possui
-                //faz os updates e mostra um botão de concluido e um botão pra voltar pra tela home com o hash
-                
             } else {
                 $msg = "Sessão expirou 1";
             }
@@ -91,15 +78,16 @@
                         </div>
                     </form>
                 <?php } else { ?>
-                    <form action="https://kingrespectcrypto.com/controller/upgradecamaaction.php" method="post">
+                    <form action="https://kingrespectcrypto.com/controller/upgradeequipaction.php" method="post">
                         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-                        <input type="hidden" id="c" name="c" value="<?php echo $c ?>">
+                        <input type="hidden" id="e" name="e" value="<?php echo $e ?>">
+                        <input type="hidden" id="ie" name="ie" value="<?php echo $ie ?>">
                         <div class="row m-left-0px">
                             <div class="g-recaptcha" name="recaptcha" data-sitekey="<?php echo $GLOBAL['site_recaptcha']; ?>"></div>
                         </div>
                         <div class="row m-top-12px">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit" onclick="return valida()">Improve bed</button>
+                                <button type="submit" class="btn btn-primary btn-block" name="submit" onclick="return valida()">Improve equipament</button>
                             </div>
                         </div>
                     </form>

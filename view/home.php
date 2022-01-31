@@ -51,6 +51,7 @@
       <form action="https://kingrespectcrypto.com/controller/upgradeequip.php" method="post">
         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
         <input type="hidden" id="e" name="e" value="<?php echo $rowsCharacters[$i]['equipamento'] ?>">
+        <input type="hidden" id="ie" name="ie" value="<?php echo $rowsCharacters[$i]['id'] ?>">
         <div class="row m-top-12px">
           <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block" name="submit">Equip Upgrade</button>
@@ -59,7 +60,8 @@
       </form>
       <form action="https://kingrespectcrypto.com/controller/cutwood.php" method="post">
         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-        <input type="hidden" id="e" name="e" value="<?php echo $rowsCharacters[$i]['profissao'] ?>">
+        <input type="hidden" id="p" name="p" value="<?php echo $rowsCharacters[$i]['profissao'] ?>">
+        <input type="hidden" id="ie" name="ie" value="<?php echo $rowsCharacters[$i]['id'] ?>">
         <div class="row m-top-12px">
           <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block" name="submit">Cut Wood</button>
@@ -68,7 +70,8 @@
       </form>
       <form action="https://kingrespectcrypto.com/controller/catchfish.php" method="post">
         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-        <input type="hidden" id="e" name="e" value="<?php echo $rowsCharacters[$i]['profissao'] ?>">
+        <input type="hidden" id="p" name="p" value="<?php echo $rowsCharacters[$i]['profissao'] ?>">
+        <input type="hidden" id="ie" name="ie" value="<?php echo $rowsCharacters[$i]['id'] ?>">
         <div class="row m-top-12px">
           <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block" name="submit">Catch Fish</button>
@@ -77,7 +80,8 @@
       </form>
       <form action="https://kingrespectcrypto.com/controller/minestoneiron.php" method="post">
         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-        <input type="hidden" id="e" name="e" value="<?php echo $rowsCharacters[$i]['profissao'] ?>">
+        <input type="hidden" id="p" name="p" value="<?php echo $rowsCharacters[$i]['profissao'] ?>">
+        <input type="hidden" id="ie" name="ie" value="<?php echo $rowsCharacters[$i]['id'] ?>">
         <div class="row m-top-12px">
           <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block" name="submit">Mine stone and iron</button>
@@ -86,7 +90,8 @@
       </form>
       <form action="https://kingrespectcrypto.com/controller/huntmonsters.php" method="post">
         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-        <input type="hidden" id="e" name="e" value="<?php echo $rowsCharacters[$i]['profissao'] ?>">
+        <input type="hidden" id="p" name="p" value="<?php echo $rowsCharacters[$i]['profissao'] ?>">
+        <input type="hidden" id="ie" name="ie" value="<?php echo $rowsCharacters[$i]['id'] ?>">
         <div class="row m-top-12px">
           <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block" name="submit">Hunt Monsters</button>

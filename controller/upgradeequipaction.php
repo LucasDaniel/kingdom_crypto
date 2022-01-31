@@ -8,7 +8,8 @@
     $vaiEvoluir = false;
 
     if (($_POST['h'] == '' || $_POST['h'] == null) && ($msg == "")) { $msg = "ERROR HASH!"; }
-    if (($_POST['c'] == '' || $_POST['c'] == null) && ($msg == "")) { $msg = "ERROR CAMA!"; }
+    if (($_POST['e'] == '' || $_POST['e'] == null) && ($msg == "")) { $msg = "ERROR EQUIP!"; }
+    if (($_POST['ie'] == '' || $_POST['ie'] == null) && ($msg == "")) { $msg = "ERROR CHARACTER!"; }
     if ((empty($_POST['g-recaptcha-response'])) && ($msg == "")) { 
         $msg = "ERROR CAPTCHA 2!";
     } else {
@@ -34,7 +35,8 @@
     if ($msg == "") {
 
         $hash = $_POST['h'];
-        $c = $_POST['c'];
+        $e = $_POST['e'];
+        $ie = $_POST['ie'];
         $query = "SELECT * FROM user WHERE hash LIKE '$hash'";
         if ((mysqli_num_rows(mysqli_query($conn, $query)) > 0) && ($msg == "")) {
             $rowUser = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
@@ -52,20 +54,16 @@
                 $query = "SELECT * FROM resources WHERE id_user = ".$rowUser['id'];
                 $rowResources = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
                 
-                $query = "SELECT * FROM house WHERE id_user = ".$rowUser['id'];
-                $rowHouse = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
-                
                 //Valores para a logica
                 $respeito = $rowResources['respeito'];
-                $c = $_POST['c'];
-                $cama = $rowHouse[$c];
-                $camaNvMax = 9;
-                $preco = 5 + ($cama*2);
+                $equip = $_POST['e'];
+                $equipNvMax = 9;
+                $preco = 5 + ($equip*2);
                 $dif = $respeito-$preco;
-                $cama++;
-                $query = "UPDATE resources SET respeito=$dif, last_update='$data' WHERE id_user = $id AND respeito >= $dif";
+                $equip++;
+                $query = "UPDATE `character` SET equipamento=$equip, last_update='$data' WHERE id = $ie AND $equip < $equipNvMax";
                 if (mysqli_query($conn, $query)) {
-                    $query = "UPDATE house SET $c=$cama, last_update='$data' WHERE id_user = $id AND $c <= $camaNvMax";
+                    $query = "UPDATE resources SET respeito=$dif, last_update='$data' WHERE id_user = $id AND respeito >= $dif";
                     if (mysqli_query($conn, $query)) {
                         $msg = "Upgraded!!!";
                     } else {
