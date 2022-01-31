@@ -34,6 +34,13 @@ if (mysqli_num_rows(mysqli_query($conn, $query)) > 0) {
             $i = 0;
             while ($row = mysqli_fetch_array($mysql, MYSQLI_ASSOC)) {
                 $rowsCharacters[$i] = $row; 
+                $work_at = $rowsCharacters[$i]['work_at'];
+                if ($work_at == "nothing") $work_at = " --- ";
+                else if ($work_at == "wood") $work_at = "Woodcutter... ";
+                else if ($work_at == "fish") $work_at = "Fishing... ";
+                else if ($work_at == "stoneiron") $work_at = "Mining... ";
+                else if ($work_at == "huntmonsters") $work_at = "Hunting... ";
+                $rowsCharacters[$i]['work_at'] = $work_at;
                 $i++;
             }
             //$rowCharacters = mysqli_fetch_array(, MYSQLI_);

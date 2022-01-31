@@ -66,8 +66,8 @@
 
                     //calculo de quanto tempo vai ficar trabalhando
                     $endWork = date("Y-m-d H:i:s",strtotime('+'.$timeWork.' minutes', strtotime($data)));
-
-                    $query = "UPDATE servant SET work_at='wood', work_init='$data', work_finish='$endWork' WHERE id_user = ".$id." AND id = ".$idCharacter."";
+                    $app_code = rand(100000, 999999);
+                    $query = "UPDATE servant SET app_code='$app_code', lives=2, multiplier='1.0', work_at='wood', recovery_energy='0000-00-00 00:00:00', work_init='$data', work_finish='$endWork' WHERE id_user = ".$id." AND id = ".$idCharacter."";
                     if (mysqli_query($conn, $query)) {
                         $msg = "Servant working..."; 
                     } else {

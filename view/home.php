@@ -17,7 +17,19 @@
         Servo: <?php echo $i; ?><br> 
         Cama: <?php echo $rowHouse['cama'.($i+1)]; ?><br>
         Profissão: <?php echo $rowsCharacters[$i]['profissao']; ?><br>
-        Equipamento: <?php echo $rowsCharacters[$i]['equipamento']; ?>
+        Equipamento: <?php echo $rowsCharacters[$i]['equipamento']; ?><br>
+        <?php if ($rowsCharacters[$i]['work_at'] != ' --- ') { ?>
+          Trabalhando com: <?php echo $rowsCharacters[$i]['work_at']; ?><br>
+          <?php if (($rowsCharacters[$i]['work_finish'] >= date("Y-m-d H:i:s"))) /* acabou o trabalho */ { ?>
+            Finaliza em: <?php echo ($rowsCharacters[$i]['work_finish']); ?><br>
+            Codigo do app: <?php echo $rowsCharacters[$i]['app_code']; ?><br>
+          <?php } ?>
+          Multiplicador de ganhos: <?php echo $rowsCharacters[$i]['multiplier']; ?>x
+        <?php } else { ?>
+          <?php if (($rowsCharacters[$i]['recovery_energy'] >= date("Y-m-d H:i:s"))) /* Dormindo... */ { ?>
+            Acorda em: <?php echo ($rowsCharacters[$i]['recovery_energy']); ?><br>
+          <?php } ?>
+        <?php } ?>
       </div>
     <?php } ?>
   </div>
@@ -30,9 +42,29 @@
       Servo: <?php echo $i; ?><br> 
       Cama: <?php echo $rowHouse['cama'.($i+1)]; ?><br>
       Profissão: <?php echo $rowsCharacters[$i]['profissao']; ?><br>
-      Equipamento: <?php echo $rowsCharacters[$i]['equipamento']; ?>
+      Equipamento: <?php echo $rowsCharacters[$i]['equipamento']; ?><br>
       <?php if ($rowsCharacters[$i]['work_init'] != "0000-00-00 00:00:00") { ?>
-        Trabalhando...
+        Trabalhando com: <?php echo $rowsCharacters[$i]['work_at']; ?><br>
+        <?php if (($rowsCharacters[$i]['work_finish'] < date("Y-m-d H:i:s"))) /* acabou o trabalho */ { ?>
+          <?php if (($rowsCharacters[$i]['recovery_energy'] >= date("Y-m-d H:i:s"))) /* descansou */ { ?>
+            Acorda em: <?php echo ($rowsCharacters[$i]['recovery_energy']); ?><br>
+          <?php } else { ?>
+            <form action="https://kingrespectcrypto.com/controller/finishwork.php" method="post">
+              <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+              <input type="hidden" id="c" name="c" value="<?php echo 'cama'.($i+1) ?>">
+              <input type="hidden" id="ie" name="ie" value="<?php echo $rowsCharacters[$i]['id'] ?>">
+              <div class="row m-top-12px">
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary btn-block" name="submit">Finish work</button>
+                </div>
+              </div>
+            </form>
+          <?php } ?>
+        <?php } else { // parei aqui - retirando os botões quando o servo estiver descansando ?>
+          Finaliza em: <?php echo ($rowsCharacters[$i]['work_finish']); ?><br>
+          Codigo do app: <?php echo $rowsCharacters[$i]['app_code']; ?><br>
+        <?php } ?>
+        Multiplicador de ganhos: <?php echo $rowsCharacters[$i]['multiplier']; ?>x
       <?php } else { ?>
         <?php if ($rowHouse['cama'.($i+1)] < 10) { ?>
           <form action="https://kingrespectcrypto.com/controller/upgradecama.php" method="post">

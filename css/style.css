@@ -83,15 +83,15 @@
 
 .quarto {
     background-color: blueviolet;
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 200px;
     float: left;
     margin-right: 1em;
     margin-top: 1em;
 }
 
 .tela-acao {
-    width: 200px;
+    width: 250px;
     height: 516px;
     margin-top: 1em;
     background-color: white;
