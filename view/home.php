@@ -31,73 +31,73 @@
       Cama: <?php echo $rowHouse['cama'.($i+1)]; ?><br>
       Profissão: <?php echo $rowsCharacters[$i]['profissao']; ?><br>
       Equipamento: <?php echo $rowsCharacters[$i]['equipamento']; ?>
-      <?php if ($rowHouse['cama'.($i+1)] < 10) { ?>
-        <form action="https://kingrespectcrypto.com/controller/upgradecama.php" method="post">
-          <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-          <input type="hidden" id="c" name="c" value="<?php echo 'cama'.($i+1) ?>">
+      <?php if ($rowsCharacters[$i]['work_init'] != "0000-00-00 00:00:00") { ?>
+        Trabalhando...
+      <?php } else { ?>
+        <?php if ($rowHouse['cama'.($i+1)] < 10) { ?>
+          <form action="https://kingrespectcrypto.com/controller/upgradecama.php" method="post">
+            <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+            <input type="hidden" id="c" name="c" value="<?php echo 'cama'.($i+1) ?>">
+            <div class="row m-top-12px">
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-block" name="submit">Bed Upgrade</button>
+              </div>
+            </div>
+          </form>
+        <?php } else { ?>
           <div class="row m-top-12px">
             <div class="col-12">
-              <button type="submit" class="btn btn-primary btn-block" name="submit">Bed Upgrade</button>
+              <button type="submit" class="btn btn-primary btn-disabled" disabled>Bed MAX level</button>
+            </div>
+          </div>
+        <?php } ?>
+        <form action="https://kingrespectcrypto.com/controller/upgradeequip.php" method="post">
+          <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+          <input type="hidden" id="e" name="e" value="<?php echo $rowsCharacters[$i]['equipamento'] ?>">
+          <input type="hidden" id="ie" name="ie" value="<?php echo $rowsCharacters[$i]['id'] ?>">
+          <div class="row m-top-12px">
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary btn-block" name="submit">Equip Upgrade</button>
             </div>
           </div>
         </form>
-      <?php } else { ?>
-        <div class="row m-top-12px">
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-disabled" disabled>Bed MAX level</button>
+        <form action="https://kingrespectcrypto.com/controller/workwood.php" method="post">
+          <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+          <input type="hidden" id="ie" name="ie" value="<?php echo $rowsCharacters[$i]['id'] ?>">
+          <div class="row m-top-12px">
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary btn-block" name="submit">Cut Wood</button>
+            </div>
           </div>
-        </div>
+        </form>
+        <form action="https://kingrespectcrypto.com/controller/catchfish.php" method="post">
+          <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+          <input type="hidden" id="ie" name="ie" value="<?php echo $rowsCharacters[$i]['id'] ?>">
+          <div class="row m-top-12px">
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary btn-block" name="submit">Catch Fish</button>
+            </div>
+          </div>
+        </form>
+        <form action="https://kingrespectcrypto.com/controller/minestoneiron.php" method="post">
+          <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+          <input type="hidden" id="ie" name="ie" value="<?php echo $rowsCharacters[$i]['id'] ?>">
+          <div class="row m-top-12px">
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary btn-block" name="submit">Mine stone and iron</button>
+            </div>
+          </div>
+        </form>
+        <form action="https://kingrespectcrypto.com/controller/huntmonsters.php" method="post">
+          <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+          <input type="hidden" id="ie" name="ie" value="<?php echo $rowsCharacters[$i]['id'] ?>">
+          <div class="row m-top-12px">
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary btn-block" name="submit">Hunt Monsters</button>
+            </div>
+          </div>
+        </form>
       <?php } ?>
-      <form action="https://kingrespectcrypto.com/controller/upgradeequip.php" method="post">
-        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-        <input type="hidden" id="e" name="e" value="<?php echo $rowsCharacters[$i]['equipamento'] ?>">
-        <input type="hidden" id="ie" name="ie" value="<?php echo $rowsCharacters[$i]['id'] ?>">
-        <div class="row m-top-12px">
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block" name="submit">Equip Upgrade</button>
-          </div>
-        </div>
-      </form>
-      <form action="https://kingrespectcrypto.com/controller/cutwood.php" method="post">
-        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-        <input type="hidden" id="p" name="p" value="<?php echo $rowsCharacters[$i]['profissao'] ?>">
-        <input type="hidden" id="ie" name="ie" value="<?php echo $rowsCharacters[$i]['id'] ?>">
-        <div class="row m-top-12px">
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block" name="submit">Cut Wood</button>
-          </div>
-        </div>
-      </form>
-      <form action="https://kingrespectcrypto.com/controller/catchfish.php" method="post">
-        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-        <input type="hidden" id="p" name="p" value="<?php echo $rowsCharacters[$i]['profissao'] ?>">
-        <input type="hidden" id="ie" name="ie" value="<?php echo $rowsCharacters[$i]['id'] ?>">
-        <div class="row m-top-12px">
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block" name="submit">Catch Fish</button>
-          </div>
-        </div>
-      </form>
-      <form action="https://kingrespectcrypto.com/controller/minestoneiron.php" method="post">
-        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-        <input type="hidden" id="p" name="p" value="<?php echo $rowsCharacters[$i]['profissao'] ?>">
-        <input type="hidden" id="ie" name="ie" value="<?php echo $rowsCharacters[$i]['id'] ?>">
-        <div class="row m-top-12px">
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block" name="submit">Mine stone and iron</button>
-          </div>
-        </div>
-      </form>
-      <form action="https://kingrespectcrypto.com/controller/huntmonsters.php" method="post">
-        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-        <input type="hidden" id="p" name="p" value="<?php echo $rowsCharacters[$i]['profissao'] ?>">
-        <input type="hidden" id="ie" name="ie" value="<?php echo $rowsCharacters[$i]['id'] ?>">
-        <div class="row m-top-12px">
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block" name="submit">Hunt Monsters</button>
-          </div>
-        </div>
-      </form>
     </div>
   <?php } 
   ?>
