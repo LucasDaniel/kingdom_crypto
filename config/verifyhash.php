@@ -29,7 +29,7 @@ if (mysqli_num_rows(mysqli_query($conn, $query)) > 0) {
             $expirou = false;
             $query = "SELECT * FROM house WHERE id_user = ".$rowUser['id'];
             $rowHouse = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
-            $query = "SELECT * FROM `character` WHERE `id_user` = ".$rowUser['id'];
+            $query = "SELECT * FROM servant WHERE id_user = ".$rowUser['id'];
             $mysql = mysqli_query($conn, $query); 
             $i = 0;
             while ($row = mysqli_fetch_array($mysql, MYSQLI_ASSOC)) {

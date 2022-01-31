@@ -5,17 +5,15 @@
     require_once("../database/connect.php");
 
     $msg = "";
-    $vaiEvoluir = false;
+    $vaiTrabalhar = false;
 
     if (($_POST['h'] == '' || $_POST['h'] == null) && ($msg == "")) { $msg = "ERROR HASH!"; }
-    if (($_POST['e'] == '' || $_POST['e'] == null) && ($msg == "")) { $msg = "ERROR EQUIP!"; }
     if (($_POST['ie'] == '' || $_POST['ie'] == null) && ($msg == "")) { $msg = "ERROR CHARACTER!"; }
 
     if ($msg == "") {
 
         $hash = $_POST['h'];
-        $e = $_POST['e'];   //lv equip
-        $ie = $_POST['ie']; //id servant
+        $idCharacter = $_POST['ie']; //id servant
 
         $query = "SELECT * FROM user WHERE hash LIKE '$hash'";
         if ((mysqli_num_rows(mysqli_query($conn, $query)) > 0) && ($msg == "")) {
@@ -30,25 +28,8 @@
 
             $query = "UPDATE user SET last_hash='$data', hash_expires='$time15', hash='$hash' WHERE id = $id";
             if (mysqli_query($conn, $query)) {
-                $data = date("Y-m-d H:i:s");
-
-                $query = "SELECT * FROM resources WHERE id_user = ".$rowUser['id'];
-                $rowResources = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
-                
-                //Valores para a logica
-                $respeito = $rowResources['respeito'];
-                $equip = $_POST['e'];
-                $preco = 5 + ($equip*2);
-                if ($equip < 10) {
-                    if ($respeito >= $preco) {
-                        $msg = "To improve the equip you need $preco of respect.";
-                        $vaiEvoluir = true;
-                    } else {
-                        $msg = "Bed could be improved. Do you have enough resources. ($preco respect)";
-                    }
-                } else {
-                    $msg = "Improved equip to max level";
-                }
+                $msg = "Would you like to put the servant to mine stone and iron?";
+                $vaiTrabalhar = true;
             } else {
                 $msg = "Sessão expirou 1";
             }
@@ -68,7 +49,7 @@
                 <div class="row">
                     <p class="login-box-msg"><?php echo $msg ?></p>
                 </div>
-                <?php if (!$vaiEvoluir) { ?>
+                <?php if (!$vaiTrabalhar) { ?>
                     <form action="https://kingrespectcrypto.com/home.php" method="post">
                         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
                         <div class="row m-top-12px">
@@ -78,16 +59,15 @@
                         </div>
                     </form>
                 <?php } else { ?>
-                    <form action="https://kingrespectcrypto.com/controller/upgradeequipaction.php" method="post">
+                    <form action="https://kingrespectcrypto.com/controller/minestoneironaction.php" method="post">
                         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-                        <input type="hidden" id="e" name="e" value="<?php echo $e ?>">
-                        <input type="hidden" id="ie" name="ie" value="<?php echo $ie ?>">
+                        <input type="hidden" id="ie" name="ie" value="<?php echo $idCharacter ?>">
                         <div class="row m-left-0px">
                             <div class="g-recaptcha" name="recaptcha" data-sitekey="<?php echo $GLOBAL['site_recaptcha']; ?>"></div>
                         </div>
                         <div class="row m-top-12px">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit" onclick="return valida()">Improve equipament</button>
+                                <button type="submit" class="btn btn-primary btn-block" name="submit" onclick="return valida()">Mine stone and iron</button>
                             </div>
                         </div>
                     </form>

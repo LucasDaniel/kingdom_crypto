@@ -36,7 +36,7 @@
                     else if ($profissao == 2 || $profissao == '2') $profissao = "pescador";
                     else if ($profissao == 3 || $profissao == '3') $profissao = "minerador";
                     else $profissao = "lenhador";
-                    $query = "INSERT INTO `character`(`id_user`, `profissao`, `create_at`, `last_update`) 
+                    $query = "INSERT INTO servant(`id_user`, `profissao`, `create_at`, `last_update`) 
                                    VALUES ($id,'$profissao','$data','$data')";
                     if (!mysqli_query($conn, $query)) {
                         $msg = "ERROR WHEN CREATE HOUSE!";

@@ -34,7 +34,7 @@
     if ($msg == "") {
 
         $hash = $_POST['h'];
-        $idCharacter = $_POST['ie']; //id character
+        $idCharacter = $_POST['ie']; //id servant
 
         $query = "SELECT * FROM user WHERE hash LIKE '$hash'";
         if ((mysqli_num_rows(mysqli_query($conn, $query)) > 0) && ($msg == "")) {
@@ -51,8 +51,9 @@
             if (mysqli_query($conn, $query)) {
                 $data = date("Y-m-d H:i:s");
 
-                $query = "SELECT * FROM `character` 
+                $query = "SELECT * FROM servant 
                                   WHERE id_user = ".$id." AND id = ".$idCharacter." 
+                                    AND work_at LIKE 'nothing'
                                     AND work_init LIKE '0000-00-00 00:00:00'
                                     AND work_finish LIKE '0000-00-00 00:00:00'";
                 $rowCharacter = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
@@ -66,7 +67,7 @@
                     //calculo de quanto tempo vai ficar trabalhando
                     $endWork = date("Y-m-d H:i:s",strtotime('+'.$timeWork.' minutes', strtotime($data)));
 
-                    $query = "UPDATE `character` SET work_init='$data', work_finish='$endWork' WHERE id_user = ".$id." AND id = ".$idCharacter."";
+                    $query = "UPDATE servant SET work_at='wood', work_init='$data', work_finish='$endWork' WHERE id_user = ".$id." AND id = ".$idCharacter."";
                     if (mysqli_query($conn, $query)) {
                         $msg = "Servant working..."; 
                     } else {

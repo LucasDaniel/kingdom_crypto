@@ -13,7 +13,7 @@
     if ($msg == "") {
 
         $hash = $_POST['h'];
-        $idCharacter = $_POST['ie']; //id character
+        $idCharacter = $_POST['ie']; //id servant
 
         $query = "SELECT * FROM user WHERE hash LIKE '$hash'";
         if ((mysqli_num_rows(mysqli_query($conn, $query)) > 0) && ($msg == "")) {
@@ -28,7 +28,7 @@
 
             $query = "UPDATE user SET last_hash='$data', hash_expires='$time15', hash='$hash' WHERE id = $id";
             if (mysqli_query($conn, $query)) {
-                $msg = "Would you like to put the character to cut wood?";
+                $msg = "Would you like to put the servant to cut wood?";
                 $vaiTrabalhar = true;
             } else {
                 $msg = "Sessão expirou 1";
