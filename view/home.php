@@ -66,7 +66,7 @@
           <?php } else { ?>
             Quarto vazio
           <?php } ?>
-          Verifica se a quantidade de personagens já passou, se sim, mostra o botão de contratar um novo servo
+          parei aqui - Verifica se a quantidade de personagens já passou, se sim, mostra o botão de contratar um novo servo
         */
         ?>
         <!-- Coloca aqui para mostrar o novo botão de contratar novo servo -->
