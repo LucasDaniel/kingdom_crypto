@@ -69,13 +69,17 @@
                         $recurso = "Respect";
                     } 
                     
-                    $min = rand(1,$bonus)+($equip*2);
-                    $max = rand($min+1,$bonus+$bonus)+($equip*2);
-                    $bonus = rand($min,$max);
-                    if ($recurso != "Respect") $ganho = 0.01; //A cada 1 = 0,01 cents de dolar (Por enquanto esta assim)
-                    else $ganho = 0.0001; //A cada 1 = 0,01 cents de dolar (Por enquanto esta assim)
-                    $min = round($min*$ganho,2);
-                    $max = round($max*$ganho,2);
+                    $min = 1+($equip*2);
+                    $max = $bonus+$bonus+($equip*2);
+                    if ($recurso != "Respect") {
+                        $ganho = 0.01; //A cada 1 = 0,01 cents de dolar (Por enquanto esta assim)
+                        $decimais = 2;
+                    } else {
+                        $ganho = 0.0001; //A cada 1 = 0,01 cents de dolar (Por enquanto esta assim)
+                        $decimais = 4;
+                    }
+                    $min = round($min*$ganho,$decimais);
+                    $max = round($max*$ganho,$decimais);
 
                     if ($work_at != 'stoneiron') $msg = "Finish work and gain between $min and $max multiplied by $multiplier of $recurso.";
                     else $msg = "Finish work and gain between $min and $max multiplied by $multiplier of $recurso and half $recurso of $recurso2.";

@@ -27,6 +27,7 @@
         $result = json_decode($resposta);
 
         if (($result->success == 1) && ($msg == "")) {
+            
         } else {
             if ($msg == "") $msg = "ERROR CAPTCHA 1!";
         }
@@ -93,12 +94,17 @@
                     $min = rand(1,$bonus)+($equip*2);
                     $max = rand($min+1,$bonus+$bonus)+($equip*2);
                     $bonus = rand($min,$max);
-                    if ($recurso != "Respect") $ganho = 0.01; //A cada 1 = 0,01 cents de dolar (Por enquanto esta assim)
-                    else $ganho = 0.0001; //A cada 1 = 0,01 cents de dolar (Por enquanto esta assim)
+                    if ($recurso != "Respect") {
+                        $ganho = 0.01; //A cada 1 = 0,01 cents de dolar (Por enquanto esta assim)
+                        $decimais = 2;
+                    } else {
+                        $ganho = 0.0001; //A cada 1 = 0,01 cents de dolar (Por enquanto esta assim)
+                        $decimais = 4;
+                    }
                     $ganho *= $bonus*$multiplier;
-                    if ($recurso != "Respect") $ganho = round($ganho,2);
-                    else $ganho = round($ganho,4);
-                    if ($work_at == 'stoneiron') $ganho2 = round($ganho/2,2);
+                    if ($recurso != "Respect") $ganho = round($ganho,$decimais);
+                    else $ganho = round($ganho,$decimais);
+                    if ($work_at == 'stoneiron') $ganho2 = round($ganho/2,$decimais);
 
                     $vaiFinalizar = true;
 
@@ -125,7 +131,7 @@
                             $query = "UPDATE resources SET pedra = pedra+$ganho, ferro = ferro+$ganho2 WHERE id_user = $id";
                             if (!mysqli_query($conn, $query)) $msg = "Resource stone/iron update error"; 
                         } else if ($work_at == 'huntmonsters') { //Vai ganhar respeito
-                            $query = "UPDATE resources SET respect = respect+$ganho WHERE id_user = $id";
+                            $query = "UPDATE resources SET respeito = respeito+$ganho WHERE id_user = $id";
                             if (!mysqli_query($conn, $query)) $msg = "Resource respect update error"; 
                         } 
                         if ($msg == "") {
