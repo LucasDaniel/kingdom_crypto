@@ -39,16 +39,16 @@
                 }
                 
                 if ($proxima_cama > 0) {
-                    $preço = 10+($proxima_cama*2);
+                    $preco = 10+($proxima_cama*2);
 
                     $query = "SELECT * FROM resources WHERE id_user = ".$rowUser['id'];
                     $rowResources = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
 
-                    if ($rowResources['respeito'] >= $preço) {
-                        $msg = "Build a room for $preço respect?";
+                    if ($rowResources['respeito'] >= $preco) {
+                        $msg = "Build a room for $preco respect?";
                         $vaiFinalizar = true;
                     } else {
-                        $msg = "You dont have $preço of respect?";
+                        $msg = "You dont have $preco of respect?";
                     }
 
                 } else {

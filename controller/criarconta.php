@@ -39,7 +39,7 @@
                     $query = "INSERT INTO servant(`id_user`, `profissao`, `create_at`, `last_update`) 
                                    VALUES ($id,'$profissao','$data','$data')";
                     if (!mysqli_query($conn, $query)) {
-                        $msg = "ERROR WHEN CREATE HOUSE!";
+                        $msg = "ERROR WHEN CREATE SERVANT!";
                     } else {
                         $respeito = 0;
                         $query = "INSERT INTO `resources`(`id_user`, `respeito`, `create_at`, `last_update`) 

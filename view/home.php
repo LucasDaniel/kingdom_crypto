@@ -32,8 +32,8 @@
         <?php } ?>
       </div>
       <?php if ($i+1 == count($rowsCharacters) && $i+1 < 10) { ?> 
-        <div class="quarto" onclick="quarto('<?php echo $i+1; ?>','a')">
-          <?php if ($rowHouse['cama'.($i+1)] < 1) { ?>
+        <div class="quarto" onclick="quarto('<?php echo $i+1; ?>')">
+          <?php if ($rowHouse['cama'.($i+2)] < 1) { ?>
             Novo quarto
           <?php } else { ?>
             Quarto vazio
@@ -59,18 +59,17 @@
           </div>
         </form>
       <?php } else { ?>
-        <?php 
-        /*
-          <?php if ($rowHouse['cama'.($i+1)] < 1) { ?>
-            Novo quarto
-          <?php } else { ?>
-            Quarto vazio
-          <?php } ?>
-          parei aqui - Verifica se a quantidade de personagens já passou, se sim, mostra o botão de contratar um novo servo
-        */
-        ?>
-        <!-- Coloca aqui para mostrar o novo botão de contratar novo servo -->
-        <?php // } else { ?>
+        <?php if ($rowHouse['cama'.($i+1)] > 0 && count($rowsCharacters) < ($i+1)) { ?>
+          Empty room
+          <form action="https://kingrespectcrypto.com/controller/contractnewservant.php" method="post">
+            <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+            <div class="row m-top-12px">
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-block" name="submit">Contract new servant</button>
+              </div>
+            </div>
+          </form>
+        <?php } else { ?>
           Servo: <?php echo $i; ?><br> 
           Cama: <?php echo $rowHouse['cama'.($i+1)]; ?><br>
           Profissão: <?php echo $rowsCharacters[$i]['profissao']; ?><br>
@@ -88,12 +87,12 @@
                   </div>
                 </div>
               </form>
-            <?php } else { // parei aqui - retirando os botões quando o servo estiver descansando ?>
+            <?php } else { ?>
               Finaliza em: <?php echo ($rowsCharacters[$i]['work_finish']); ?><br>
               Codigo do app: <?php echo $rowsCharacters[$i]['app_code']; ?><br>
             <?php } ?>
             Multiplicador de ganhos: <?php echo $rowsCharacters[$i]['multiplier']; ?>x
-          <?php } else { //parei aqui - mostrar quarto vazio, colocar pra comprar novo servo ?>
+          <?php } else { ?>
             <?php if (($rowsCharacters[$i]['recovery_energy'] >= date("Y-m-d H:i:s"))) /* dormindo... */ { ?>
                 Acorda em: <?php echo ($rowsCharacters[$i]['recovery_energy']); ?><br>
               <?php } else { ?>
@@ -162,7 +161,7 @@
                   </form>
               <?php } ?>
           <?php } ?>
-        <?php //} fim do if de contratar um novo servo ?>
+        <?php } ?>
       <?php } ?>
     </div>
   <?php } 
@@ -171,7 +170,7 @@
 </body>
 
 <script>
-function quarto(i,a = '') {
+function quarto(i) {
   document.getElementById("acao-branco").style.display = "none";
   for(j = 0; j < 10; j++) {
     document.getElementById("acao"+j).style.display = "none";

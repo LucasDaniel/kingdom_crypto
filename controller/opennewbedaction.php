@@ -62,13 +62,13 @@
                 }
                 
                 if ($proxima_cama > 0) {
-                    $preço = 10+($proxima_cama*2);
+                    $preco = 10+($proxima_cama*2);
 
                     $query = "SELECT * FROM resources WHERE id_user = ".$rowUser['id'];
                     $rowResources = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
 
-                    if ($rowResources['respeito'] >= $preço) {
-                        $query = "UPDATE resources SET respeito = respeito-$preço WHERE id_user = $id";
+                    if ($rowResources['respeito'] >= $preco) {
+                        $query = "UPDATE resources SET respeito = respeito-$preco WHERE id_user = $id";
                         if (!mysqli_query($conn, $query)) $msg = "Resource respect update error"; 
                         else {
                             $cama = 'cama'.$proxima_cama;
