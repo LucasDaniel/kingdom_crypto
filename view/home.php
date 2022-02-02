@@ -32,6 +32,9 @@
         <?php } ?>
       </div>
     <?php } ?>
+    <div class="quarto" onclick="cozinha()">
+      Cozinha: <?php echo $rowHouse['cozinha']; ?>
+    </div>
   </div>
 
   <div class="tela-acao" id="acao-branco">
@@ -131,17 +134,35 @@
         </form>
       <?php } ?>
     </div>
-  <?php } 
-  ?>
+  <?php } ?>
+  <div class="tela-acao display-none" id="cozinha" onclick="cozinha()">
+    Cozinha: <?php echo $rowHouse['cozinha']; ?><br>
+    <form action="https://kingrespectcrypto.com/controller/cozinhaupgrade.php" method="post">
+      <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+      <div class="row m-top-12px">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary btn-block" name="submit">Upgrade Cozinha</button>
+        </div>
+      </div>
+    </form>
+  </div>
 
 </body>
 
 <script>
 function quarto(i) {
   document.getElementById("acao-branco").style.display = "none";
+  document.getElementById("cozinha").style.display = "none";
   for(j = 0; j < 10; j++) {
     document.getElementById("acao"+j).style.display = "none";
   }
   document.getElementById("acao"+i).style.display = "block";
+}
+function cozinha() {
+  document.getElementById("acao-branco").style.display = "none";
+  for(j = 0; j < 10; j++) {
+    document.getElementById("acao"+j).style.display = "none";
+  }
+  document.getElementById("cozinha").style.display = "block";
 }
 </script>
