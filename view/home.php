@@ -170,7 +170,7 @@
   <?php } ?>
   <div class="tela-acao display-none" id="cozinha" onclick="cozinha()">
     Cozinha: <?php echo $rowHouse['cozinha']; ?><br>
-    <form action="https://kingrespectcrypto.com/controller/cozinhaupgrade.php" method="post">
+    <form action="https://kingrespectcrypto.com/controller/upgradecozinha.php" method="post">
       <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
       <div class="row m-top-12px">
         <div class="col-12">

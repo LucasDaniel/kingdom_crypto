@@ -38,27 +38,16 @@
                 $respeito = $rowResources['respeito'];
                 $cozinha = $rowHouse['cozinha'];
                 $preco = 5 + ($cozinha*2);
-                echo "cama: ".$cama;
-                echo "respeito: ".$respeito;
-                echo "preco: ".$preco;
-                if ($cama < 10) {
+                if ($cozinha < 10) {
                     if ($respeito >= $preco) {
-                        $msg = "To improve the bed you need $preco of respect.";
+                        $msg = "To improve the kitchen you need $preco of respect.";
                         $vaiEvoluir = true;
                     } else {
-                        $msg = "Bed could be improved. Do you have enough resources. ($preco respect)";
+                        $msg = "Kitchen could be improved. Do you have enough resources. ($preco respect)";
                     }
                 } else {
-                    $msg = "Improved bed to max level";
+                    $msg = "Improved kitchen to max level";
                 }
-
-                //pegou o usuario e atualizou o hash, vai pegar os valores que precisa pra atualizar a cama
-                //select nos resources
-                //caso não tenha o que precisa, mostra um aviso e um botão pra voltar pra tela de home, utilizando o hash
-                //caso tenha, pergunta se deseja fazer esse upgrade pagando x e y e mostra o recaptcha do google.
-                //ao selecionar o recaptcha, envia pra outra tela de confirmação de compra
-                //na tela de confirmação de compra, verifica de novo se possui
-                //faz os updates e mostra um botão de concluido e um botão pra voltar pra tela home com o hash
                 
             } else {
                 $msg = "Sessão expirou 1";
@@ -89,15 +78,14 @@
                         </div>
                     </form>
                 <?php } else { ?>
-                    <form action="https://kingrespectcrypto.com/controller/upgradecamaaction.php" method="post">
+                    <form action="https://kingrespectcrypto.com/controller/upgradecozinhaaction.php" method="post">
                         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-                        <input type="hidden" id="c" name="c" value="<?php echo $c ?>">
                         <div class="row m-left-0px">
                             <div class="g-recaptcha" name="recaptcha" data-sitekey="<?php echo $GLOBAL['site_recaptcha']; ?>"></div>
                         </div>
                         <div class="row m-top-12px">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit" onclick="return valida()">Improve bed</button>
+                                <button type="submit" class="btn btn-primary btn-block" name="submit" onclick="return valida()">Improve Kitchen</button>
                             </div>
                         </div>
                     </form>

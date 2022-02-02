@@ -40,9 +40,6 @@
                 $c = $_POST['c'];
                 $cama = $rowHouse[$c];
                 $preco = 5 + ($cama*2);
-                echo "cama: ".$cama;
-                echo "respeito: ".$respeito;
-                echo "preco: ".$preco;
                 if ($cama < 10) {
                     if ($respeito >= $preco) {
                         $msg = "To improve the bed you need $preco of respect.";
