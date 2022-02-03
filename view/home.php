@@ -44,6 +44,16 @@
     <div class="quarto" onclick="cozinha()">
       Cozinha: <?php echo $rowHouse['cozinha']; ?>
     </div>
+    <div class="quarto" onclick="popupAction(1)">
+      Popup 1
+    </div>
+    <div class="quarto" onclick="popupAction(2)">
+      Popup 2
+    </div>
+    <div class="quarto" onclick="geral()">
+      Imagem de armazem aqui<br>
+      Depositar, Retirar, Mensagem de bug
+    </div>
   </div>
   
   <div class="tela-acao" id="acao-branco">
@@ -179,6 +189,41 @@
       </div>
     </form>
   </div>
+  <div class="tela-acao display-none" id="geral" onclick="geral()">
+    Depositar, Retirar, reportar um bug, cadastrar uma carteira
+    <form action="https://kingrespectcrypto.com/controller/deposit.php" method="post">
+      <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+      <div class="row m-top-12px">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary btn-block" name="submit">Depositar</button>
+        </div>
+      </div>
+    </form>
+    <form action="https://kingrespectcrypto.com/controller/withdraw.php" method="post">
+      <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+      <div class="row m-top-12px">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary btn-block" name="submit">Retirar</button>
+        </div>
+      </div>
+    </form>
+    <form action="https://kingrespectcrypto.com/reportarbug.php" method="post">
+      <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+      <div class="row m-top-12px">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary btn-block" name="submit">Reportar um bug</button>
+        </div>
+      </div>
+    </form>
+    <form action="https://kingrespectcrypto.com/controller/cadastrarmetamask.php" method="post">
+      <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+      <div class="row m-top-12px">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary btn-block" name="submit">Cadastrar Carteira Metamask</button>
+        </div>
+      </div>
+    </form>
+  </div>
 
 </body>
 
@@ -186,6 +231,7 @@
 function quarto(i) {
   document.getElementById("acao-branco").style.display = "none";
   document.getElementById("cozinha").style.display = "none";
+  document.getElementById("geral").style.display = "none";
   for(j = 0; j < 10; j++) {
     document.getElementById("acao"+j).style.display = "none";
   }
@@ -193,9 +239,21 @@ function quarto(i) {
 }
 function cozinha() {
   document.getElementById("acao-branco").style.display = "none";
+  document.getElementById("geral").style.display = "none";
   for(j = 0; j < 10; j++) {
     document.getElementById("acao"+j).style.display = "none";
   }
   document.getElementById("cozinha").style.display = "block";
+}
+function popupAction(i) {
+  alert("popupaction "+i);
+}
+function geral() {
+  document.getElementById("acao-branco").style.display = "none";
+  document.getElementById("cozinha").style.display = "none";
+  for(j = 0; j < 10; j++) {
+    document.getElementById("acao"+j).style.display = "none";
+  }
+  document.getElementById("geral").style.display = "block";
 }
 </script>
