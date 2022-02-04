@@ -5,7 +5,7 @@
     require_once("../database/connect.php");
 
     $msg = "";
-    $vaiFinalizar = false;
+    $erro = true;
 
     if (($_POST['h'] == '' || $_POST['h'] == null) && ($msg == "")) { $msg = "ERROR HASH!"; }
     if (($_POST['c'] == '' || $_POST['c'] == null) && ($msg == "")) { $msg = "ERROR CAMA!"; }
@@ -89,7 +89,7 @@
 
                     if ($work_at != 'stoneiron') $msg = "Finish work and gain between $min and $max multiplied by $multiplier of $recurso.";
                     else $msg = "Finish work and gain between $min and $max multiplied by $multiplier of $recurso and half $recurso of $recurso2.";
-                    $vaiFinalizar = true;
+                    $erro = false;
 
                 } else {
                     $msg = "Servant dont find";
@@ -114,7 +114,7 @@
                 <div class="row">
                     <p class="login-box-msg"><?php echo $msg ?></p>
                 </div>
-                <?php if (!$vaiFinalizar) { ?>
+                <?php if (!$erro) { ?>
                     <form action="https://kingrespectcrypto.com/home.php" method="post">
                         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
                         <div class="row m-top-12px">

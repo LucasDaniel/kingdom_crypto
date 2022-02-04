@@ -5,7 +5,7 @@
     require_once("../database/connect.php");
 
     $msg = "";
-    $vaiEvoluir = false;
+    $erro = true;
 
     if (($_POST['h'] == '' || $_POST['h'] == null) && ($msg == "")) { $msg = "ERROR HASH!"; }
     
@@ -67,6 +67,7 @@
                     $query = "UPDATE house SET cozinha=$cozinha, last_update='$data' WHERE id_user = $id AND cozinha <= $cozinhaNvMax";
                     if (mysqli_query($conn, $query)) {
                         $msg = "Upgraded!!!";
+                        $erro = false;
                     } else {
                         $msg = "Critical error - call developer";
                     }

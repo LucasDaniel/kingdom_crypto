@@ -5,7 +5,7 @@
     require_once("../database/connect.php");
 
     $msg = "";
-    $vaiEvoluir = false;
+    $erro = true;
 
     if (($_POST['h'] == '' || $_POST['h'] == null) && ($msg == "")) { $msg = "ERROR HASH!"; }
     if (($_POST['ie'] == '' || $_POST['ie'] == null) && ($msg == "")) { $msg = "ERROR CHARACTER!"; }
@@ -69,7 +69,8 @@
                     $app_code = rand(100000, 999999);
                     $query = "UPDATE servant SET app_code='$app_code', lives=2, multiplier='1.0', work_at='fish', recovery_energy='0000-00-00 00:00:00', work_init='$data', work_finish='$endWork' WHERE id_user = ".$id." AND id = ".$idCharacter."";
                     if (mysqli_query($conn, $query)) {
-                        $msg = "Servant working..."; 
+                        $msg = "Servant working...";
+                        $erro = false;
                     } else {
                         $msg = "Error Work!"; 
                     }
@@ -95,14 +96,25 @@
                 <div class="row">
                     <p class="login-box-msg"><?php echo $msg ?></p>
                 </div>
-                <form action="https://kingrespectcrypto.com/home.php" method="post">
-                    <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-                    <div class="row m-top-12px">
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block" name="submit">Voltar a tela principal</button>
+                <?php if (!$erro) { ?>
+                    <form action="https://kingrespectcrypto.com/home.php" method="post">
+                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                        <div class="row m-top-12px">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Back to house</button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                <?php } else { ?>
+                    <form action="https://kingrespectcrypto.com/login.php" method="post">
+                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                        <div class="row m-top-12px">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Back to login</button>
+                            </div>
+                        </div>
+                    </form>
+                <?php } ?>
             </div>
         </div>
   </div>

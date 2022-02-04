@@ -5,7 +5,7 @@
     require_once("../database/connect.php");
 
     $msg = "";
-    $vaiFinalizar = false;
+    $erro = true;
 
     if (($_POST['h'] == '' || $_POST['h'] == null) && ($msg == "")) { $msg = "ERROR HASH!"; }
 
@@ -57,7 +57,7 @@
                         else $msgAventureiro = "You don't have respect to hire a adventure.";
                         
                         $msg = "Which servant will you hire?";
-                        $vaiFinalizar = true;
+                        $erro = false;
                     } else {
                         $msg = "You dont have respect to hire";
                     }
@@ -85,7 +85,7 @@
                 <div class="row">
                     <p class="login-box-msg"><?php echo $msg ?></p>
                 </div>
-                <?php if (!$vaiFinalizar) { ?>
+                <?php if (!$erro) { ?>
                     <form action="https://kingrespectcrypto.com/home.php" method="post">
                         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
                         <div class="row m-top-12px">

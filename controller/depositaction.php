@@ -57,10 +57,11 @@
                 
                 $query = "INSERT INTO `pedido_deposito`(`id_user`, `valor`, `status`, `transacao_hash`) 
                                                 VALUES ($id,$value,'Under Analysis','$transation_hash')";
-                if (!mysqli_query($conn, $query)) {
-                    $msg = "ERROR WHEN CREATE WARNING DEPOSIT!";
-                } else {
+                if (mysqli_query($conn, $query)) {
                     $msg = "Order placed successfully!";
+                    $erro = false;
+                } else {
+                    $msg = "ERROR WHEN CREATE WARNING DEPOSIT!";
                 }
                 
             } else {
@@ -83,14 +84,25 @@
                 <div class="row">
                     <p class="login-box-msg"><?php echo $msg ?></p>
                 </div>
-                <form action="https://kingrespectcrypto.com/home.php" method="post">
-                    <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-                    <div class="row m-top-12px">
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block" name="submit">Back to house</button>
+                <?php if (!$erro) { ?>
+                    <form action="https://kingrespectcrypto.com/home.php" method="post">
+                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                        <div class="row m-top-12px">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Back to house</button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                <?php } else { ?>
+                    <form action="https://kingrespectcrypto.com/login.php" method="post">
+                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                        <div class="row m-top-12px">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Back to login</button>
+                            </div>
+                        </div>
+                    </form>
+                <?php } ?>
             </div>
         </div>
   </div>

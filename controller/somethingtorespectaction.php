@@ -5,7 +5,7 @@
     require_once("../database/connect.php");
 
     $msg = "";
-    $vaiEvoluir = false;
+    $erro = true;
 
     if (($_POST['h'] == '' || $_POST['h'] == null) && ($msg == "")) { $msg = "ERROR HASH!"; }
     if (($_POST['amounttorespect'] == '' || $_POST['amounttorespect'] == null) && ($msg == "")) { $msg = "ERROR VALUE TO RESPECT!"; }
@@ -85,6 +85,7 @@
                     
                     if (mysqli_query($conn, $query)) {
                         $msg = "You change $amount $resourceIngles to $giveRespect respect"; 
+                        $erro = false;
                     } else {
                         $msg = "Error Work!"; 
                     }
@@ -112,14 +113,25 @@
                 <div class="row">
                     <p class="login-box-msg"><?php echo $msg ?></p>
                 </div>
-                <form action="https://kingrespectcrypto.com/home.php" method="post">
-                    <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-                    <div class="row m-top-12px">
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block" name="submit">Voltar a tela principal</button>
+                <?php if (!$erro) { ?>
+                    <form action="https://kingrespectcrypto.com/home.php" method="post">
+                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                        <div class="row m-top-12px">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Back to house</button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                <?php } else { ?>
+                    <form action="https://kingrespectcrypto.com/login.php" method="post">
+                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                        <div class="row m-top-12px">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Back to login</button>
+                            </div>
+                        </div>
+                    </form>
+                <?php } ?>
             </div>
         </div>
   </div>

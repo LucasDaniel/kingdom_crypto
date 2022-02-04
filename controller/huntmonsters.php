@@ -5,7 +5,7 @@
     require_once("../database/connect.php");
 
     $msg = "";
-    $vaiTrabalhar = false;
+    $erro = true;
 
     if (($_POST['h'] == '' || $_POST['h'] == null) && ($msg == "")) { $msg = "ERROR HASH!"; }
     if (($_POST['ie'] == '' || $_POST['ie'] == null) && ($msg == "")) { $msg = "ERROR CHARACTER!"; }
@@ -29,7 +29,7 @@
             $query = "UPDATE user SET last_hash='$data', hash_expires='$time15', hash='$hash' WHERE id = $id";
             if (mysqli_query($conn, $query)) {
                 $msg = "Would you like to put the servant to hunt monsters?";
-                $vaiTrabalhar = true;
+                $erro = false;
             } else {
                 $msg = "Sessão expirou 1";
             }
@@ -49,7 +49,7 @@
                 <div class="row">
                     <p class="login-box-msg"><?php echo $msg ?></p>
                 </div>
-                <?php if (!$vaiTrabalhar) { ?>
+                <?php if (!$erro) { ?>
                     <form action="https://kingrespectcrypto.com/home.php" method="post">
                         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
                         <div class="row m-top-12px">
