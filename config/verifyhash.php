@@ -46,6 +46,8 @@ if (mysqli_num_rows(mysqli_query($conn, $query)) > 0) {
             //$rowCharacters = mysqli_fetch_array(, MYSQLI_);
             $query = "SELECT * FROM resources WHERE id_user = ".$rowUser['id'];
             $rowResources = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
+            $query = "SELECT * FROM `season` WHERE `season_end` LIKE (SELECT MIN(`season_end`) min FROM `season` WHERE `season_end` > '$data')";
+            $rowSeason = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
         } else {
             $msg = "ERROR CREATE HASH";
         }

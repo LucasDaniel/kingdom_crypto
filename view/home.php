@@ -3,13 +3,31 @@
 ?>
 <body class="background_index">
   <div class="logo f-left">logo</div>
-  <div class="material f-left"><?php echo $rowResources['madeira']  ?></div>
-  <div class="material f-left"><?php echo $rowResources['peixe']    ?></div>
-  <div class="material f-left"><?php echo $rowResources['pedra']    ?></div>
-  <div class="material f-left"><?php echo $rowResources['ferro']    ?></div>
-  <div class="material f-left"><?php echo $rowResources['respeito'] ?></div>
-  <div class="config f-left"></div>
-  <div class="deslogar f-left"></div>
+  <div class="material f-left"><?php echo $rowResources['madeira']."<br>Production: ".$rowSeason['madeira']."x" ?></div>
+  <div class="material f-left"><?php echo $rowResources['peixe']."<br>Production: ".$rowSeason['peixe']."x" ?></div>
+  <div class="material f-left"><?php echo $rowResources['pedra']."<br>Production: ".$rowSeason['pedra']."x" ?></div>
+  <div class="material f-left"><?php echo $rowResources['ferro']."<br>Production: ".$rowSeason['ferro']."x" ?></div>
+  <div class="material f-left"><?php echo $rowResources['respeito']."<br>Season ends in: <br>".$rowSeason['season_end'] ?></div>
+  <div class="config f-left"> 
+    <form action="https://kingrespectcrypto.com/controller/trocarsenha.php" method="post">
+      <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+      <div class="row m-top-12px">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary btn-block" name="submit">Change Password</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="deslogar f-left">
+    <form action="https://kingrespectcrypto.com/login.php" method="post">
+      <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+      <div class="row m-top-12px">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary btn-block" name="submit">Log out</button>
+        </div>
+      </div>
+    </form>
+  </div>
 
   <div class="quartos">
     <?php for($i=0; $i < count($rowsCharacters); $i++) { ?>
@@ -191,6 +209,46 @@
   </div>
   <div class="tela-acao display-none" id="geral" onclick="geral()">
     Depositar, Retirar, reportar um bug, cadastrar uma carteira
+    <form action="https://kingrespectcrypto.com/controller/woodtorespect.php" method="post">
+      <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+      <div class="row m-top-12px">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary btn-block" name="submit">Convert Wood to Respect</button>
+        </div>
+      </div>
+    </form>
+    <form action="https://kingrespectcrypto.com/controller/fishtorespect.php" method="post">
+      <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+      <div class="row m-top-12px">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary btn-block" name="submit">Convert Fish to Respect</button>
+        </div>
+      </div>
+    </form>
+    <form action="https://kingrespectcrypto.com/controller/stonetorespect.php" method="post">
+      <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+      <div class="row m-top-12px">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary btn-block" name="submit">Convert Stone to Respect</button>
+        </div>
+      </div>
+    </form>
+    <form action="https://kingrespectcrypto.com/controller/irontorespect.php" method="post">
+      <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+      <div class="row m-top-12px">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary btn-block" name="submit">Convert Iron to Respect</button>
+        </div>
+      </div>
+    </form>
+    <form action="https://kingrespectcrypto.com/controller/cadastrarmetamask.php" method="post">
+      <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+      <div class="row m-top-12px">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary btn-block" name="submit">Cadastrar Carteira Metamask</button>
+        </div>
+      </div>
+    </form>
     <form action="https://kingrespectcrypto.com/controller/deposit.php" method="post">
       <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
       <div class="row m-top-12px">
@@ -212,14 +270,6 @@
       <div class="row m-top-12px">
         <div class="col-12">
           <button type="submit" class="btn btn-primary btn-block" name="submit">Reportar um bug</button>
-        </div>
-      </div>
-    </form>
-    <form action="https://kingrespectcrypto.com/controller/cadastrarmetamask.php" method="post">
-      <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-      <div class="row m-top-12px">
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary btn-block" name="submit">Cadastrar Carteira Metamask</button>
         </div>
       </div>
     </form>

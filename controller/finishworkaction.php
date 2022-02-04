@@ -61,6 +61,9 @@
                     $query = "SELECT * FROM resources WHERE id_user = ".$rowUser['id'];
                     $rowResources = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
                     
+                    $query = "SELECT * FROM `season` WHERE `season_end` LIKE (SELECT MIN(`season_end`) min FROM `season` WHERE `season_end` > '$data')";
+                    $rowSeason = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
+                
                     $query = "SELECT * FROM house WHERE id_user = ".$rowUser['id'];
                     $rowHouse = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
 
@@ -75,14 +78,17 @@
                     if ($work_at == 'wood') {
                         if ($profissao == 'lenhador') $bonus += 3;
                         else $bonus += 2;
+                        $bonus *= $rowSeason['madeira'];
                         $recurso = "Wood";
                     } else if ($work_at == 'fish') {
                         if ($profissao == 'pescador') $bonus += 3;
                         else $bonus += 2;
+                        $bonus *= $rowSeason['peixe'];
                         $recurso = "Fish";
                     } else if ($work_at == 'stoneiron') {
                         if ($profissao == 'minerador') $bonus += 3;
                         else $bonus += 2;
+                        $bonus *= $rowSeason['pedra'];
                         $recurso = "Stone";
                         $recurso2 = "Iron";
                     } else if ($work_at == 'huntmonsters') {
