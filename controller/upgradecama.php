@@ -5,7 +5,8 @@
     require_once("../database/connect.php");
 
     $msg = "";
-    $vaiEvoluir = false;
+    $erro = true;
+    $back = false;
 
     if (($_POST['h'] == '' || $_POST['h'] == null) && ($msg == "")) { $msg = "ERROR HASH!"; }
     if (($_POST['c'] == '' || $_POST['c'] == null) && ($msg == "")) { $msg = "ERROR CAMA!"; }
@@ -40,15 +41,17 @@
                 $c = $_POST['c'];
                 $cama = $rowHouse[$c];
                 $preco = 5 + ($cama*2);
+                $erro = false;
                 if ($cama < 10) {
                     if ($respeito >= $preco) {
                         $msg = "To improve the bed you need $preco of respect.";
-                        $vaiEvoluir = true;
                     } else {
                         $msg = "Bed could be improved. Do you have enough resources. ($preco respect)";
+                        $back = true;
                     }
                 } else {
                     $msg = "Improved bed to max level";
+                    $back = true;
                 }
 
                 //pegou o usuario e atualizou o hash, vai pegar os valores que precisa pra atualizar a cama
@@ -78,37 +81,47 @@
                 <div class="row">
                     <p class="login-box-msg"><?php echo $msg ?></p>
                 </div>
-                <?php if (!$vaiEvoluir) { ?>
+                <?php if (!$erro) { ?>
+                    <?php if (!$back) { ?>
+                        <form action="https://kingrespectcrypto.com/controller/upgradecamaaction.php" method="post">
+                            <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                            <input type="hidden" id="c" name="c" value="<?php echo $c ?>">
+                            <div class="row m-left-0px">
+                                <div class="g-recaptcha" name="recaptcha" data-sitekey="<?php echo $GLOBAL['site_recaptcha']; ?>"></div>
+                            </div>
+                            <div class="row m-top-12px">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-block" name="submit" onclick="return valida()">Improve bed</button>
+                                </div>
+                            </div>
+                        </form>
+                        <script type="text/javascript">
+                            function valida() {
+                                if (grecaptcha.getResponse() == "") {
+                                    alert("Recaptcha not checked.");
+                                    return false;
+                                } 
+                                return true;
+                            }
+                        </script>
+                    <?php } ?>
                     <form action="https://kingrespectcrypto.com/home.php" method="post">
-                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                      	<input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
                         <div class="row m-top-12px">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit">Voltar a tela principal</button>
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Back to house</button>
                             </div>
                         </div>
                     </form>
                 <?php } else { ?>
-                    <form action="https://kingrespectcrypto.com/controller/upgradecamaaction.php" method="post">
+                    <form action="https://kingrespectcrypto.com/login.php" method="post">
                         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-                        <input type="hidden" id="c" name="c" value="<?php echo $c ?>">
-                        <div class="row m-left-0px">
-                            <div class="g-recaptcha" name="recaptcha" data-sitekey="<?php echo $GLOBAL['site_recaptcha']; ?>"></div>
-                        </div>
                         <div class="row m-top-12px">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit" onclick="return valida()">Improve bed</button>
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Back to login</button>
                             </div>
                         </div>
                     </form>
-                    <script type="text/javascript">
-                        function valida() {
-                            if (grecaptcha.getResponse() == "") {
-                                alert("Recaptcha not checked.");
-                                return false;
-                            } 
-                            return true;
-                        }
-                    </script>
                 <?php } ?>
             </div>
         </div>

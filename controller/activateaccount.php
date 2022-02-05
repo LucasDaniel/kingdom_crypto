@@ -5,7 +5,7 @@
     require_once("../database/connect.php");
 
     $msg = "";
-    $erroCriarConta = false;
+    $erro = true;
 
     if (!isset($_POST['submit'])) { $msg = "ERROR SUBMIT!"; }
     if (($_POST['email'] == '' || $_POST['email'] == null) && ($msg == "")) { $msg = "ERROR EMAIL!"; }
@@ -37,27 +37,24 @@
                 $row = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
                 if ($row['enabled'] != $activatepassword) {
                     $msg = "INCORRECT ACTIVATION NUMBER!";
-                    $erroCriarConta = true;
                 } else {
                     if ($row['enabled'] != 0) {
                         $query = "UPDATE user SET enabled='0' WHERE email LIKE '$email'";
                         if (mysqli_query($conn, $query)) {
                             $msg = "";
+                            $erro = false;
                         } else {
                             $msg = "ERROR ACTIVATING EMAIL";
-                            $erroCriarConta = true;
                         }
                     } else {
                         $msg = "Email already activated. You could already play ;D";
-                        $erroCriarConta = true;
                     }
                 }
             } else {
                 $msg = "E-MAIL NOT EXIST!";
-                $erroCriarConta = true;
             }
             
-            if (!$erroCriarConta) {
+            if (!$erro) {
 
                 $mensagem = "Email activated successfully. You can now start playing.";
                 $data_envio = date('d/m/Y');

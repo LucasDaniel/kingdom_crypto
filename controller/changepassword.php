@@ -9,11 +9,11 @@
 
     if (($_POST['h'] == '' || $_POST['h'] == null) && ($msg == "")) { $msg = "ERROR HASH!"; }
     
-    if ($msg == "") {
+    if  ($msg == "") {
 
         $hash = $_POST['h'];
 
-        $query = "SELECT * FROM user WHERE hash LIKE '$hash'";
+        $query = "SELECT * FROM user WHERE hash LIKE '$hash' ";
         if ((mysqli_num_rows(mysqli_query($conn, $query)) > 0) && ($msg == "")) {
             $row = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
             
@@ -24,18 +24,20 @@
             $data       = date("Y-m-d H:i:s");
             $time15     = date("Y-m-d H:i:s",strtotime('+15 minutes', strtotime($data)));
 
-            $query = "UPDATE user SET last_hash='$data', hash_expires='$time15', hash='$hash' WHERE id = $id";
+            $query = "UPDATE user SET last_login='$data', last_hash='$data', hash_expires='$time15', hash='$hash' WHERE id = $id";
             if (mysqli_query($conn, $query)) {
+                
+                $msg = "Change your password!";
                 $erro = false;
-                $msg = "Deposit an entire amount of BUSD.<br>
-                        Min 10 BUSD<br>
-                        Send transation hash (Optional, but better)";
+                
             } else {
-                $msg = "Sessão expirou 1";
+                $msg = "ERROR CREATE HASH";
             }
         } else {
-            $msg = "Sessão expirou";
+            $msg = "ERROR EMAIL AND/OR PASSWORD!";
         }
+    } else {
+        $msg = "ERROR HASH!";
     }
 
 ?>
@@ -50,30 +52,44 @@
                 <div class="row">
                     <p class="login-box-msg"><?php echo $msg ?></p>
                 </div>
-                <?php if(!$erro) { ?>
-                    <form action="https://kingrespectcrypto.com/controller/depositaction.php" method="post">
+                <?php if (!$erro) { ?>
+                    <form action="https://kingrespectcrypto.com/controller/changepasswordaction.php" method="post">
                         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
                         <div class="row m-top-12px">
-                            <div class="col-12">
-                                <input type="text" name="v" class="form-control" placeholder="Value">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>New Password (more than 5 characters) </label>
+                                    <input type="password" id="np" name="np" class="form-control" placeholder="***">
+                                </div>
                             </div>
                         </div>
                         <div class="row m-top-12px">
-                            <div class="col-12">
-                                <input type="text" name="th" class="form-control" placeholder="Transation Hash">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Re New Password </label>
+                                    <input type="password" id="rnp" name="rnp" class="form-control" placeholder="***">
+                                </div>
                             </div>
                         </div>
-                        <div class="row m-left-0px m-top-12px">
+                        <div class="row m-top-12px">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Current Password </label>
+                                    <input type="password" id="cp" name="cp" class="form-control" placeholder="***">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-left-0px">
                             <div class="g-recaptcha" name="recaptcha" data-sitekey="<?php echo $GLOBAL['site_recaptcha']; ?>"></div>
                         </div>
                         <div class="row m-top-12px">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit"  onclick="return valida()">Send warning deposit</button>
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Change password</button>
                             </div>
                         </div>
                     </form>
                     <form action="https://kingrespectcrypto.com/home.php" method="post">
-                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                      	<input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
                         <div class="row m-top-12px">
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary btn-block" name="submit">Back to house</button>
@@ -92,7 +108,7 @@
                 <?php } ?>
             </div>
         </div>
-  </div>
+    </div>
 </body>
 
 <script type="text/javascript">

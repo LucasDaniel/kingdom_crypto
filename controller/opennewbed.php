@@ -6,6 +6,7 @@
 
     $msg = "";
     $erro = true;
+    $back = false;
 
     if (($_POST['h'] == '' || $_POST['h'] == null) && ($msg == "")) { $msg = "ERROR HASH!"; }
 
@@ -44,11 +45,12 @@
                     $query = "SELECT * FROM resources WHERE id_user = ".$rowUser['id'];
                     $rowResources = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
 
+                    $erro = false;
                     if ($rowResources['respeito'] >= $preco) {
                         $msg = "Build a room for $preco respect?";
-                        $erro = false;
                     } else {
-                        $msg = "You dont have $preco of respect?";
+                        $msg = "You dont have $preco of respect";
+                        $back = true;
                     }
 
                 } else {
@@ -74,36 +76,46 @@
                 <div class="row">
                     <p class="login-box-msg"><?php echo $msg ?></p>
                 </div>
-                <?php if ($erro) { ?>
+                <?php if (!$erro) { ?>
+                    <?php if (!$back) { ?>
+                        <form action="https://kingrespectcrypto.com/controller/opennewbedaction.php" method="post">
+                            <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                            <div class="row m-left-0px">
+                                <div class="g-recaptcha" name="recaptcha" data-sitekey="<?php echo $GLOBAL['site_recaptcha']; ?>"></div>
+                            </div>
+                            <div class="row m-top-12px">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-block" name="submit" onclick="return valida()">Build room</button>
+                                </div>
+                            </div>
+                        </form>
+                        <script type="text/javascript">
+                            function valida() {
+                                if (grecaptcha.getResponse() == "") {
+                                    alert("Recaptcha not checked.");
+                                    return false;
+                                } 
+                                return true;
+                            }
+                        </script>
+                    <?php } ?>
                     <form action="https://kingrespectcrypto.com/home.php" method="post">
                         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
                         <div class="row m-top-12px">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit">Voltar a tela principal</button>
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Back to house</button>
                             </div>
                         </div>
                     </form>
                 <?php } else { ?>
-                    <form action="https://kingrespectcrypto.com/controller/opennewbedaction.php" method="post">
+                    <form action="https://kingrespectcrypto.com/login.php" method="post">
                         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-                        <div class="row m-left-0px">
-                            <div class="g-recaptcha" name="recaptcha" data-sitekey="<?php echo $GLOBAL['site_recaptcha']; ?>"></div>
-                        </div>
                         <div class="row m-top-12px">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit" onclick="return valida()">Build room</button>
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Back to login</button>
                             </div>
                         </div>
                     </form>
-                    <script type="text/javascript">
-                        function valida() {
-                            if (grecaptcha.getResponse() == "") {
-                                alert("Recaptcha not checked.");
-                                return false;
-                            } 
-                            return true;
-                        }
-                    </script>
                 <?php } ?>
             </div>
         </div>

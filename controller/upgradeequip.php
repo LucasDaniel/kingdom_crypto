@@ -5,7 +5,8 @@
     require_once("../database/connect.php");
 
     $msg = "";
-    $vaiEvoluir = false;
+    $erro = true;
+    $back = false;
 
     if (($_POST['h'] == '' || $_POST['h'] == null) && ($msg == "")) { $msg = "ERROR HASH!"; }
     if (($_POST['e'] == '' || $_POST['e'] == null) && ($msg == "")) { $msg = "ERROR EQUIP!"; }
@@ -39,15 +40,17 @@
                 $respeito = $rowResources['respeito'];
                 $equip = $_POST['e'];
                 $preco = 5 + ($equip*2);
+                $erro = false;
                 if ($equip < 10) {
                     if ($respeito >= $preco) {
                         $msg = "To improve the equip you need $preco of respect.";
-                        $vaiEvoluir = true;
                     } else {
                         $msg = "Bed could be improved. Do you have enough resources. ($preco respect)";
+                        $back = true;
                     }
                 } else {
                     $msg = "Improved equip to max level";
+                    $back = true;
                 }
             } else {
                 $msg = "Sessão expirou 1";
@@ -68,38 +71,39 @@
                 <div class="row">
                     <p class="login-box-msg"><?php echo $msg ?></p>
                 </div>
-                <?php if (!$vaiEvoluir) { ?>
+                <?php if (!$erro) { ?>
+                    <?php if (!$back) { ?>
+                        <form action="https://kingrespectcrypto.com/controller/upgradeequipaction.php" method="post">
+                            <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                            <input type="hidden" id="e" name="e" value="<?php echo $e ?>">
+                            <input type="hidden" id="ie" name="ie" value="<?php echo $ie ?>">
+                            <div class="row m-left-0px">
+                                <div class="g-recaptcha" name="recaptcha" data-sitekey="<?php echo $GLOBAL['site_recaptcha']; ?>"></div>
+                            </div>
+                            <div class="row m-top-12px">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-block" name="submit" onclick="return valida()">Improve equipament</button>
+                                </div>
+                            </div>
+                        </form>
+                    <?php } ?>
                     <form action="https://kingrespectcrypto.com/home.php" method="post">
-                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                      	<input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
                         <div class="row m-top-12px">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit">Voltar a tela principal</button>
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Back to house</button>
                             </div>
                         </div>
                     </form>
                 <?php } else { ?>
-                    <form action="https://kingrespectcrypto.com/controller/upgradeequipaction.php" method="post">
+                    <form action="https://kingrespectcrypto.com/login.php" method="post">
                         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-                        <input type="hidden" id="e" name="e" value="<?php echo $e ?>">
-                        <input type="hidden" id="ie" name="ie" value="<?php echo $ie ?>">
-                        <div class="row m-left-0px">
-                            <div class="g-recaptcha" name="recaptcha" data-sitekey="<?php echo $GLOBAL['site_recaptcha']; ?>"></div>
-                        </div>
                         <div class="row m-top-12px">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit" onclick="return valida()">Improve equipament</button>
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Back to login</button>
                             </div>
                         </div>
                     </form>
-                    <script type="text/javascript">
-                        function valida() {
-                            if (grecaptcha.getResponse() == "") {
-                                alert("Recaptcha not checked.");
-                                return false;
-                            } 
-                            return true;
-                        }
-                    </script>
                 <?php } ?>
             </div>
         </div>

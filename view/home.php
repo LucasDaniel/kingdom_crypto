@@ -9,7 +9,7 @@
   <div class="material f-left"><?php echo $rowResources['ferro']."<br>Production: ".$rowSeason['ferro']."x" ?></div>
   <div class="material f-left"><?php echo $rowResources['respeito']."<br>Season ends in: <br>".$rowSeason['season_end'] ?></div>
   <div class="config f-left"> 
-    <form action="https://kingrespectcrypto.com/controller/trocarsenha.php" method="post">
+    <form action="https://kingrespectcrypto.com/controller/changepassword.php" method="post">
       <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
       <div class="row m-top-12px">
         <div class="col-12">
@@ -19,7 +19,7 @@
     </form>
   </div>
   <div class="deslogar f-left">
-    <form action="https://kingrespectcrypto.com/login.php" method="post">
+    <form action="https://kingrespectcrypto.com/controller/logout.php" method="post">
       <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
       <div class="row m-top-12px">
         <div class="col-12">

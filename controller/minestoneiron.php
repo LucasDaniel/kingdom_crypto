@@ -49,16 +49,7 @@
                 <div class="row">
                     <p class="login-box-msg"><?php echo $msg ?></p>
                 </div>
-                <?php if ($erro) { ?>
-                    <form action="https://kingrespectcrypto.com/home.php" method="post">
-                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-                        <div class="row m-top-12px">
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit">Voltar a tela principal</button>
-                            </div>
-                        </div>
-                    </form>
-                <?php } else { ?>
+                <?php if (!$erro) { ?>
                     <form action="https://kingrespectcrypto.com/controller/minestoneironaction.php" method="post">
                         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
                         <input type="hidden" id="ie" name="ie" value="<?php echo $idCharacter ?>">
@@ -80,6 +71,23 @@
                             return true;
                         }
                     </script>
+                    <form action="https://kingrespectcrypto.com/home.php" method="post">
+                      	<input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                        <div class="row m-top-12px">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Back to house</button>
+                            </div>
+                        </div>
+                    </form>
+                <?php } else { ?>
+                    <form action="https://kingrespectcrypto.com/login.php" method="post">
+                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                        <div class="row m-top-12px">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Back to login</button>
+                            </div>
+                        </div>
+                    </form>
                 <?php } ?>
             </div>
         </div>

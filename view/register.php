@@ -52,11 +52,6 @@
     var password = document.getElementById("password").value;
     var repassword = document.getElementById("repassword").value;
 
-    console.log(password);
-    console.log(repassword);
-    console.log(password.length);
-    console.log(repassword.length);
-
     if (password.length < 2) {
         alert("Password less than 6 characters.");
         return false;

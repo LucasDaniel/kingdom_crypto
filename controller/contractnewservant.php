@@ -6,6 +6,7 @@
 
     $msg = "";
     $erro = true;
+    $back = false;
 
     if (($_POST['h'] == '' || $_POST['h'] == null) && ($msg == "")) { $msg = "ERROR HASH!"; }
 
@@ -60,8 +61,9 @@
                         $erro = false;
                     } else {
                         $msg = "You dont have respect to hire";
+                        $back = true;
                     }
-
+                    
                 } else {
                     $msg = "Erro hire";
                 }
@@ -85,7 +87,40 @@
                 <div class="row">
                     <p class="login-box-msg"><?php echo $msg ?></p>
                 </div>
-                <?php if ($erro) { ?>
+                <?php if (!$erro) { ?>
+                    <?php if (!$back) { ?>
+                        <form action="https://kingrespectcrypto.com/controller/contractnewservantaction.php" method="post">
+                            <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                            <div class="row m-left-0px">
+                                <div class="g-recaptcha" name="recaptcha" data-sitekey="<?php echo $GLOBAL['site_recaptcha']; ?>"></div>
+                            </div>
+                            <div class="row m-top-12px">
+                                <div class="col-12">
+                                    <select name="profissao">
+                                        <option><?php echo $msgRandom; ?></option>
+                                        <option><?php echo $msgOutros."lumberman"; ?></option>
+                                        <option><?php echo $msgOutros."fisherman"; ?></option>
+                                        <option><?php echo $msgOutros."miner"; ?></option>
+                                        <option><?php echo $msgAventureiro; ?></option>
+                                    </select>
+                                </div>
+                            </div>                        
+                            <div class="row m-top-12px">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-block" name="submit" onclick="return valida()">Hire servant</button>
+                                </div>
+                            </div>
+                        </form>
+                        <script type="text/javascript">
+                            function valida() {
+                                if (grecaptcha.getResponse() == "") {
+                                    alert("Recaptcha not checked.");
+                                    return false;
+                                } 
+                                return true;
+                            }
+                        </script>
+                    <?php } ?>
                     <form action="https://kingrespectcrypto.com/home.php" method="post">
                         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
                         <div class="row m-top-12px">
@@ -95,45 +130,14 @@
                         </div>
                     </form>
                 <?php } else { ?>
-                    <form action="https://kingrespectcrypto.com/controller/contractnewservantaction.php" method="post">
-                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-                        <div class="row m-left-0px">
-                            <div class="g-recaptcha" name="recaptcha" data-sitekey="<?php echo $GLOBAL['site_recaptcha']; ?>"></div>
-                        </div>
-                        <div class="row m-top-12px">
-                            <div class="col-12">
-                                <select name="profissao">
-                                    <option><?php echo $msgRandom; ?></option>
-                                    <option><?php echo $msgOutros."lumberman"; ?></option>
-                                    <option><?php echo $msgOutros."fisherman"; ?></option>
-                                    <option><?php echo $msgOutros."miner"; ?></option>
-                                    <option><?php echo $msgAventureiro; ?></option>
-                                </select>
-                            </div>
-                        </div>                        
-                        <div class="row m-top-12px">
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit" onclick="return valida()">Hire servant</button>
-                            </div>
-                        </div>
-                    </form>
-                    <form action="https://kingrespectcrypto.com/home.php" method="post">
+                    <form action="https://kingrespectcrypto.com/login.php" method="post">
                         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
                         <div class="row m-top-12px">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit">Voltar a tela principal</button>
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Back to login</button>
                             </div>
                         </div>
                     </form>
-                    <script type="text/javascript">
-                        function valida() {
-                            if (grecaptcha.getResponse() == "") {
-                                alert("Recaptcha not checked.");
-                                return false;
-                            } 
-                            return true;
-                        }
-                    </script>
                 <?php } ?>
             </div>
         </div>
