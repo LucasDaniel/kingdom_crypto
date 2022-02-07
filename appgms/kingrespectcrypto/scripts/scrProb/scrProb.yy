@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "geral",
-    "path": "folders/Scripts/geral.yy",
+    "name": "wood_game",
+    "path": "folders/Scripts/wood_game.yy",
   },
   "resourceVersion": "1.0",
-  "name": "scrVerifyGameCodePassword",
+  "name": "scrProb",
   "tags": [],
   "resourceType": "GMScript",
 }
