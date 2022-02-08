@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sprArvoreFraca",
-    "path": "sprites/sprArvoreFraca/sprArvoreFraca.yy",
+    "name": "sprBtParar",
+    "path": "sprites/sprBtParar/sprBtParar.yy",
   },
   "solid": false,
   "visible": true,
@@ -21,19 +21,16 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":13,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":1,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":2,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "wood_game",
-    "path": "folders/Objects/wood_game.yy",
+    "name": "botoes",
+    "path": "folders/Objects/botoes.yy",
   },
   "resourceVersion": "1.0",
-  "name": "objArvore",
+  "name": "objBtParar",
   "tags": [],
   "resourceType": "GMObject",
 }

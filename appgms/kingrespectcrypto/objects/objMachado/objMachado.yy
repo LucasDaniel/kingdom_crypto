@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sprArvoreFraca",
-    "path": "sprites/sprArvoreFraca/sprArvoreFraca.yy",
+    "name": "sprMachado",
+    "path": "sprites/sprMachado/sprMachado.yy",
   },
   "solid": false,
   "visible": true,
@@ -22,9 +22,7 @@
   "physicsShapePoints": [],
   "eventList": [
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":13,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":1,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":2,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":7,"eventType":7,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
@@ -33,7 +31,7 @@
     "path": "folders/Objects/wood_game.yy",
   },
   "resourceVersion": "1.0",
-  "name": "objArvore",
+  "name": "objMachado",
   "tags": [],
   "resourceType": "GMObject",
 }

@@ -1,16 +1,23 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if (objAdmWoodGame.estadoJogo = "inicioJogo") { 
-	objAdmWoodGame.estadoJogo = "jogando";
-}
+if (!global.pause) {
+	if (objAdmWoodGame.estadoJogo = "inicioJogo") { 
+		objAdmWoodGame.estadoJogo = "jogando";
+	}
 
-if (objAdmWoodGame.estadoJogo = "jogando") {
-	touchs++;
-	//Faz animação de que vai cortar madeira
-	if (nivel <= touchs) {
-		objAdmWoodGame.arvores[i][j] = 0;
-		objAdmWoodGame.contArvores--;
-		instance_destroy();
+	if ((objAdmWoodGame.estadoJogo = "jogando") && (!touched)) {
+		touchs++;
+		if (instance_exists(objHeroi)) {
+			objHeroi.x = x+48;
+			objHeroi.y = y;
+		} else {
+			instance_create_layer(x+48,y,"Instances",objHeroi);
+		}
+		instance_create_layer(x,y,"inst_cima",objMachado);
+		//Faz animação de que vai cortar madeira
+	
+		alarm[0] = 1;
 	}
 }
+

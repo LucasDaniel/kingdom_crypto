@@ -4,6 +4,8 @@
 function scrNivelArvore(p,n3,n2){
 
 var _nivel = 1;
+n3 -= 10;
+n2 -= 10;
 
 if (scrProb(p,n3)) {
 	_nivel = 3;
