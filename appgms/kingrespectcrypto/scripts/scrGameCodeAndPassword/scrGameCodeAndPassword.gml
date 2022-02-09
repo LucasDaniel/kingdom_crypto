@@ -2,9 +2,9 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scrGameCodeAndPassword(){
 
-gameCode = get_string("Put game code you see in your character working in kingrespectcrypto.com","");
+global.gamecode = get_string("Put game code you see in your character working in kingrespectcrypto.com","");
 passwordGameCode = get_string("Put your password (for your security)","");
 
-scrVerifyGameCodePassword(gameCode,passwordGameCode);
+scrVerifyGameCodePassword(passwordGameCode);
 
 }

@@ -16,6 +16,7 @@
     {"id":{"name":"scrLoginPassword","path":"scripts/scrLoginPassword/scrLoginPassword.yy",},"order":5,},
     {"id":{"name":"room_wood","path":"rooms/room_wood/room_wood.yy",},"order":1,},
     {"id":{"name":"scrAsyncPostLogin","path":"scripts/scrAsyncPostLogin/scrAsyncPostLogin.yy",},"order":0,},
+    {"id":{"name":"scrAsyncPostMultiplier","path":"scripts/scrAsyncPostMultiplier/scrAsyncPostMultiplier.yy",},"order":9,},
     {"id":{"name":"scrProb","path":"scripts/scrProb/scrProb.yy",},"order":1,},
     {"id":{"name":"scrNivelArvore","path":"scripts/scrNivelArvore/scrNivelArvore.yy",},"order":2,},
     {"id":{"name":"scrLogin","path":"scripts/scrLogin/scrLogin.yy",},"order":4,},
@@ -50,8 +51,8 @@
     "children": [],
   },
   "RoomOrderNodes": [
-    {"roomId":{"name":"room_wood","path":"rooms/room_wood/room_wood.yy",},},
     {"roomId":{"name":"room_start","path":"rooms/room_start/room_start.yy",},},
+    {"roomId":{"name":"room_wood","path":"rooms/room_wood/room_wood.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":0,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},

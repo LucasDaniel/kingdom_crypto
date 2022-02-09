@@ -1,9 +1,9 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function scrVerifyGameCodePassword(gameCode,passwordGameCode){
+function scrVerifyGameCodePassword(passwordGameCode){
 
 	var game = ds_map_create();
-	ds_map_add(game,"gamecode",gameCode);
+	ds_map_add(game,"gamecode",global.gamecode);
 	ds_map_add(game,"hash",global.hash);
 	ds_map_add(game,"passwordgamecode",passwordGameCode);
 	var jsonGame = json_encode(game);

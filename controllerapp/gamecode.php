@@ -16,14 +16,12 @@
     $obj->pagesend = $page;
     $obj->hashsend = $hash;
     $obj->passwordcodesend = $passwordcode;
-    $obj->aqui = "eee";
     $query = "SELECT * FROM user WHERE hash_app LIKE '$hash'";
     if ((mysqli_num_rows(mysqli_query($conn, $query)) > 0) && ($msg == "")) {
         $row = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
         
         $password = $row['password'];
         $obj->password = $password;
-        $obj->aqui = "ddd";
         if ($password == $passwordcode) {
 
             $id         = $row['id'];
@@ -33,14 +31,11 @@
             $hash       = md5($id.$time_stamp.$randomico);
             $data       = date("Y-m-d H:i:s");
             $time15     = date("Y-m-d H:i:s",strtotime('+15 minutes', strtotime($data)));
-            $obj->aqui = "ccc";
             $query = "UPDATE user SET last_login_app='$data', last_hash_app='$data', hash_expire_app='$time15', hash_app='$hash' WHERE id = $id";
             if (mysqli_query($conn, $query)) {
-                $obj->aqui = "aaa";
-                $query = "SELECT * FROM servant WHERE id_user = $id AND app_code LIKE '$gamecode'";
+                $query = "SELECT * FROM servant WHERE id_user = $id AND app_code LIKE '$gamecode' AND recovery_energy = '0000-00-00 00:00:00'";
                 if ((mysqli_num_rows(mysqli_query($conn, $query)) > 0) && ($msg == "")) {
                     $row = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
-                    $obj->aqui = "bbb";
                     $profissao   = $row['profissao'];
                     $equipamento = $row['equipamento'];
                     $multiplier = $row['multiplier'];

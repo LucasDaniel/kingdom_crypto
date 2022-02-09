@@ -28,7 +28,7 @@
       </div>
     </form>
   </div>
-
+  <button type="button" class="btn btn-primary btn-block" onclick="teste()">Reportar um bug</button>
   <div class="quartos">
     <?php for($i=0; $i < count($rowsCharacters); $i++) { ?>
       <div class="quarto" onclick="quarto('<?php echo $i; ?>')">
