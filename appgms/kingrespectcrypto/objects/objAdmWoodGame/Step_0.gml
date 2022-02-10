@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 if (!global.pause) {
-	if (estadoJogo = "jogando") {
+	if (global.estadoJogo = "jogando") {
 		contCriaArvore -= 1;
 	
 		if (contCriaArvore < 1) {

@@ -148,8 +148,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "wood_game",
+    "path": "folders/Sprites/wood_game.yy",
   },
   "resourceVersion": "1.0",
   "name": "sprHeroi",

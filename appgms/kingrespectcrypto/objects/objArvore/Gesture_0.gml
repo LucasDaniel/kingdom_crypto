@@ -2,11 +2,11 @@
 // You can write your code in this editor
 
 if (!global.pause) {
-	if (objAdmWoodGame.estadoJogo = "inicioJogo") { 
-		objAdmWoodGame.estadoJogo = "jogando";
+	if (global.estadoJogo = "inicioJogo") { 
+		global.estadoJogo = "jogando";
 	}
 
-	if ((objAdmWoodGame.estadoJogo = "jogando") && (!touched)) {
+	if ((global.estadoJogo = "jogando") && (!touched)) {
 		touchs++;
 		if (instance_exists(objHeroi)) {
 			objHeroi.x = x+48;

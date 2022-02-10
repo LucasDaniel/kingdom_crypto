@@ -5,7 +5,7 @@ function scrBeginGame(game){
 	if (game == "wood") {
 		room_goto(room_wood);
 	} else if (game == "fish") {
-		show_debug_message("Jogo de fish");	//Parei aqui - Fazer o jogo do peixe
+		room_goto(room_fish);
 	} else if (game == "stoneiron") {
 		show_debug_message("Jogo de stone iron");	
 	} else if (game == "huntmonsters") {

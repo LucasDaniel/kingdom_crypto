@@ -9,7 +9,7 @@ global.multiplier = 0;
 
 //cria as arvores cheias
 
-estadoJogo = "inicioJogo";
+global.estadoJogo = "inicioJogo";
 
 contInimigos = 0;
 contMaxInimigos = 0;

@@ -2,7 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scrSendMultiplierServer(){
 	
-	objAdmWoodGame.estadoJogo = "enviando";
+	global.estadoJogo = "enviando";
 	
 	var game = ds_map_create();
 	ds_map_add(game,"gamecode",global.gamecode);

@@ -11,5 +11,6 @@ global.multiplier = 0;
 global.vidas = 2;
 global.pause = false; //Variavel para controlar o fluxo do jogo
 global.post = noone;
+global.estadoJogo = "";
 
 }
