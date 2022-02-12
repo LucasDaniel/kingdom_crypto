@@ -15,3 +15,6 @@ posyfinal = y;
 
 difx = 0;
 dify = 0;
+
+tempoPesca = 45;
+tempoPescaMax = 45;

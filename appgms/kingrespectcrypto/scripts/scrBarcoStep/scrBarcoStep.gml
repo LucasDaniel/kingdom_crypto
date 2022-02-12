@@ -52,10 +52,6 @@ function scrBarcoStep(){
 			if (dify < 2 && dify > -2) vely = 0;
 			//Quanto menor a diferença entre os numeros, menos vai se mover
 	
-			show_debug_message("--------");
-			show_debug_message("velx = "+string(velx));
-			show_debug_message("vely = "+string(vely));
-	
 			x += velx;
 			y += vely;
 			
