@@ -11,11 +11,6 @@ global.multiplier = 0;
 
 global.estadoJogo = "inicioJogo";
 
-contInimigos = 0;
-contMaxInimigos = 0;
-
-pauseGame = false;
-
 pontos = 0;
 
 tempoCriaArvore = 60;
