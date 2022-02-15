@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="https://kingrespectcrypto.com/css/adminlte.min.css">
 <!-- Recaptcha google -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<!-- Adsense google -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9748345375136849"crossorigin="anonymous"></script>
 
 <?php
 
