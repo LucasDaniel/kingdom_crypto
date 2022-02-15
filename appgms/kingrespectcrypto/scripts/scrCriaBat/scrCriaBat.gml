@@ -16,29 +16,32 @@ var meioy = room_height/2;
 posX = 0;
 posY = 0;
 
+maisX = 20;
+maixY = 30;
+
 if (iSentido < 1) { // Sentido - horizontal
 	sentido = "horizontal";
 	if (iDirecao < 1) { // Direção - esquerda
 		direcao = "esquerda";
 		if (iCimaBaixo) {
 			cimaBaixo = "cima";
-			posX = room_width+40;
-			posY = meioy+70;
+			posX = room_width+maisX;
+			posY = meioy+maixY;
 		} else {
 			cimaBaixo = "baixo";
-			posX = room_width+40;
-			posY = meioy-70;
+			posX = room_width+maisX;
+			posY = meioy-maixY;
 		}
 	} else { // Direção - direita
 		direcao = "direita";
 		if (iCimaBaixo) {
 			cimaBaixo = "cima";
-			posX = -40;
-			posY = meioy+70;
+			posX = -maisX;
+			posY = meioy+maixY;
 		} else {
 			cimaBaixo = "baixo";
-			posX = -40;
-			posY = meioy-70;
+			posX = -maisX;
+			posY = meioy-maixY;
 		}
 	}
 } else { // Sentido - vertical
@@ -47,23 +50,23 @@ if (iSentido < 1) { // Sentido - horizontal
 		direcao = "baixo";
 		if (iCimaBaixo) {
 			cimaBaixo = "dir";
-			posX = meiox+70;
-			posY = -40;
+			posX = meiox+maixY;
+			posY = -maisX;
 		} else {
 			cimaBaixo = "esq";
-			posX = meiox-70;
-			posY = -40;
+			posX = meiox-maixY;
+			posY = -maisX;
 		}
 	} else { // Direção - cima
 		direcao = "cima";
 		if (iCimaBaixo) {
 			cimaBaixo = "dir";
-			posX = meiox+70;
-			posY = room_height+40;
+			posX = meiox+maixY;
+			posY = room_height+maisX;
 		} else {
 			cimaBaixo = "esq";
-			posX = meiox-70;
-			posY = room_height+40;
+			posX = meiox-maixY;
+			posY = room_height+maisX;
 		}
 	}
 }

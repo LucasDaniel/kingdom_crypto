@@ -35,19 +35,6 @@ function scrBarcoStep(){
 				vely = 0;
 			}
 				
-			/*
-			if (difx > 0) {
-				if (difx < 10) velx = -1;
-			} else if (difx < 0) {
-				if (difx > -10) velx = 1;
-			}
-			if (difx > 0) {
-				if (dify < 10) vely = -1;
-			} else if (difx < 0) {
-				if (dify > -10) vely = 1;
-			}
-			*/
-				
 			if (difx < 2 && difx > -2) velx = 0;
 			if (dify < 2 && dify > -2) vely = 0;
 			//Quanto menor a diferença entre os numeros, menos vai se mover

@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sprCaveman",
-    "path": "sprites/sprCaveman/sprCaveman.yy",
+    "name": "sprEspinho",
+    "path": "sprites/sprEspinho/sprEspinho.yy",
   },
   "solid": false,
   "visible": true,
@@ -21,19 +21,18 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"objBat","path":"objects/objBat/objBat.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"objAtaque","path":"objects/objAtaque/objAtaque.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "cave_game",
-    "path": "folders/Objects/cave_game.yy",
+    "name": "hunt_game",
+    "path": "folders/Objects/hunt_game.yy",
   },
   "resourceVersion": "1.0",
-  "name": "objCaveman",
+  "name": "objEspinho",
   "tags": [],
   "resourceType": "GMObject",
 }

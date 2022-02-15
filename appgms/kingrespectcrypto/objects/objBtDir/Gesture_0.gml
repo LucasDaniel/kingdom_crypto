@@ -3,6 +3,7 @@
 
 if (!global.pause) {
 	if (global.estadoJogo = "jogando") {
-		scrPressBtCave("direita");
+		if (objCaveman.posicao = "esquerda") scrPressBtCave("centro");
+		else scrPressBtCave("direita");
 	}
 }
