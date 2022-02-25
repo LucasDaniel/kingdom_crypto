@@ -6,10 +6,10 @@ if (!global.pause) {
 	global.pause = true;
 	global.vidas--;
 	if (global.vidas > 0) {
-		show_message("The bee touchs you. Lives left: "+string(global.vidas));
+		show_message_async("The bee touchs you. Lives left: "+string(global.vidas));
 		room_restart();
 	} else {
-		show_message("You lost all your lives!");
+		show_message_async("You lost all your lives!");
 		game_end();
 	}
 }

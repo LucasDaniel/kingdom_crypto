@@ -38,7 +38,7 @@ function scrAsyncPostLogin() {
 					}
 					
 					if (success) {
-						show_message(msg);
+						show_message_async(msg);
 						if (page == "login") {
 							carregoucodegame = 0;
 							objAdm.alarm[1] = 10;
@@ -79,7 +79,7 @@ function scrAsyncPostLogin() {
 							}
 						}
 					} else {
-						show_message(msg);
+						show_message_async(msg);
 						if (page == "login") { 
 							objAdm.alarm[0] = 10;
 						} else if (page == "gamecode") {
