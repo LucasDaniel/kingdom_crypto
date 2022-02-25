@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprBat","path":"sprites/sprBat/sprBat.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprBat",
     "tags": [],
     "resourceType": "GMSequence",

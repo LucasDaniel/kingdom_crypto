@@ -5,7 +5,7 @@
 
 game = "wood";
 
-global.multiplier = 0;
+global.pause = false;
 
 //cria as arvores cheias
 

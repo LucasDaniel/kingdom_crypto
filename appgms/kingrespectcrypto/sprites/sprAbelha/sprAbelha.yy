@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprAbelha","path":"sprites/sprAbelha/sprAbelha.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprAbelha",
     "tags": [],
     "resourceType": "GMSequence",

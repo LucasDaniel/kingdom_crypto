@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprBtCima","path":"sprites/sprBtCima/sprBtCima.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprBtCima",
     "tags": [],
     "resourceType": "GMSequence",

@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprPirataPai","path":"sprites/sprPirataPai/sprPirataPai.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprPirataPai",
     "tags": [],
     "resourceType": "GMSequence",

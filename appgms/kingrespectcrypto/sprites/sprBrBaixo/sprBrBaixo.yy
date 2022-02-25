@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprBrBaixo","path":"sprites/sprBrBaixo/sprBrBaixo.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprBrBaixo",
     "tags": [],
     "resourceType": "GMSequence",

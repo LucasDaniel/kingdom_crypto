@@ -138,7 +138,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprHeroi","path":"sprites/sprHeroi/sprHeroi.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprHeroi",
     "tags": [],
     "resourceType": "GMSequence",

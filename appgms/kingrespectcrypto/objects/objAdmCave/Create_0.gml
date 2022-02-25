@@ -9,7 +9,6 @@ instance_create_layer(room_width/2,room_height/2,"instances",objCaveman);
 contCriaBat = 180;
 contCriaBatMax = contCriaBat;
 
-global.multiplier = 0;
 global.estadoJogo = "inicioJogo";
 global.pause = false;
 

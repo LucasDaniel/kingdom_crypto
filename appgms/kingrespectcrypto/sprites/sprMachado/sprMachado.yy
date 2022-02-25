@@ -75,7 +75,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprMachado","path":"sprites/sprMachado/sprMachado.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprMachado",
     "tags": [],
     "resourceType": "GMSequence",

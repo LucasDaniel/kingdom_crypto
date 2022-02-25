@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprCaveman","path":"sprites/sprCaveman/sprCaveman.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprCaveman",
     "tags": [],
     "resourceType": "GMSequence",

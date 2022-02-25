@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprBarco","path":"sprites/sprBarco/sprBarco.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprBarco",
     "tags": [],
     "resourceType": "GMSequence",

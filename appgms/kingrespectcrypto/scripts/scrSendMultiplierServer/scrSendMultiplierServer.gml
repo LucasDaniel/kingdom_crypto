@@ -7,7 +7,7 @@ function scrSendMultiplierServer(){
 	var game = ds_map_create();
 	ds_map_add(game,"gamecode",global.gamecode);
 	ds_map_add(game,"hash",global.hash);
-	ds_map_add(game,"multiplier",(global.multiplier+1));
+	ds_map_add(game,"multiplier",global.multiplier);
 	var jsonGame = json_encode(game);
 	ds_map_destroy(game);
 	

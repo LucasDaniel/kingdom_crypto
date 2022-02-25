@@ -5,7 +5,7 @@ function scrAsyncPostLogin() {
 	var carregoucodegame = 0;
 	global.profissao = "";
 	global.equipamento = 0;
-	global.multiplier = 0;
+	global.multiplier = 0.00;
 	global.vidas = 0;
 	
 	if (ds_map_find_value(async_load, "id") == global.post) {

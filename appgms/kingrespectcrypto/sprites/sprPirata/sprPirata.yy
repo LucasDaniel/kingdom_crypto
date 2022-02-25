@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprPirata","path":"sprites/sprPirata/sprPirata.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprPirata",
     "tags": [],
     "resourceType": "GMSequence",

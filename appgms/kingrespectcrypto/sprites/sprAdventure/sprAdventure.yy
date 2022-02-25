@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprAdventure","path":"sprites/sprAdventure/sprAdventure.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprAdventure",
     "tags": [],
     "resourceType": "GMSequence",

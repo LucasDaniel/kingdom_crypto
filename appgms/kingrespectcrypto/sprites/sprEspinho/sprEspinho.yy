@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprEspinho","path":"sprites/sprEspinho/sprEspinho.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprEspinho",
     "tags": [],
     "resourceType": "GMSequence",

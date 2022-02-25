@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprBtComecar","path":"sprites/sprBtComecar/sprBtComecar.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprBtComecar",
     "tags": [],
     "resourceType": "GMSequence",

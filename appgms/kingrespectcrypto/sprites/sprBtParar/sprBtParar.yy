@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprBtParar","path":"sprites/sprBtParar/sprBtParar.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprBtParar",
     "tags": [],
     "resourceType": "GMSequence",

@@ -4,7 +4,7 @@
 if (global.estadoJogo = "jogando") {
 	if (!global.pause) {
 		global.pause = true;
-		var str = "You want stop play? Multiplier: "+string(1+global.multiplier);
+		var str = "You want stop play? Multiplier: "+string(global.multiplier);
 		if (show_question(str)) {
 			scrSendMultiplierServer();
 		} else {

@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprBtAtaqueAdv","path":"sprites/sprBtAtaqueAdv/sprBtAtaqueAdv.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprBtAtaqueAdv",
     "tags": [],
     "resourceType": "GMSequence",

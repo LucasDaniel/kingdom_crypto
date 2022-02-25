@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprMonsterHunt","path":"sprites/sprMonsterHunt/sprMonsterHunt.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprMonsterHunt",
     "tags": [],
     "resourceType": "GMSequence",

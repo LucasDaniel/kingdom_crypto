@@ -12,6 +12,5 @@ contCriaPirataMax = contCriaPirata;
 contCriaPirataPai = 360
 contCriaPirataPaiMax = contCriaPirataPai;
 
-global.multiplier = 0;
 global.estadoJogo = "inicioJogo";
 global.pause = false;

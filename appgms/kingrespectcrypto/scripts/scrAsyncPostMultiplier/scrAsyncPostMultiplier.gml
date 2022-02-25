@@ -35,6 +35,7 @@ if (ds_map_find_value(async_load, "id") == global.post) {
 					if (page == "multiplier") {
 						var str = "Continuos playing?";
 						if (show_question(str)) {
+							global.jajogou = 1;
 							room_goto(room_start);
 						} else {
 							game_end();

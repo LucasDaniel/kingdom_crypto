@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprBtEsq","path":"sprites/sprBtEsq/sprBtEsq.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprBtEsq",
     "tags": [],
     "resourceType": "GMSequence",
