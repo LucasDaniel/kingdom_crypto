@@ -42,8 +42,10 @@ function scrAsyncPostLogin() {
 						if (page == "login") {
 							if (ds_map_exists(map,"multiplier_upgrade")) {
 								global.multiplierUpgrade = map[?"multiplier_upgrade"];
+								show_debug_message("multiplierUpgrade = "+string(global.multiplierUpgrade));
 								if (ds_map_exists(map,"lives_upgrade")) {
 									global.livesUpgrade = map[?"lives_upgrade"];
+									show_debug_message("livesUpgrade = "+string(global.livesUpgrade));
 								}
 							}
 							carregoucodegame = 0;
@@ -58,7 +60,12 @@ function scrAsyncPostLogin() {
 										global.multiplier = map[?"multiplier"];
 										if (ds_map_exists(map,"lives")) {
 											global.vidas = map[?"lives"];
+											show_debug_message("--------");
+											show_debug_message("vidas = "+string(global.vidas));
+											show_debug_message("livesUpgrade = "+string(global.livesUpgrade));
+											show_debug_message("--------");
 											if (global.livesUpgrade) global.vidas = 3;
+											show_debug_message("vidas = "+string(global.vidas));
 											if (ds_map_exists(map,"work_at")) {
 												var workat = map[?"work_at"];
 												carregoucodegame = 1;

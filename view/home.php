@@ -274,7 +274,7 @@
       </div>
     </form>
   </div>
-
+  <!-- PAREI AQUI - Adicionar botão para comprar os upgrades do aplicativo -->
 </body>
 
 <script>

@@ -1,12 +1,12 @@
 
 <?php
 
-$hash = 1;//$_POST['h'];
+$hash = $_POST['h'];
 $erroHash = "";
 $expirou = false;
 
 $query = "SELECT * FROM user WHERE hash LIKE '$hash'";
-$query = "SELECT * FROM user WHERE id = 9";
+//$query = "SELECT * FROM user WHERE id = 9";
 if (mysqli_num_rows(mysqli_query($conn, $query)) > 0) {
     $rowUser = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
     $hashExpires = strtotime($rowUser['hash_expires']);

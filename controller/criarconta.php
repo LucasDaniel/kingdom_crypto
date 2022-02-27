@@ -5,6 +5,7 @@
     require_once("../database/connect.php");
 
     $msg = "";
+    $erro = true;
 
     if (($_POST['h'] == '' || $_POST['h'] == null) && ($msg == "")) { $msg = "ERROR HASH!"; }
     if (($_POST['p'] == '' || $_POST['p'] == null) && ($msg == "")) { $msg = "ERROR PROFISSÃO!"; }
@@ -36,8 +37,12 @@
                     else if ($profissao == 2 || $profissao == '2') $profissao = "pescador";
                     else if ($profissao == 3 || $profissao == '3') $profissao = "minerador";
                     else $profissao = "lenhador";
-                    $query = "INSERT INTO servant(`id_user`, `profissao`, `create_at`, `last_update`) 
-                                   VALUES ($id,'$profissao','$data','$data')";
+                    $query = "INSERT INTO servant(  `id_user`, `profissao`, `equipamento`,
+                                                    `multiplier`, `lives`, `work_at`, `recovery_energy`, 
+                                                    `work_init`, `work_finish`, `create_at`, `last_update`) 
+                                            VALUES ($id,'$profissao',0,
+                                                    1,2,'nothing' ,'',
+                                                    '','','$data','$data')";
                     if (!mysqli_query($conn, $query)) {
                         $msg = "ERROR WHEN CREATE SERVANT!";
                     } else {
@@ -48,6 +53,7 @@
                             $msg = "ERROR WHEN CREATE RESOURCES!";
                         } else {
                             $msg = "Primeiro servo criado com sucesso";
+                            $erro = false;
                         }
                     }
                 }
@@ -71,7 +77,7 @@
                 <div class="row">
                     <p class="login-box-msg"><?php echo $msg ?></p>
                 </div>
-                <?php if($msg == "Primeiro servo criado com sucesso") { ?>
+                <?php if(!$erro) { ?>
                     <form action="https://kingrespectcrypto.com/home.php" method="post">
                         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
                         <div class="row m-top-12px">

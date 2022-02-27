@@ -27,7 +27,7 @@
         $query = "UPDATE user SET last_login_app='$data', last_hash_app='$data', hash_expire_app='$time15', hash_app='$hash' WHERE id = $id";
         if (mysqli_query($conn, $query)) {
             $msg = "Successfully logged in";
-            $query = "SELECT * FROM user_app_upgrade WHERE id = $id ";
+            $query = "SELECT * FROM user_app_upgrade WHERE id_user = $id ";
             if (mysqli_num_rows(mysqli_query($conn, $query)) > 0) {
                 $row = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
                 $multiplier_upgrade = $row['multiplier'];
