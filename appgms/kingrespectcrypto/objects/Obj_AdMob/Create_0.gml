@@ -13,16 +13,18 @@
 	Android to iOS so we also provide a code sample that acounts for that.
 	
 */
-var BANNER_ID, INTERSTITIAL_ID, REWANTED_ID;
+
+AdMob_SetTestDeviceId();
+
 if(os_type == os_android)
 {
 	
-	BANNER_ID = "ca-app-pub-9114414651457385/1981066436"; // o antigo que estava ca-app-pub-9114414651457385/1981066436
-	INTERSTITIAL_ID = "ca-app-pub-3940256099942544/1033173712";
-	REWANTED_ID = "ca-app-pub-3940256099942544/5224354917";	
-	//Parei aqui - Verificar depois
+	global.BANNER_ID = "ca-app-pub-9114414651457385/1981066436"; // o antigo que estava ca-app-pub-9114414651457385/1981066436
+	global.INTERSTITIAL_ID = "ca-app-pub-9114414651457385/2436140234"; //"ca-app-pub-3940256099942544/1033173712";
+	//REWANTED_ID = "ca-app-pub-3940256099942544/5224354917";
 	AdMob_Initialize();
-	AdMob_Banner_Init(BANNER_ID);
+	AdMob_Interstitial_Init(global.INTERSTITIAL_ID);
+	AdMob_Banner_Init(global.BANNER_ID);
 }
 /*
 else if(os_type == os_ios)

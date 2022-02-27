@@ -27,7 +27,15 @@
         $query = "UPDATE user SET last_login_app='$data', last_hash_app='$data', hash_expire_app='$time15', hash_app='$hash' WHERE id = $id";
         if (mysqli_query($conn, $query)) {
             $msg = "Successfully logged in";
-            $success = 1;
+            $query = "SELECT * FROM user_app_upgrade WHERE id = $id ";
+            if (mysqli_num_rows(mysqli_query($conn, $query)) > 0) {
+                $row = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
+                $multiplier_upgrade = $row['multiplier'];
+                $lives_upgrade      = $row['lives'];
+                $success = 1;
+            } else {
+                $msg = "ERROR USER UPGRADE";
+            }
         } else {
             $msg = "ERROR";
         }
@@ -38,6 +46,8 @@
     $obj->success = $success;
     $obj->page = $page;
     $obj->msg = $msg;
+    $obj->multiplier_upgrade = $multiplier_upgrade;
+    $obj->lives_upgrade = $lives_upgrade;
     $obj->hash = $hash;
 
     echo json_encode($obj);

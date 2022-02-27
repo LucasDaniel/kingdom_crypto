@@ -34,11 +34,7 @@ if (ds_map_find_value(async_load, "id") == global.post) {
 				if (success) {
 					if (page == "multiplier") {
 						var str = "Continuos playing?";
-						if (show_question(str)) { //Parei aqui - colocar o show_question_async
-							room_goto(room_start);
-						} else {
-							game_end();
-						}
+						continuarJogar = show_question_async(str);
 					} else if (page == "gamecode") {
 						
 					}

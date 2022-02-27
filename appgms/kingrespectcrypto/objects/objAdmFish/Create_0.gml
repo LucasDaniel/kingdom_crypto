@@ -14,3 +14,5 @@ contCriaPirataPaiMax = contCriaPirataPai;
 
 global.estadoJogo = "inicioJogo";
 global.pause = false;
+
+Obj_AdMob.alarm[0] = 2;

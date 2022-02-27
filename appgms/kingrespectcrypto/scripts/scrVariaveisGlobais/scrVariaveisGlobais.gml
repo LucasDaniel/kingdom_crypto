@@ -13,4 +13,19 @@ global.pause = false; //Variavel para controlar o fluxo do jogo
 global.post = noone;
 global.estadoJogo = "";
 
+global.BANNER_ID = "";
+global.INTERSTITIAL_ID = "";
+global.REWANTED_ID = "";
+
+global.CarregouInterstitial = false;
+
+if(os_type == os_android)
+{
+	
+	global.BANNER_ID = "ca-app-pub-9114414651457385/1981066436"; // o antigo que estava ca-app-pub-9114414651457385/1981066436
+	global.INTERSTITIAL_ID = "ca-app-pub-9114414651457385/2436140234"; //"ca-app-pub-3940256099942544/1033173712";
+	global.REWANTED_ID = "kkk";//"ca-app-pub-3940256099942544/5224354917";	
+	global.CarregouInterstitial = false;
+}
+
 }

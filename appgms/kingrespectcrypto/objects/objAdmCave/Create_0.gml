@@ -14,3 +14,5 @@ global.pause = false;
 
 tempoMineirando = 45;
 tempoMineirandoMax = tempoMineirando;
+
+Obj_AdMob.alarm[0] = 2;

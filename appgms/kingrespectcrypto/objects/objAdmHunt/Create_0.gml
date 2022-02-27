@@ -11,3 +11,5 @@ global.pause = false;
 
 contCriaEspinhos = 240;
 contCriaEspinhosMax = contCriaEspinhos;
+
+Obj_AdMob.alarm[0] = 2;

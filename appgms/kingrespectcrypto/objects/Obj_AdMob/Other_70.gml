@@ -16,47 +16,56 @@ switch(async_load[?"type"])
 		// We use this event to load both the interstitial/rewarded video ads.
 		//AdMob_Interstitial_Load();
 		//AdMob_RewardedVideo_Load();
-		AdMob_Banner_Create(AdMob_Banner_ADAPTIVE,false);
+		global.CarregouInterstitial = true;
+		AdMob_Banner_Create(AdMob_Banner_ADAPTIVE,true);
 		break;
 	
 	// AdMob_Banner_Create succeeded
 	case "AdMob_Banner_OnLoaded": 
 		// At this point the banner ad succeeded to be created.
+		show_debug_message("Admob banner carregado");
 		break;
 	
 	// AdMob_Banner_Create failed
 	case "AdMob_Banner_OnLoadFailed":
 		// At this point the banner ad failed to be created.
-		AdMob_Banner_Create(AdMob_Banner_ADAPTIVE,false);
+		AdMob_Banner_Create(AdMob_Banner_ADAPTIVE,true);
 		break;
 	
 	// AdMob_Interstitial_Load succeeded
 	case "AdMob_Interstitial_OnLoaded":
 		// At this point the interstitial ad succeeded to load.
+		show_debug_message("Admob Interstitial Carregado");
+		AdMob_Interstitial_Show();
 		break;
 	
 	// AdMob_Interstitial_Load failed
 	case "AdMob_Interstitial_OnLoadFailed":
 		// At this point the interstitial ad failed to load.
-		//AdMob_Interstitial_load() // This can create an infinite loop if load always fails!!
+		show_debug_message("Admob Interstitial Fail");
+		global.CarregouInterstitial = false;
+		AdMob_Interstitial_Load(); // This can create an infinite loop if load always fails!!
 		break;
 	
 	// AdMob_Interstitial_Show succeeded
 	case "AdMob_Interstitial_OnFullyShown":
 		// At this point the interstitial ad succeeded to show.
+		show_debug_message("Admob Interstitial OnFullyShown");
 		break;
 
 	// AdMob_Interstitial_Show failed
 	case "AdMob_Interstitial_OnShowFailed":
 		// At this point the interstitial ad failed to show.
 		// Here we use this event to load the interstitial ad again (it could be a load problem).
-		//AdMob_Interstitial_Load();
+		show_debug_message("Admob Interstitial Fail 2");
+		AdMob_Interstitial_Load();
 		break;
 	
 	// AdMob_Interstitial got dismissed
 	case "AdMob_Interstitial_OnDismissed":
 		// At this point the interstitial just got dismissed.
 		// Here we use this event to load the next interstitial ad.
+		show_debug_message("Admob Interstitial Dismissed");
 		//AdMob_Interstitial_Load();
 		break;
 	

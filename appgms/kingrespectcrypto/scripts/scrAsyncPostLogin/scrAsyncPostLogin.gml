@@ -40,10 +40,16 @@ function scrAsyncPostLogin() {
 					if (success) {
 						show_message_async(msg);
 						if (page == "login") {
+							if (ds_map_exists(map,"multiplier_upgrade")) {
+								global.multiplierUpgrade = map[?"multiplier_upgrade"];
+								if (ds_map_exists(map,"lives_upgrade")) {
+									global.livesUpgrade = map[?"lives_upgrade"];
+								}
+							}
 							carregoucodegame = 0;
 							objAdm.alarm[1] = 10;
 						} else if (page == "gamecode") {
-							//Enconrei um jogo que dê pra jogar
+							//Encontrei um jogo que dê pra jogar
 							if (ds_map_exists(map,"profissao")) {
 								global.profissao = map[?"profissao"];
 								if (ds_map_exists(map,"equipamento")) {
@@ -52,6 +58,7 @@ function scrAsyncPostLogin() {
 										global.multiplier = map[?"multiplier"];
 										if (ds_map_exists(map,"lives")) {
 											global.vidas = map[?"lives"];
+											if (global.livesUpgrade) global.vidas = 3;
 											if (ds_map_exists(map,"work_at")) {
 												var workat = map[?"work_at"];
 												carregoucodegame = 1;

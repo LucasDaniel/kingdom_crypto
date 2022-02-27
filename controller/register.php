@@ -45,6 +45,18 @@
                     if ((!mysqli_query($conn, $query)) && ($msg == "")) {
                         $msg = "ERROR WHEN REGISTERING EMAIL!";
                         $erroCriarConta = true;
+                    } else {
+                        $query = "SELECT * FROM user WHERE email LIKE '$email' AND password LIKE '$password' ";
+                        if (mysqli_num_rows(mysqli_query($conn, $query)) > 0) {
+                            $row = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
+                            $id = $row['id'];
+                            $query = "INSERT INTO user_app_upgrade(id_user) 
+                                        VALUES ($id)";
+                            if ((!mysqli_query($conn, $query)) && ($msg == "")) {
+                                $msg = "ERROR WHEN REGISTERING USER UPGRADE!";
+                                $erroCriarConta = true;
+                            }
+                        }
                     }
                 }
             }
