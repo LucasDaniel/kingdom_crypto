@@ -31,6 +31,7 @@
     {"id":{"name":"objArvore","path":"objects/objArvore/objArvore.yy",},"order":2,},
     {"id":{"name":"sprAdventure","path":"sprites/sprAdventure/sprAdventure.yy",},"order":1,},
     {"id":{"name":"scrCriaArvores","path":"scripts/scrCriaArvores/scrCriaArvores.yy",},"order":3,},
+    {"id":{"name":"AdMob","path":"extensions/AdMob/AdMob.yy",},"order":0,},
     {"id":{"name":"objMachado","path":"objects/objMachado/objMachado.yy",},"order":3,},
     {"id":{"name":"objPeixe","path":"objects/objPeixe/objPeixe.yy",},"order":2,},
     {"id":{"name":"scrSetaArvores","path":"scripts/scrSetaArvores/scrSetaArvores.yy",},"order":4,},
@@ -44,9 +45,11 @@
     {"id":{"name":"scrAsyncPostLogin","path":"scripts/scrAsyncPostLogin/scrAsyncPostLogin.yy",},"order":0,},
     {"id":{"name":"scrImprimePontuacoes","path":"scripts/scrImprimePontuacoes/scrImprimePontuacoes.yy",},"order":11,},
     {"id":{"name":"scrAsyncPostMultiplier","path":"scripts/scrAsyncPostMultiplier/scrAsyncPostMultiplier.yy",},"order":9,},
+    {"id":{"name":"Obj_AdMob_Consent","path":"objects/Obj_AdMob_Consent/Obj_AdMob_Consent.yy",},"order":1,},
     {"id":{"name":"scrProb","path":"scripts/scrProb/scrProb.yy",},"order":1,},
     {"id":{"name":"scrNivelArvore","path":"scripts/scrNivelArvore/scrNivelArvore.yy",},"order":2,},
     {"id":{"name":"objPirataPai","path":"objects/objPirataPai/objPirataPai.yy",},"order":4,},
+    {"id":{"name":"Obj_AdMob","path":"objects/Obj_AdMob/Obj_AdMob.yy",},"order":0,},
     {"id":{"name":"scrLogin","path":"scripts/scrLogin/scrLogin.yy",},"order":4,},
     {"id":{"name":"objBtBaixo","path":"objects/objBtBaixo/objBtBaixo.yy",},"order":6,},
     {"id":{"name":"sprBtComecar","path":"sprites/sprBtComecar/sprBtComecar.yy",},"order":2,},
@@ -136,6 +139,7 @@
     {"folderPath":"folders/Scripts/hunt_game.yy","order":5,"resourceVersion":"1.0","name":"hunt_game","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/hunt_game.yy","order":6,"resourceVersion":"1.0","name":"hunt_game","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Objects/hunt_game.yy","order":8,"resourceVersion":"1.0","name":"hunt_game","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Objects/AdMob.yy","order":9,"resourceVersion":"1.0","name":"AdMob","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
@@ -143,7 +147,12 @@
   "TextureGroups": [
     {"isScaled":true,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,"resourceVersion":"1.3","name":"Default","resourceType":"GMTextureGroup",},
   ],
-  "IncludedFiles": [],
+  "IncludedFiles": [
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"AdMob Extension.docx","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"AdMob Extension.pdf","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"AdMob Extension.docx","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"AdMob Extension.pdf","resourceType":"GMIncludedFile",},
+  ],
   "MetaData": {
     "IDEVersion": "2022.2.0.614",
   },
