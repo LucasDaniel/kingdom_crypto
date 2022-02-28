@@ -28,7 +28,8 @@
       </div>
     </form>
   </div>
-  <button type="button" class="btn btn-primary btn-block" onclick="teste()">Reportar um bug</button>
+  <button class="enableEthereumButton btn" style="background-color: yellow;">Enable Ethereum</button>
+  <button class="sendEthButton btn" style="background-color: green;">Send Eth</button>
   <div class="quartos">
     <?php for($i=0; $i < count($rowsCharacters); $i++) { ?>
       <div class="quarto" onclick="quarto('<?php echo $i; ?>')">
