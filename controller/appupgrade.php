@@ -9,7 +9,6 @@
     $back = false;
 
     if (($_POST['h'] == '' || $_POST['h'] == null) && ($msg == "")) { $msg = "ERROR HASH!"; }
-    if (($_POST['c'] == '' || $_POST['c'] == null) && ($msg == "")) { $msg = "ERROR CAMA!"; }
 
     if ($msg == "") {
 
@@ -28,32 +27,33 @@
 
             $query = "UPDATE user SET last_hash='$data', hash_expires='$time15', hash='$hash' WHERE id = $id";
             if (mysqli_query($conn, $query)) {
-                $data = date("Y-m-d H:i:s");
-
-                $query = "SELECT * FROM resources WHERE id_user = ".$rowUser['id'];
-                $rowResources = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
                 
-                $query = "SELECT * FROM house WHERE id_user = ".$rowUser['id'];
-                $rowHouse = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
+                $query = "SELECT * FROM user_app_upgrade WHERE id_user = $id ";
+                if (mysqli_num_rows(mysqli_query($conn, $query)) > 0) {
                 
-                //Valores para a logica
-                $respeito = $rowResources['respeito'];
-                $c = $_POST['c'];
-                $cama = $rowHouse[$c];
-                $preco = 5 + ($cama*2);
-                $erro = false;
-                if ($cama < 10) {
-                    if ($respeito >= $preco) {
-                        $msg = "To improve the bed you need $preco of respect.";
-                    } else {
-                        $msg = "Bed could be improved. Do you have enough resources. ($preco respect)";
+                    $row = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
+                    $multiplier = $row['multiplier'];
+                    
+                    if ($multiplier == 1) {
+                        $msg = "App Upgraded!";
+                        $erro = false;
                         $back = true;
+                    } else {
+                        $query = "SELECT * FROM resources WHERE id_user = ".$rowUser['id'];
+                        $rowResources = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
+
+                        if ($rowResources['respeito'] >= 5) {
+                            $msg = "To upgrade app need 5 of respect.";
+                            $erro = false;
+                        } else {
+                            $msg = "You dont have 5 of respect!";
+                            $back = true;
+                        }
                     }
                 } else {
-                    $msg = "Improved bed to max level";
-                    $back = true;
+                    $msg = "UPGRADE APP ERROR"; 
                 }
-                
+
             } else {
                 $msg = "Sessão expirou 1";
             }
@@ -75,15 +75,14 @@
                 </div>
                 <?php if (!$erro) { ?>
                     <?php if (!$back) { ?>
-                        <form action="https://kingrespectcrypto.com/controller/upgradecamaaction.php" method="post">
+                        <form action="https://kingrespectcrypto.com/controller/appupgradeaction.php" method="post">
                             <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-                            <input type="hidden" id="c" name="c" value="<?php echo $c ?>">
                             <div class="row m-left-0px">
                                 <div class="g-recaptcha" name="recaptcha" data-sitekey="<?php echo $GLOBAL['site_recaptcha']; ?>"></div>
                             </div>
                             <div class="row m-top-12px">
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary btn-block" name="submit" onclick="return valida()">Improve bed</button>
+                                    <button type="submit" class="btn btn-primary btn-block" name="submit" onclick="return valida()">Upgrade App</button>
                                 </div>
                             </div>
                         </form>

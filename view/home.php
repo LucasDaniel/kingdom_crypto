@@ -202,7 +202,7 @@
       <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
       <div class="row m-top-12px">
         <div class="col-12">
-          <button type="submit" class="btn btn-primary btn-block" name="submit">Upgrade Cozinha</button>
+          <button type="submit" class="btn btn-primary btn-block" name="submit">Upgrade Kitchen</button>
         </div>
       </div>
     </form>
@@ -245,7 +245,15 @@
       <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
       <div class="row m-top-12px">
         <div class="col-12">
-          <button type="submit" class="btn btn-primary btn-block" name="submit">Cadastrar Carteira Metamask</button>
+          <button type="submit" class="btn btn-primary btn-block" name="submit">Register Metamask Wallet</button>
+        </div>
+      </div>
+    </form>
+    <form action="https://kingrespectcrypto.com/controller/appupgrade.php" method="post">
+      <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+      <div class="row m-top-12px">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary btn-block" name="submit">Upgrade App</button>
         </div>
       </div>
     </form>
@@ -253,7 +261,7 @@
       <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
       <div class="row m-top-12px">
         <div class="col-12">
-          <button type="submit" class="btn btn-primary btn-block" name="submit">Depositar</button>
+          <button type="submit" class="btn btn-primary btn-block" name="submit">Deposit</button>
         </div>
       </div>
     </form>
@@ -261,7 +269,7 @@
       <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
       <div class="row m-top-12px">
         <div class="col-12">
-          <button type="submit" class="btn btn-primary btn-block" name="submit">Retirar</button>
+          <button type="submit" class="btn btn-primary btn-block" name="submit">Withdraw</button>
         </div>
       </div>
     </form>
@@ -269,7 +277,7 @@
       <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
       <div class="row m-top-12px">
         <div class="col-12">
-          <button type="submit" class="btn btn-primary btn-block" name="submit">Reportar um bug</button>
+          <button type="submit" class="btn btn-primary btn-block" name="submit">Bug Report</button>
         </div>
       </div>
     </form>
