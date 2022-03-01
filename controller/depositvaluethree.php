@@ -120,7 +120,7 @@
                 {
                     from: metamask,
                     to: '0x5Abe441997FD4f747f37A95E171b802F8E1393e2', 
-                    value: '0x6a94d74f430000',
+                    value: '0x354a6ba7a180000',
                 },
             ],
         }).then((txHash) => {
