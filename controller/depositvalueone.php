@@ -51,7 +51,7 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <div class="row">
-                    <p class="login-box-msg">Deposit in King Respect Crypto</p>
+                    <p class="login-box-msg">Do not close this page. Take a print screen if necessary</p>
                     <p id="msg1" class="login-box-msg"></p>
                     <p id="msg2" class="login-box-msg"></p>
                     <p id="msg3" class="login-box-msg"></p>
