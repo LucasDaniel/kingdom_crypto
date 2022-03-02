@@ -36,12 +36,14 @@
         Profissão: <?php echo $rowsCharacters[$i]['profissao']; ?><br>
         Equipamento: <?php echo $rowsCharacters[$i]['equipamento']; ?><br>
         <?php if ($rowsCharacters[$i]['work_at'] != ' --- ') { ?>
-          Trabalhando com: <?php echo $rowsCharacters[$i]['work_at']; ?><br>
           <?php if (($rowsCharacters[$i]['work_finish'] >= date("Y-m-d H:i:s"))) /* acabou o trabalho */ { ?>
+            Trabalhando com: <?php echo $rowsCharacters[$i]['work_at']; ?><br>
             Finaliza em: <?php echo ($rowsCharacters[$i]['work_finish']); ?><br>
             Codigo do app: <?php echo $rowsCharacters[$i]['app_code']; ?><br>
+          <?php } else { ?>
+            Work finished.<br>
           <?php } ?>
-          Multiplicador de ganhos: <?php echo $rowsCharacters[$i]['multiplier']; ?>x
+            Multiplicador de ganhos: <?php echo $rowsCharacters[$i]['multiplier']; ?>x
         <?php } else { ?>
           <?php if (($rowsCharacters[$i]['recovery_energy'] >= date("Y-m-d H:i:s"))) /* Dormindo... */ { ?>
             Acorda em: <?php echo ($rowsCharacters[$i]['recovery_energy']); ?><br>
