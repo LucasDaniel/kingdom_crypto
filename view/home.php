@@ -242,6 +242,7 @@
         </div>
       </div>
     </form>
+    <!--
     <form action="https://kingrespectcrypto.com/controller/cadastrarmetamask.php" method="post">
       <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
       <div class="row m-top-12px">
@@ -250,6 +251,7 @@
         </div>
       </div>
     </form>
+    -->
     <form action="https://kingrespectcrypto.com/controller/appupgrade.php" method="post">
       <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
       <div class="row m-top-12px">

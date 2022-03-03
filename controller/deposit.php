@@ -18,6 +18,7 @@
             $row = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
             
             $id         = $row['id'];
+            $metamask   = $row['metamask'];
             $time_stamp = time(); //Pega o timestamp
             $randomico  = rand(1, 9);
             $hash       = md5($id.$time_stamp.$randomico);
@@ -31,7 +32,7 @@
                 $query = "SELECT * FROM deposit_values";
                 $row = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
 
-                $msg = "Choice amount of BNB to transform in king respect";
+                $msg = "Loading metamask wallet";
             } else {
                 $msg = "Sessão expirou 1";
             }
@@ -50,41 +51,43 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <div class="row">
-                    <p class="login-box-msg"><?php echo $msg ?></p>
+                    <p id="msgDeposit" class="login-box-msg"><?php echo $msg ?></p>
                 </div>
                 <?php if(!$erro) { ?>
-                    <form action="https://kingrespectcrypto.com/controller/depositvalueone.php" method="post">
-                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-                        <div class="row m-top-12px">
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit" >Deposit <?php echo $row['zero_respect']; ?> BNB to 10 respect</button>
+                    <div id="btsDeposit">
+                        <form action="https://kingrespectcrypto.com/controller/depositvalueone.php" method="post">
+                            <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                            <div class="row m-top-12px">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-block" name="submit" >Deposit <?php echo $row['zero_respect']; ?> BNB to 10 respect</button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
-                    <form action="https://kingrespectcrypto.com/controller/depositvaluetwo.php" method="post">
-                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-                        <div class="row m-top-12px">
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit" >Deposit <?php echo $row['um_respect']; ?> BNB to 50 respect</button>
+                        </form>
+                        <form action="https://kingrespectcrypto.com/controller/depositvaluetwo.php" method="post">
+                            <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                            <div class="row m-top-12px">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-block" name="submit" >Deposit <?php echo $row['um_respect']; ?> BNB to 50 respect</button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
-                    <form action="https://kingrespectcrypto.com/controller/depositvaluethree.php" method="post">
-                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-                        <div class="row m-top-12px">
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit" >Deposit <?php echo $row['dois_respect']; ?> BNB to 100 respect</button>
+                        </form>
+                        <form action="https://kingrespectcrypto.com/controller/depositvaluethree.php" method="post">
+                            <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                            <div class="row m-top-12px">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-block" name="submit" >Deposit <?php echo $row['dois_respect']; ?> BNB to 100 respect</button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
-                    <form action="https://kingrespectcrypto.com/home.php" method="post">
-                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-                        <div class="row m-top-12px">
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit">Back to house</button>
+                        </form>
+                        <form action="https://kingrespectcrypto.com/home.php" method="post">
+                            <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                            <div class="row m-top-12px">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-block" name="submit">Back to house</button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 <?php } else { ?>
                     <form action="https://kingrespectcrypto.com/login.php" method="post">
                         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
@@ -101,11 +104,44 @@
 </body>
 
 <script type="text/javascript">
-    function valida() {
-        if (grecaptcha.getResponse() == "") {
-            alert("Recaptcha not checked.");
-            return false;
-        } 
-        return true;
+    var msgDeposit = "Choice amount of BNB to transform in king respect";
+    <?php if($metamask != "") { ?>
+        var metamask = <?php echo $metamask; ?>;
+    <?php } else { ?>
+        var metamask = "";
+    <?php } ?>
+    var hash = "<?php echo $hash; ?>";
+    //document.getElementById("msgDeposit").innerHTML = msgDeposit;
+    document.getElementById("btsDeposit").style.display = "none";
+    var accounts = getAccount();
+    async function getAccount() {
+        accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        setTimeout(() => {
+            verifyAccounts()
+        }, 1000);
+    }
+    function verifyAccounts() {
+        if (!accounts) {
+            setTimeout(() => {
+                verifyAccounts()
+            }, 1000);
+        } else {
+            if (metamask == "") {
+                $.ajax({
+                    type: "POST",
+                    url: "https://kingrespectcrypto.com/controller/setmetamask.php",
+                    data: {h:hash,m:accounts[0]},
+                    success: function (msg) {
+                        document.getElementById("msgDeposit").innerHTML = msgDeposit;
+                        document.getElementById("btsDeposit").style.display = "block";
+                    },
+                    error: function (request, status, error) {
+                        document.getElementById("msgerror").innerHTML = error;
+                    },
+                    complete: function(data) {
+                    }
+                });
+            }
+        }
     }
 </script>

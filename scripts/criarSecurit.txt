@@ -1,0 +1,33 @@
+Script pra criar a segurança de salvar quem depositou
+
+$hora = date("H");
+    $min  = date("m");
+    $seg  = date("s");
+    $concat = "lucas".$hora.$min.$seg;
+    $horaMd5 = md5($concat);
+    $_i = "";
+    $_j = "";
+    $_k = "";
+    $query = "INSERT INTO `security`(`hour`, `security`) VALUES ('$concat','$horaMd5')";
+    echo "Query 1 : ".$query."<br>"; 
+    echo "-----------<br>";
+    for ($i = 0; $i < 24; $i++) {
+        for ($j = 0; $j < 60; $j++) {
+            for ($k = 0; $k < 60; $k++) {
+                $_i = $i;
+                $_j = $j;
+                $_k = $k;
+                if ($i < 10) $_i = "0".$i;
+                if ($j < 10) $_j = "0".$j;
+                if ($k < 10) $_k = "0".$k;
+                $concat = "lucas".$_i.$_j.$_k;
+                $horaMd5 = md5($concat);
+                $query = "INSERT INTO `security`(`hour`, `security`) VALUES ('$concat','$horaMd5')";
+                if (!mysqli_query($conn, $query)) {
+                } else {
+                    echo $concat." criou ".$query."<br>";
+                }
+            }
+        }
+    }
+    die("<br> Fim");

@@ -7,6 +7,16 @@
     $msg = "";
     $erro = true;
 
+    $hora = date("H");
+    $min  = date("m");
+    $seg  = date("s");
+    $concat = "lucas".$hora.$min.$seg;
+    $horaMd5 = md5($concat);
+
+    $query = "SELECT * FROM `security` WHERE `security` = '$horaMd5'";
+    $rowSecurity = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
+    $s = $rowSecurity['security'];
+
     if (($_POST['h'] == '' || $_POST['h'] == null) && ($msg == "")) { $msg = "ERROR HASH!"; }
     
     if ($msg == "") {
@@ -79,7 +89,7 @@
                 <?php } ?>
             </div>
         </div>
-  </div>
+    </div>
 </body>
 
 
@@ -100,13 +110,9 @@
             document.getElementById("msg1").innerHTML = "Metamask connected: "+accounts[0];
         },
         error: function (request, status, error) {
-            console.log(request);
-            console.log(status);
-            console.log(error);
             document.getElementById("msgerror").innerHTML = error;
         },
         complete: function(data) {
-            console.log(data);
         }
     });
 
@@ -127,32 +133,52 @@
             document.getElementById("msg3").innerHTML = "Sending transation hash to server!";
             sendTransitionHash(txHash);
         }).catch((error) => {
-            console.log(error);
-            document.getElementById("msgerror").innerHTML = error;
-            console.error;
+            if (error.code == 4001) document.getElementById("msgerror").innerHTML = "Transação negada";
+            else document.getElementById("msgerror").innerHTML = error;
+            document.getElementById("btBack").style.display = "block";
         });
     }
-
+    
     function sendTransitionHash(txHash) {
         var str = "";
         $.ajax({
             type: "POST",
             url: "https://kingrespectcrypto.com/controller/sendtransitionhash.php",
-            data: {h:hash, tx:txHash, v:"one"} ,
+            data: {h:hash, tx:txHash, v:"one", s:"<?php echo $s; ?>"} ,
             success: function (msg) {
                 if (msg.indexOf("Success") != -1) str = "Transaction sent successfully";
                 else str = "Error saving transaction";
                 document.getElementById("msg4").innerHTML = str;
                 document.getElementById("btBack").style.display = "block";
             },
+            /*
+            
+            PAREI AQUI 
+            Quando lançar o teste dos usuarios, ir verificando fazer a cobrança
+            do king respect em BUSD
+
+            ____________________________________________________________________________________________
+
+            const busdContract = new this.web3.eth.Contract(abiJson, contractAddress);
+
+            // sends a transaction from the `sender` address
+            // containing the `data` field specifying that you want to execute
+            // the `transfer()` function, passing it the `recipient` and `amount` arguments
+            await busdContract.methods.transfer(recipient, amount).send({from: sender});
+
+            // performs a gas-free read-only call, invoking the `balanceOf()` function of the contract
+            await busdContract.methods.balanceOf(holder).call();
+
+            ____________________________________________________________________________________________
+
+            Fazer esse teste antes de lançar, caso não funcione, manter cobrando por BNB
+            e depois preocupar com isso
+
+            */
             error: function (request, status, error) {
-                console.log(request);
-                console.log(status);
-                console.log(error);
                 document.getElementById("msgerror").innerHTML = error;
             },
             complete: function(data) {
-                console.log(data);
             }
         });
     }
