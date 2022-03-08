@@ -6,6 +6,9 @@ if (!global.pause) {
 		
 		x += velox;
 		y += veloy;
+		
+		if (velox > 0) image_xscale = -1;
+		else image_xscale = 1;
 	
 		cont--;
 		if (cont < 1) instance_destroy();

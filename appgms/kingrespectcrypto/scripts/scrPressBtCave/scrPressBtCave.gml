@@ -2,6 +2,9 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scrPressBtCave(direcao){
 
-	objCaveman.posicao = direcao;
+	if (step < 1) {
+		objCaveman.posicao = direcao;
+		step = 15;
+	}
 
 }

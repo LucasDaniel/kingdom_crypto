@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sprAbelha",
-    "path": "sprites/sprAbelha/sprAbelha.yy",
+    "name": "sprAbelhaBaixo",
+    "path": "sprites/sprAbelhaBaixo/sprAbelhaBaixo.yy",
   },
   "solid": false,
   "visible": true,

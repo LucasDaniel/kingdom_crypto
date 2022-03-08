@@ -31,6 +31,7 @@ contArvores = 0; //Vai criar 5 arvores de inicio de jogo em pontos aleatorios
 scrCriaArvores(5);
 
 scrSetaArvores();
+global.jajogou = true;
 
 //Inicia o AdMob
 Obj_AdMob.alarm[0] = 2;

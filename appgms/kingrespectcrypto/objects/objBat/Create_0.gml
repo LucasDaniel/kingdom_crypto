@@ -7,4 +7,6 @@ sentido = "";
 direcao = "";
 contDestroy = 800;
 
+image_speed = 0.5;
+
 alarm[0] = 1;

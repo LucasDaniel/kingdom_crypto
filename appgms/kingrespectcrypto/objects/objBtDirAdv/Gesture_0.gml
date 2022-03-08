@@ -3,7 +3,7 @@
 
 if (!global.pause) {
 	if (global.estadoJogo = "jogando") {
-		if (objAdventure.x < 490) {
+		if (objAdventure.x < 450) {
 			objAdventure.x += 32;	
 		}
 	}

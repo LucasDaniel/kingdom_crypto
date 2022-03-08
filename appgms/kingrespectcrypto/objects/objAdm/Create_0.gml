@@ -3,6 +3,10 @@ scrVariaveisGlobais();
 
 msg1 = noone;
 msg2 = noone;
+msgLogin = noone;
+msgPassword = noone;
+passwordGameCode = noone;
+gamecode = noone;
 
 if (!variable_global_exists("jajogou")) {
 	msg1 = show_message_async("Welcome to King respect crypto game.");

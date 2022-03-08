@@ -7,7 +7,7 @@ if (tempoPesca < 1) {
 
 tempoPesca = tempoPescaMax;
 _objAnimPontos = instance_create_layer(x,y,"instance_pirata",objAnimPontos);
-_objAnimPontos.pontos = "0.05";
+_objAnimPontos.pontos = "0.17";
 instance_destroy(other);
 
 }

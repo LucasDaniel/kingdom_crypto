@@ -7,10 +7,10 @@
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
-  "bbox_left": 14,
-  "bbox_right": 52,
-  "bbox_top": 4,
-  "bbox_bottom": 61,
+  "bbox_left": 0,
+  "bbox_right": 58,
+  "bbox_top": 0,
+  "bbox_bottom": 63,
   "HTile": false,
   "VTile": false,
   "For3D": false,
@@ -24,9 +24,18 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"4402bc0a-f0d3-441a-8fc2-53d1c49cf22b","path":"sprites/sprAdventure/sprAdventure.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"4402bc0a-f0d3-441a-8fc2-53d1c49cf22b","path":"sprites/sprAdventure/sprAdventure.yy",},"LayerId":{"name":"bf1e2030-c77e-46d8-baee-23d13423a194","path":"sprites/sprAdventure/sprAdventure.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"sprAdventure","path":"sprites/sprAdventure/sprAdventure.yy",},"resourceVersion":"1.0","name":"4402bc0a-f0d3-441a-8fc2-53d1c49cf22b","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"d741484d-f7db-4765-b360-0b278c4550ac","path":"sprites/sprAdventure/sprAdventure.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"d741484d-f7db-4765-b360-0b278c4550ac","path":"sprites/sprAdventure/sprAdventure.yy",},"LayerId":{"name":"76decc4d-4fa6-456d-8976-9522a19be871","path":"sprites/sprAdventure/sprAdventure.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"sprAdventure","path":"sprites/sprAdventure/sprAdventure.yy",},"resourceVersion":"1.0","name":"d741484d-f7db-4765-b360-0b278c4550ac","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"10802074-d0c5-49e1-8efa-48781aab33bb","path":"sprites/sprAdventure/sprAdventure.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"10802074-d0c5-49e1-8efa-48781aab33bb","path":"sprites/sprAdventure/sprAdventure.yy",},"LayerId":{"name":"76decc4d-4fa6-456d-8976-9522a19be871","path":"sprites/sprAdventure/sprAdventure.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"sprAdventure","path":"sprites/sprAdventure/sprAdventure.yy",},"resourceVersion":"1.0","name":"10802074-d0c5-49e1-8efa-48781aab33bb","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"255d1509-7d2e-4e17-8dcb-a7c8f6140984","path":"sprites/sprAdventure/sprAdventure.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"255d1509-7d2e-4e17-8dcb-a7c8f6140984","path":"sprites/sprAdventure/sprAdventure.yy",},"LayerId":{"name":"76decc4d-4fa6-456d-8976-9522a19be871","path":"sprites/sprAdventure/sprAdventure.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"sprAdventure","path":"sprites/sprAdventure/sprAdventure.yy",},"resourceVersion":"1.0","name":"255d1509-7d2e-4e17-8dcb-a7c8f6140984","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"041b8334-f980-4e65-98db-dc1032e92a70","path":"sprites/sprAdventure/sprAdventure.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"041b8334-f980-4e65-98db-dc1032e92a70","path":"sprites/sprAdventure/sprAdventure.yy",},"LayerId":{"name":"76decc4d-4fa6-456d-8976-9522a19be871","path":"sprites/sprAdventure/sprAdventure.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"sprAdventure","path":"sprites/sprAdventure/sprAdventure.yy",},"resourceVersion":"1.0","name":"041b8334-f980-4e65-98db-dc1032e92a70","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"sprAdventure","path":"sprites/sprAdventure/sprAdventure.yy",},
@@ -36,12 +45,15 @@
     "playbackSpeedType": 0,
     "autoRecord": true,
     "volume": 1.0,
-    "length": 1.0,
+    "length": 4.0,
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"2bbcb82f-d846-4ff6-bd74-f2522ebd4bad","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"4402bc0a-f0d3-441a-8fc2-53d1c49cf22b","path":"sprites/sprAdventure/sprAdventure.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"09644229-7a27-4029-9070-3a1380169c21","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"d741484d-f7db-4765-b360-0b278c4550ac","path":"sprites/sprAdventure/sprAdventure.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"7baa08f4-8736-426a-bda5-062882dd2221","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"10802074-d0c5-49e1-8efa-48781aab33bb","path":"sprites/sprAdventure/sprAdventure.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"8b4763fc-6fa1-4372-927a-bcb3c391e0b3","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"255d1509-7d2e-4e17-8dcb-a7c8f6140984","path":"sprites/sprAdventure/sprAdventure.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"e16ae2a8-a0fb-4f5e-8a90-26b53154e8c3","Key":3.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"041b8334-f980-4e65-98db-dc1032e92a70","path":"sprites/sprAdventure/sprAdventure.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
@@ -65,7 +77,7 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"bf1e2030-c77e-46d8-baee-23d13423a194","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"76decc4d-4fa6-456d-8976-9522a19be871","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {

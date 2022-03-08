@@ -1,19 +1,25 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if (posicao = "centro") {
-	x = xini;
-	y = yini;
-} else if (posicao = "direita") {
-	x = xini+32;
-	y = yini;
+if (posicao = "direita") {
+	if (x < (xini+48)) x += 48;
+	image_index = 2;
+	posicao = "parou";
 } else if (posicao = "esquerda") {
-	x = xini-32;
-	y = yini;
+	if (x > (xini-48)) x -= 48;
+	image_index = 3;
+	posicao = "parou";
 } else if (posicao = "cima") {
-	x = xini;
-	y = yini-32;
+	if (y > (yini-48)) y -= 48;
+	image_index = 1;
+	posicao = "parou";
 } else if (posicao = "baixo") {
-	x = xini;
-	y = yini+32;
+	if (y < (yini+48)) y += 48;
+	image_index = 0;
+	posicao = "parou";
+}
+
+if (x = xini && y = yini) {
+	image_index = 1;
+	posicao = "centro";
 }

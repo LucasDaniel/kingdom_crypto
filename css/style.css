@@ -1,4 +1,8 @@
 
+body {
+    color: white !important;
+}
+
 .background_index {
     background-image: url('https://kingrespectcrypto.com/resources/images/background_index.png');
     background-repeat: no-repeat;
@@ -50,33 +54,43 @@
 }
 
 .logo {
-    background-color: aqua;
-    width: 9%;
-    height: 100px;
+    width: 100%;
+    height: 80px;
     text-align: center;
+    background-repeat: no-repeat;
+    background-image: url(../resources/images/rostorei.png);
+    background-size: inherit;
+    background-position: center;
 }
 
 .material {
-    background-color: blue;
     width: 15%;
-    height: 100px;
+    height: 80px;
     text-align: center;
+    background-image: url(../resources/images/fundoCima.png);
+    background-size: contain;
+}
+
+.material img {
+    margin-right: 8px;
 }
 
 .config {
-    background-color: black;
     width: 9%;
-    height: 100px;
+    height: 80px;
+    background-image: url(../resources/images/fundoCima.png);
+    background-size: contain;
 }
 
 .deslogar {
-    background-color: green;
     width: 7%;
-    height: 100px;
+    height: 80px;
+    background-image: url(../resources/images/fundoCima.png);
+    background-size: contain;
 }
 
 .quartos {
-    width: 830px;
+    width: 1000px;
     height: 400px;
     float: left;
 }
@@ -88,6 +102,7 @@
     float: left;
     margin-right: 1em;
     margin-top: 1em;
+    margin-left: 2.5em;
     cursor: pointer;
 }
 
@@ -95,6 +110,99 @@
     width: 250px;
     height: 516px;
     margin-top: 1em;
-    background-color: white;
     float: left;
+    background-image: url(../resources/images/fundo_acao.png);
+}
+
+.col-12 button {
+    width: 90%;
+    margin-left: 5%;
+}
+
+.quartonv1 {
+    background-image: url(../resources/images/quartonv0.png);
+}
+
+.quartonv2 {
+    background-image: url(../resources/images/quartonv1.png);
+}
+
+.quartonv3 {
+    background-image: url(../resources/images/quartonv2.png);
+}
+
+.quartonv4 {
+    background-image: url(../resources/images/quartonv3.png);
+}
+
+.quartonv5 {
+    background-image: url(../resources/images/quartonv4.png);
+}
+
+.quartonv6 {
+    background-image: url(../resources/images/quartonv5.png);
+}
+
+.quartonv7 {
+    background-image: url(../resources/images/quartonv6.png);
+}
+
+.quartonv8 {
+    background-image: url(../resources/images/quartonv7.png);
+}
+
+.quartonv9 {
+    background-image: url(../resources/images/quartonv8.png);
+}
+
+.quartonv10 {
+    background-image: url(../resources/images/quartonv9.png);
+}
+
+.quartonovo {
+    background-image: url(../resources/images/quartobranco.png);
+}
+
+.cozinhanv1 {
+    background-image: url(../resources/images/cozinhanv1.png);
+}
+
+.cozinhanv2 {
+    background-image: url(../resources/images/cozinhanv2.png);
+}
+
+.cozinhanv3 {
+    background-image: url(../resources/images/cozinhanv3.png);
+}
+
+.cozinhanv4 {
+    background-image: url(../resources/images/cozinhanv4.png);
+}
+
+.cozinhanv5 {
+    background-image: url(../resources/images/cozinhanv5.png);
+}
+
+.cozinhanv6 {
+    background-image: url(../resources/images/cozinhanv6.png);
+}
+
+.cozinhanv7 {
+    background-image: url(../resources/images/cozinhanv7.png);
+}
+
+.cozinhanv8 {
+    background-image: url(../resources/images/cozinhanv8.png);
+}
+
+.cozinhanv9 {
+    background-image: url(../resources/images/cozinhanv9.png);
+}
+
+.cozinhanv10 {
+    background-image: url(../resources/images/cozinhanv10.png);
+}
+
+.armazem {
+    background-image: url(../resources/images/armazem.png);
 }

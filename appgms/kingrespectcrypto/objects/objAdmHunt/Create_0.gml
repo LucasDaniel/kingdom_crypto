@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 instance_create_layer(room_width/2,100,"instances",objAdventure);
-
+global.jajogou = true;
 contCriaHunt = 200;
 contCriaHuntMax = contCriaHunt;
 

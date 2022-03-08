@@ -1,8 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-velox = 3;
-veloy = 3;
+velox = 2;
+veloy = 2;
 
 cont = 600;
 

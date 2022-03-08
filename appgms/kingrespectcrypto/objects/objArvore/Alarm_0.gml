@@ -7,5 +7,8 @@ if (nivel <= touchs) {
 	_objAnimPontos.pontos = "0.05";
 	objAdmWoodGame.arvores[i][j] = 0;
 	objAdmWoodGame.contArvores--;
+	if (instance_exists(objHeroi)) objHeroi.image_index = 0;
 	instance_destroy();
+} else {
+	if (instance_exists(objHeroi)) objHeroi.image_index = 1;
 }

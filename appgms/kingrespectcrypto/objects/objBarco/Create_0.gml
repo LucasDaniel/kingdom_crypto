@@ -18,3 +18,5 @@ dify = 0;
 
 tempoPesca = 45;
 tempoPescaMax = 45;
+
+image_speed = 0;

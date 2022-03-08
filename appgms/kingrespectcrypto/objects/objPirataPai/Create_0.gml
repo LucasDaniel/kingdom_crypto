@@ -9,6 +9,6 @@ else aux = -1;
 x = objBarco.x+(600*aux);
 y = objBarco.y;
 
-velo = 5*(-aux);
+velo = 3.5*(-aux);
 
 cont = 300;

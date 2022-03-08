@@ -14,11 +14,11 @@ iDirecao = irandom_range(0,1);
 if (iSentido < 1) { // Sentido - horizontal
 	sentido = "horizontal";
 	if (iDirecao < 1) { // Direção - esquerda
-		dify = 120+(irandom_range(0,5)*120);
+		dify = 120+(irandom_range(0,4)*120);
 		difx = room_width+50;
 		direcao = "esquerda";
 	} else { // Direção - direita
-		dify = 120+(irandom_range(0,5)*120);
+		dify = 120+(irandom_range(0,4)*120);
 		difx = -50;
 		direcao = "direita";
 	}
@@ -26,16 +26,16 @@ if (iSentido < 1) { // Sentido - horizontal
 	sentido = "vertical";
 	if (iDirecao < 1) { // Direção - baixo
 		dify = -50;
-		difx = 180+(irandom_range(0,3)*120);
+		difx = 180+(irandom_range(0,2)*120);
 		direcao = "baixo";
 	} else { // Direção - cima
 		dify = room_height+50;
-		difx = 180+(irandom_range(0,3)*120);
+		difx = 180+(irandom_range(0,2)*120);
 		direcao = "cima";
 	}
 }
 
-abelha = instance_create_layer(posX,posY,"inst_cima",objAbelha);
+abelha = instance_create_layer(difx,dify,"inst_cima",objAbelha);
 abelha.direcao = direcao;
 abelha.sentido = sentido;
 

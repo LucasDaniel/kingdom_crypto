@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sprBat",
-    "path": "sprites/sprBat/sprBat.yy",
+    "name": "sprBatLado",
+    "path": "sprites/sprBatLado/sprBatLado.yy",
   },
   "solid": false,
   "visible": true,

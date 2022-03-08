@@ -5,3 +5,5 @@ posicao = "centro";
 
 xini = x;
 yini = y;
+
+image_speed = 0;

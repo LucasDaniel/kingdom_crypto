@@ -2,12 +2,12 @@
 
 ?>
 <body class="background_index">
-  <div class="logo f-left">logo</div>
-  <div class="material f-left"><?php echo $rowResources['madeira']."<br>Production: ".$rowSeason['madeira']."x" ?></div>
-  <div class="material f-left"><?php echo $rowResources['peixe']."<br>Production: ".$rowSeason['peixe']."x" ?></div>
-  <div class="material f-left"><?php echo $rowResources['pedra']."<br>Production: ".$rowSeason['pedra']."x" ?></div>
-  <div class="material f-left"><?php echo $rowResources['ferro']."<br>Production: ".$rowSeason['ferro']."x" ?></div>
-  <div class="material f-left"><?php echo $rowResources['respeito']."<br>Season ends in: <br>".$rowSeason['season_end'] ?></div>
+  <div style="width: 9%;" class="material f-left"><div class="logo f-left"></div></div>
+  <div class="material f-left"><img src="../resources/images/madeira.png" width="48" height="48"><?php echo round($rowResources['madeira'],2)."<br>Production: ".$rowSeason['madeira']."x" ?></div>
+  <div class="material f-left"><img src="../resources/images/peixe.png" width="48" height="48"><?php echo round($rowResources['peixe'],2)."<br>Production: ".$rowSeason['peixe']."x" ?></div>
+  <div class="material f-left"><img src="../resources/images/pedra.png" width="48" height="48"><?php echo round($rowResources['pedra'],2)."<br>Production: ".$rowSeason['pedra']."x" ?></div>
+  <div class="material f-left"><img src="../resources/images/aco.png" width="48" height="48"><?php echo round($rowResources['ferro'],2)."<br>Production: ".$rowSeason['ferro']."x" ?></div>
+  <div class="material f-left"><img src="../resources/images/medalha.png" width="27" height="48"><?php echo round($rowResources['respeito'],2)."<br>Season ends in: <br>".$rowSeason['season_end'] ?></div>
   <div class="config f-left"> 
     <form action="https://kingrespectcrypto.com/controller/changepassword.php" method="post">
       <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
@@ -30,7 +30,7 @@
   </div>
   <div class="quartos">
     <?php for($i=0; $i < count($rowsCharacters); $i++) { ?>
-      <div class="quarto" onclick="quarto('<?php echo $i; ?>')">
+      <div class="quarto quartonv<?php echo $rowHouse['cama'.($i+1)]; ?>" onclick="quarto('<?php echo $i; ?>')">
         Servo: <?php echo $i; ?><br> 
         Cama: <?php echo $rowHouse['cama'.($i+1)]; ?><br>
         Profissão: <?php echo $rowsCharacters[$i]['profissao']; ?><br>
@@ -51,7 +51,7 @@
         <?php } ?>
       </div>
       <?php if ($i+1 == count($rowsCharacters) && $i+1 < 10) { ?> 
-        <div class="quarto" onclick="quarto('<?php echo $i+1; ?>')">
+        <div class="quarto quartonovo" onclick="quarto('<?php echo $i+1; ?>')">
           <?php if ($rowHouse['cama'.($i+2)] < 1) { ?>
             Novo quarto
           <?php } else { ?>
@@ -60,7 +60,7 @@
         </div>
         <?php } ?>
     <?php } ?>
-    <div class="quarto" onclick="cozinha()">
+    <div class="quarto cozinhanv<?php echo $rowHouse['cozinha']; ?>" onclick="cozinha()">
       Cozinha: <?php echo $rowHouse['cozinha']; ?>
     </div>
     <div class="quarto" onclick="popupAction(1)">
@@ -69,7 +69,7 @@
     <div class="quarto" onclick="popupAction(2)">
       Popup 2
     </div>
-    <div class="quarto" onclick="geral()">
+    <div class="quarto armazem" onclick="geral()">
       Imagem de armazem aqui<br>
       Depositar, Retirar, Mensagem de bug
     </div>

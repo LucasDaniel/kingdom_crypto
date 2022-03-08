@@ -14,7 +14,7 @@
 	
 */
 
-AdMob_SetTestDeviceId();
+//AdMob_SetTestDeviceId();
 
 if(os_type == os_android)
 {

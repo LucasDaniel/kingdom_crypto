@@ -6,3 +6,5 @@ qtdAtaquesMax = 5;
 
 contQtdAtaques = 30;
 contQtdAtaquesMax = contQtdAtaques;
+
+image_speed = 0.5;

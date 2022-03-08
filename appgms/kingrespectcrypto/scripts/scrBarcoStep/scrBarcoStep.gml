@@ -13,13 +13,13 @@ function scrBarcoStep(){
 			difx = posxfinal - x;
 			dify = posyfinal - y;
 
-			if (distance_to_point(posxfinal,posyfinal) > 1) image_angle = point_direction(x, y, posxfinal, posyfinal);
-		
 			if (difx > 0) {
 				velx += accx;
+				image_index = 2;
 				if (velx > velxmax) velx = velxmax;
 			} else if (difx < 0) {
 				velx -= accx;
+				image_index = 3;
 				if (velx < -velxmax) velx = -velxmax;
 			} else {
 				velx = 0;
@@ -27,9 +27,11 @@ function scrBarcoStep(){
 
 			if (dify > 0) {
 				vely += accy;
+				image_index = 0;
 				if (vely > velymax) vely = velymax;
 			} else if (dify < 0) {
 				vely -= accy;
+				image_index = 1;
 				if (vely < -velymax) vely = -velymax;
 			} else {
 				vely = 0;
@@ -38,7 +40,7 @@ function scrBarcoStep(){
 			if (difx < 2 && difx > -2) velx = 0;
 			if (dify < 2 && dify > -2) vely = 0;
 			//Quanto menor a diferença entre os numeros, menos vai se mover
-	
+			
 			x += velx;
 			y += vely;
 			
