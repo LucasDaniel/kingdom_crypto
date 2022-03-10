@@ -7,7 +7,7 @@
   <div class="material f-left"><img src="../resources/images/peixe.png" width="48" height="48"><?php echo round($rowResources['peixe'],2)."<br>Production: ".$rowSeason['peixe']."x" ?></div>
   <div class="material f-left"><img src="../resources/images/pedra.png" width="48" height="48"><?php echo round($rowResources['pedra'],2)."<br>Production: ".$rowSeason['pedra']."x" ?></div>
   <div class="material f-left"><img src="../resources/images/aco.png" width="48" height="48"><?php echo round($rowResources['ferro'],2)."<br>Production: ".$rowSeason['ferro']."x" ?></div>
-  <div class="material f-left"><img src="../resources/images/medalha.png" width="27" height="48"><?php echo round($rowResources['respeito'],2)."<br>Season ends in: <br>".$rowSeason['season_end'] ?></div>
+  <div class="material f-left"><img src="../resources/images/medalha.png" width="27" height="48"><?php echo round($rowResources['respeito'],2)."<br>Change: ".$rowSeason['season_end'] ?></div>
   <div class="config f-left"> 
     <form action="https://kingrespectcrypto.com/controller/changepassword.php" method="post">
       <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
@@ -29,6 +29,16 @@
     </form>
   </div>
   <div class="quartos">
+    <div class="quarto cozinhanv<?php echo $rowHouse['cozinha']; ?>" onclick="cozinha()">
+      <!-- Cozinha: < ?php echo $rowHouse['cozinha']; ?> -->
+    </div>
+    <div class="quarto armazem" onclick="geral()">
+      <!-- Imagem de armazem aqui<br>
+      Depositar, Retirar, Mensagem de bug -->
+    </div>
+    <div class="quarto adv1" onclick="popupAction(1)">
+      <!-- Popup 1 -->
+    </div>
     <?php for($i=0; $i < count($rowsCharacters); $i++) { ?>
       <?php 
 
@@ -52,14 +62,20 @@
         }
         // quartonv<?php echo $rowHouse['cama'.($i+1)]; ? >
       ?>
+      <?php if ($i == 4) { ?>
+        <div class="quarto adv3" onclick="popupAction(3)">
+          <!-- Popup 3 -->
+        </div>
+      <?php } ?>
       <div class="quarto <?php echo $class; ?>" onclick="quarto('<?php echo $i; ?>')">
         <?php if ($rowsCharacters[$i]['work_at'] != ' --- ') { ?>
-          <div class="personagem <?php echo $profissao; ?>"></div>
           <?php if (($rowsCharacters[$i]['work_finish'] >= date("Y-m-d H:i:s"))) /* acabou o trabalho */ { ?>
+            <div class="personagem <?php echo $profissao; ?>"></div>
             <!-- Trabalhando com: < ?php echo $rowsCharacters[$i]['work_at']; ?><br> 
             Finaliza em: < ?php echo ($rowsCharacters[$i]['work_finish']); ?><br>
             Codigo do app: < ?php echo $rowsCharacters[$i]['app_code']; ?><br> -->
           <?php } else { ?>
+            <div class="personagem <?php echo $profissao."dormindotrabalhando"; ?>"></div>
             <!-- Work finished.<br> -->
           <?php } ?>
             <!-- Multiplicador de ganhos: < ?php echo $rowsCharacters[$i]['multiplier']; ?>x -->
@@ -75,30 +91,19 @@
       <?php if ($i+1 == count($rowsCharacters) && $i+1 < 10) { ?> 
         <div class="quarto quartonovo" onclick="quarto('<?php echo $i+1; ?>')">
           <?php if ($rowHouse['cama'.($i+2)] < 1) { ?>
-            Novo quarto
+            <!-- Novo quarto -->
           <?php } else { ?>
-            Quarto vazio
+            <!--Quarto vazio -->
           <?php } ?>
         </div>
         <?php } ?>
     <?php } ?>
-    <div class="quarto cozinhanv<?php echo $rowHouse['cozinha']; ?>" onclick="cozinha()">
-      Cozinha: <?php echo $rowHouse['cozinha']; ?>
-    </div>
-    <div class="quarto" onclick="popupAction(1)">
-      Popup 1
-    </div>
-    <div class="quarto" onclick="popupAction(2)">
-      Popup 2
-    </div>
-    <div class="quarto armazem" onclick="geral()">
-      Imagem de armazem aqui<br>
-      Depositar, Retirar, Mensagem de bug
+    <div class="quarto adv2" onclick="popupAction(2)">
+      <!-- Popup 2 -->
     </div>
   </div>
-  
   <div class="tela-acao" id="acao-branco">
-    Tela de ação
+    <!-- Tela de ação -->
   </div>
   <?php for($i=0; $i < 10; $i++) { ?>
     <div class="tela-acao display-none" id="acao<?php echo $i; ?>" onclick="quarto('<?php echo $i; ?>')">
