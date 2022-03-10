@@ -29,6 +29,7 @@ function scrAsyncPostLogin() {
 						var msg = map[?"msg"];
 						if (ds_map_exists(map,"hash")) {
 							global.hash = map[?"hash"];
+							show_debug_message("hash 1");
 							show_debug_message(global.hash);
 						} else {
 							scrErrorClose("Error hash");	

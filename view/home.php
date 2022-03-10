@@ -30,23 +30,45 @@
   </div>
   <div class="quartos">
     <?php for($i=0; $i < count($rowsCharacters); $i++) { ?>
-      <div class="quarto quartonv<?php echo $rowHouse['cama'.($i+1)]; ?>" onclick="quarto('<?php echo $i; ?>')">
-        Servo: <?php echo $i; ?><br> 
-        Cama: <?php echo $rowHouse['cama'.($i+1)]; ?><br>
-        Profissão: <?php echo $rowsCharacters[$i]['profissao']; ?><br>
-        Equipamento: <?php echo $rowsCharacters[$i]['equipamento']; ?><br>
+      <?php 
+
+        if ($rowsCharacters[$i]['profissao'] != 'pescador') {
+          $profissao = $rowsCharacters[$i]['profissao'];
+        }
+
+        if ($rowsCharacters[$i]['work_at'] == 'Woodcutter... ') {  
+          $class = "cortarmadeira";
+        } else if ($rowsCharacters[$i]['work_at'] == 'Fishing... ') {  
+          $class = "pescar";
+          if ($rowsCharacters[$i]['profissao'] == 'pescador') {
+            $profissao = "pescadorpescando";
+          }
+        } else if ($rowsCharacters[$i]['work_at'] == 'Mining... ') {  
+          $class = "mineirar";
+        } else if ($rowsCharacters[$i]['work_at'] == 'Hunting... ') {  
+          $class = "cacarmonstros";
+        } else {
+          $class = "quartonv".$rowHouse['cama'.($i+1)];
+        }
+        // quartonv<?php echo $rowHouse['cama'.($i+1)]; ? >
+      ?>
+      <div class="quarto <?php echo $class; ?>" onclick="quarto('<?php echo $i; ?>')">
         <?php if ($rowsCharacters[$i]['work_at'] != ' --- ') { ?>
+          <div class="personagem <?php echo $profissao; ?>"></div>
           <?php if (($rowsCharacters[$i]['work_finish'] >= date("Y-m-d H:i:s"))) /* acabou o trabalho */ { ?>
-            Trabalhando com: <?php echo $rowsCharacters[$i]['work_at']; ?><br>
-            Finaliza em: <?php echo ($rowsCharacters[$i]['work_finish']); ?><br>
-            Codigo do app: <?php echo $rowsCharacters[$i]['app_code']; ?><br>
+            <!-- Trabalhando com: < ?php echo $rowsCharacters[$i]['work_at']; ?><br> 
+            Finaliza em: < ?php echo ($rowsCharacters[$i]['work_finish']); ?><br>
+            Codigo do app: < ?php echo $rowsCharacters[$i]['app_code']; ?><br> -->
           <?php } else { ?>
-            Work finished.<br>
+            <!-- Work finished.<br> -->
           <?php } ?>
-            Multiplicador de ganhos: <?php echo $rowsCharacters[$i]['multiplier']; ?>x
+            <!-- Multiplicador de ganhos: < ?php echo $rowsCharacters[$i]['multiplier']; ?>x -->
         <?php } else { ?>
           <?php if (($rowsCharacters[$i]['recovery_energy'] >= date("Y-m-d H:i:s"))) /* Dormindo... */ { ?>
-            Acorda em: <?php echo ($rowsCharacters[$i]['recovery_energy']); ?><br>
+            <div class="personagem <?php echo $rowsCharacters[$i]['profissao']."dormindo"; ?>"></div>
+            <!-- Acorda em: < ?php echo ($rowsCharacters[$i]['recovery_energy']); ?><br> -->
+          <?php } else { ?>
+            <div class="personagem <?php echo $rowsCharacters[$i]['profissao']; ?>"></div>
           <?php } ?>
         <?php } ?>
       </div>

@@ -71,7 +71,7 @@
                     $msgRandom = "";
                     $msgOutros = "";
                     $msgAventureiro = "";
-
+                    
                     if ($respeito >= $precoRandom || 
                         $respeito >= $precoOutros || 
                         $respeito >= $precoAventureiro) {

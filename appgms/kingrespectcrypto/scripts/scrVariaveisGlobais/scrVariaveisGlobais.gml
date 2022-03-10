@@ -3,7 +3,9 @@
 // Cria as variaveis globais do jogo
 function scrVariaveisGlobais(){
 
-global.hash = "";
+if (!variable_global_exists("jajogou")) {
+	global.hash = "";
+}
 global.url = "https://kingrespectcrypto.com/controllerapp/";
 global.profissao = "";
 global.equipamento = 0;

@@ -3,9 +3,9 @@
 	
 var i_d = ds_map_find_value(async_load, "id");
 if (i_d = pararJogar) {
-    if ds_map_find_value(async_load, "status") {
-        scrSendMultiplierServer();
-    } else {
+	if ds_map_find_value(async_load, "status") {
+	    scrSendMultiplierServer();
+	} else {
 		global.pause = false;
 	}
 } else if (i_d = continuarJogar) {

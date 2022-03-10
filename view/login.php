@@ -40,7 +40,7 @@
           <a href="https://kingrespectcrypto.com/forgotpassword.php"><?php echo $DICIONARIO['forgot_password'] ?></a>
         </p>
         <p class="mb-0">
-          <a href="https://kingrespectcrypto.com/register.php" class="text-center"><?php echo $DICIONARIO['new_account'] ?></a>
+          <a class="text-center"><?php echo $DICIONARIO['new_account'] ?></a>
         </p>
       </div>
     </div>

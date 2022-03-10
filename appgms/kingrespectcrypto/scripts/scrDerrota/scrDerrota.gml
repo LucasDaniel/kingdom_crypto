@@ -11,7 +11,8 @@ if (!global.pause) {
 		room_restart();
 	} else {
 		show_message_async("You lost all your lives!");
-		room_goto(room_start);
+		global.multiplier = 1.00;
+		scrSendMultiplierServer();
 	}
 }
 

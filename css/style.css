@@ -206,3 +206,69 @@ body {
 .armazem {
     background-image: url(../resources/images/armazem.png);
 }
+
+.personagem {
+    width: 64px;
+    height: 64px;
+    margin-left: 7em;
+    margin-top: 8em;
+}
+
+.minerador {
+    background-image: url(../resources/images/pmineiro1baixo.png);
+}
+
+.lenhador {
+    background-image: url(../resources/images/plenhador1baixo.png);
+}
+
+.aventureiro {
+    background-image: url(../resources/images/paventureiro1baixo.png);
+}
+
+.pescador {
+    background-image: url(../resources/images/peixeiro1baixo.png);
+}
+
+.pescadorpescando {
+    background-image: url(../resources/images/peixeiro1baixo.png);
+    margin-left: 7em;
+    margin-top: 4em;
+}
+
+.mineradordormindo {
+    background-image: url(../resources/images/pmineirodormindo.png);
+    margin-left: 11.2em;
+    margin-top: 6.5em;
+}
+
+.lenhadordormindo {
+    background-image: url(../resources/images/plenhadordormindo.png);
+    margin-left: 11.2em;
+    margin-top: 6.5em;
+}
+
+.aventureirodormindo {
+    background-image: url(../resources/images/paventureirodormindo.png);
+    margin-left: 11.2em;
+    margin-top: 6.5em;
+}
+
+.pescadordormindo {
+    background-image: url(../resources/images/peixeirodormindo.png);
+    margin-left: 11.2em;
+    margin-top: 6.5em;
+}
+
+.cortarmadeira {
+    background-image: url(../resources/images/cortarmadeira.png);
+}
+.pescar {
+    background-image: url(../resources/images/pescar.png);
+}
+.mineirar {
+    background-image: url(../resources/images/mineirar.png);
+}
+.cacarmonstros {
+    background-image: url(../resources/images/cacarmonstros.png);
+}
