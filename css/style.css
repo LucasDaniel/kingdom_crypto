@@ -3,6 +3,10 @@ body {
     color: white !important;
 }
 
+body .card {
+    color: black !important;
+}
+
 .background_index {
     background-image: url('https://kingrespectcrypto.com/resources/images/background_index.png');
     background-repeat: no-repeat;

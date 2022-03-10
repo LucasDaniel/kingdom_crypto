@@ -21,8 +21,8 @@ if (i_d = msg1) {
         if (ds_map_find_value(async_load, "result") != "") {
             password = ds_map_find_value(async_load, "result");
 			scrLogin(usuario,password);
-        } else alarm[0] = 1;
-    } else alarm[0] = 1;
+        } else show_message_async("Login Failed");
+    } else show_message_async("Login Failed");
 } else if (i_d = gamecode) {
 	if ds_map_find_value(async_load, "status") {
         if (ds_map_find_value(async_load, "result") != "") {
