@@ -3,9 +3,9 @@
 // Cria as variaveis globais do jogo
 function scrVariaveisGlobais(){
 
-if (!variable_global_exists("jajogou")) {
-	global.hash = "";
-}
+global.jajogou = false;
+
+global.hash = "";
 global.url = "https://kingrespectcrypto.com/controllerapp/";
 global.profissao = "";
 global.equipamento = 0;
@@ -21,15 +21,19 @@ global.BANNER_ID = "";
 global.INTERSTITIAL_ID = "";
 global.REWANTED_ID = "";
 
+global.servants = [];
+global.quantServants = 0;
+	
+global.login = "";
+global.password = "";
+
 global.CarregouInterstitial = false;
 
 if(os_type == os_android)
 {
-	
 	global.BANNER_ID = "ca-app-pub-9114414651457385/1981066436"; // o antigo que estava ca-app-pub-9114414651457385/1981066436
 	global.INTERSTITIAL_ID = "ca-app-pub-9114414651457385/2436140234"; //"ca-app-pub-3940256099942544/1033173712";
-	global.REWANTED_ID = "kkk";//"ca-app-pub-3940256099942544/5224354917";	
-	global.CarregouInterstitial = false;
+	global.REWANTED_ID = "quando for usar adicionar aqui";//"ca-app-pub-3940256099942544/5224354917";
 }
 
 }

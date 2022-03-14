@@ -14,12 +14,14 @@ if (i_d = msg1) {
     if ds_map_find_value(async_load, "status") {
         if (ds_map_find_value(async_load, "result") != "") {
             usuario = ds_map_find_value(async_load, "result");
+			global.login = usuario;
         } else usuario = "";
     } else usuario = "";
 } else if (i_d = msgPassword) {
 	if ds_map_find_value(async_load, "status") {
         if (ds_map_find_value(async_load, "result") != "") {
             password = ds_map_find_value(async_load, "result");
+			global.password = password;
 			scrLogin(usuario,password);
         } else show_message_async("Login Failed");
     } else show_message_async("Login Failed");

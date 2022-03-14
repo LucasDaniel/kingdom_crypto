@@ -12,7 +12,11 @@ if (!global.pause) {
 	} else {
 		show_message_async("You lost all your lives!");
 		global.multiplier = 1.00;
-		scrSendMultiplierServer();
+		if (scrVerifyQuantServants()) {
+			room_goto(room_start);
+		} else {
+			scrAsyncPostMultiplier();	
+		}
 	}
 }
 
