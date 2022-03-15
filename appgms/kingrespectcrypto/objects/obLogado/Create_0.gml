@@ -30,6 +30,7 @@ if (scrVerifyQuantServants()) {
 		else/*if (global.servants[i,6] = "huntmonsters")*/ auxWork = sprFaseLava;
 		
 		__obj = instance_create_layer(10+(280*j),100+(230*__y),"inst_baixo",objBtWorkServant);
+		__obj.pos_i = i;
 		__obj.__id = global.servants[i,0];
 		__obj._id_user = global.servants[i,1];
 		__obj._profissao = global.servants[i,2];

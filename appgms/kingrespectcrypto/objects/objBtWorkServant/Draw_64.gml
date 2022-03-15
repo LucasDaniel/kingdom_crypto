@@ -5,9 +5,9 @@ draw_self();
 
 if (!scrVerifyQuantServants()) {
 	if (_profissao = "lenhador") {
-		draw_sprite(sprHeroi,-1,x+118,y+131);
+		draw_sprite(sprHeroi,-1,x+108,y+121);
 	} else if (_profissao = "minerador") {
-		draw_sprite(sprCaveman,-1,x+118,y+131);
+		draw_sprite(sprCaveman,-1,x+145,y+160);
 	} else if (_profissao = "pescador") {
 		draw_sprite(sprPescador,-1,x+118,y+65);
 	} else { //aventureiro

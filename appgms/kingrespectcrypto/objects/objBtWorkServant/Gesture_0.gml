@@ -9,6 +9,7 @@ if (scrVerifyQuantServants()) {
 	global.vidas = _lives;
 	global.multiplier = _multiplier;
 	global.gamecode = _app_code;
+	global.servantPosI = pos_i;
 	/*
 	Parei aqui - Quando finalizar o jogo, vai pegar o gamecode
 				 buscar dentro do array global.servants
@@ -32,15 +33,17 @@ if (scrVerifyQuantServants()) {
 	*/
 }
 
-if (sprite_index = sprFaseFloresta) {
-	room_goto(room_wood);
-} else if (sprite_index = sprFaseCaverna) {
-	room_goto(room_cave);
-} else if (sprite_index = sprFaseLava) {
-	room_goto(room_hunt);
-} else if (sprite_index = sprFasePescar) {
-	room_goto(room_fish);
-} else {
-	show_message_async("CRITICAL ERROR");
-	game_end();	
+if (_lives > 0) {
+	if (sprite_index = sprFaseFloresta) {
+		room_goto(room_wood);
+	} else if (sprite_index = sprFaseCaverna) {
+		room_goto(room_cave);
+	} else if (sprite_index = sprFaseLava) {
+		room_goto(room_hunt);
+	} else if (sprite_index = sprFasePescar) {
+		room_goto(room_fish);
+	} else {
+		show_message_async("CRITICAL ERROR");
+		game_end();	
+	}
 }

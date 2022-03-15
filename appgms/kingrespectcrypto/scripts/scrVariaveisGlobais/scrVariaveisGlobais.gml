@@ -5,6 +5,7 @@ function scrVariaveisGlobais(){
 
 global.jajogou = false;
 
+global.servantPosI = noone;
 global.hash = "";
 global.url = "https://kingrespectcrypto.com/controllerapp/";
 global.profissao = "";

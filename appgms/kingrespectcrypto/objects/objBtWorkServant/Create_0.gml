@@ -11,6 +11,7 @@ global.servants[i,5] = map[?""+aux+"_lives"];
 global.servants[i,6] = map[?""+aux+"_work_at"];
 */
 
+pos_i = noone;
 __id = 0;
 _id_user = 0;
 _profissao = "";
