@@ -3,6 +3,10 @@ body {
     color: white !important;
 }
 
+.hidden {
+    display: none;
+}
+
 body .card {
     color: black !important;
 }
@@ -309,4 +313,82 @@ body .card {
 }
 .cacarmonstros {
     background-image: url(../resources/images/cacarmonstros.png);
+}
+
+.tutorial {
+    display: block;
+    width: 800px;
+    height: 500px;
+    position: fixed;
+    margin-left: 1em;
+    margin-top: 1em;
+}
+
+.back_tutorial0 {
+    background-image: url(../resources/images/tutorial0.png);
+}
+.back_tutorial1 {
+    background-image: url(../resources/images/tutorial1.png);
+}
+.back_tutorial1_5 {
+    background-image: url(../resources/images/tutorial1_5.png);
+}
+.back_tutorial2 {
+    background-image: url(../resources/images/tutorial2.png);
+}
+.back_tutorial3 {
+    background-image: url(../resources/images/tutorial3.png);
+}
+.back_tutorial4 {
+    background-image: url(../resources/images/tutorial4.png);
+}
+
+.bt_tutorial {
+    display: block;
+    width: 150px;
+    height: 50px;
+    position: fixed;
+    margin-top: 28em;
+    margin-left: 20em;
+}
+
+.tutorial_click1 {
+    display: none;
+    width: 512px;
+    height: 262px;
+    position: fixed;
+    margin-left: 18em;
+    margin-top: 3.5em;
+    background-image: url(../resources/images/tutorial_click_servo.png);
+}
+
+.tutorial_click2 {
+    display: none;
+    width: 512px;
+    height: 262px;
+    position: fixed;
+    margin-left: 29em;
+    margin-top: 5em;
+    background-image: url(../resources/images/tutorial_click_work.png);
+}
+
+.tutorial_click3 {
+    display: block;
+    width: 512px;
+    height: 262px;
+    position: fixed;
+    margin-left: -51em;
+    margin-top: -17em;
+    z-index: 1;
+    background-image: url(../resources/images/tutorial_click_continue_work.png);
+}
+
+.tutorial_click4 {
+    display: block;
+    width: 512px;
+    height: 262px;
+    position: fixed;
+    margin-left: -44em;
+    margin-top: -19em;
+    background-image: url(../resources/images/tutorial_aviso_final.png);
 }

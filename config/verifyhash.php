@@ -2,6 +2,10 @@
 <?php
 
 $hash = $_POST['h'];
+
+if (($_POST['tt'] != '' || $_POST['tt'] != null)) { $tt = $_POST['tt']; }
+else { $tt = false; }
+
 $erroHash = "";
 $expirou = false;
 
@@ -43,11 +47,27 @@ if (mysqli_num_rows(mysqli_query($conn, $query)) > 0) {
                 $rowsCharacters[$i]['work_at'] = $work_at;
                 $i++;
             }
-            //$rowCharacters = mysqli_fetch_array(, MYSQLI_);
-            $query = "SELECT * FROM resources WHERE id_user = ".$rowUser['id'];
+            
+            $query = "SELECT * FROM resources WHERE id_user = $id";
             $rowResources = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
             $query = "SELECT * FROM `season` WHERE `season_end` LIKE (SELECT MIN(`season_end`) min FROM `season` WHERE `season_end` > '$data')";
             $rowSeason = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
+            $query = "SELECT * FROM user_config WHERE id_user = $id";
+            $rowTutorial = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
+            $tutorial = $rowTutorial['tutorial'];
+
+            //Se eu tiver enviando um tt, significa que é pra modificar o tutorial pro valor do tt
+            if ($tt) {
+                //Se for 1 ele veio do botar o servant pra trabalhar
+                //Vai verificar se o tutorial vindo do servidor é 0, se for 0, atualiza o servidor com 1
+                if ($tt == 1 && $tutorial == 0) {
+                    $query = "UPDATE user_config SET tutorial=1 WHERE id_user = $id";
+                    $a = mysqli_query($conn, $query);
+                    $tutorial = 1;
+                }
+            }
+
+            
         } else {
             $msg = "ERROR CREATE HASH";
         }

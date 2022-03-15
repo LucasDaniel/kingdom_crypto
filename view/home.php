@@ -312,11 +312,72 @@
       </div>
     </form>
   </div>
-  <!-- PAREI AQUI - Adicionar botão para comprar os upgrades do aplicativo -->
+  <div class="tutorial back_tutorial0" id="back_tutorial">
+    <div class="bt_tutorial" id="finish">
+      <button type="submit" class="btn btn-primary btn-block" name="submit" id="bt_finish" onclick="finish()">Finish Tutorial</button>
+    </div>
+    <div class="bt_tutorial" id="next">
+      <button type="submit" class="btn btn-primary btn-block" name="submit" id="bt_next" onclick="next()">Next Tutorial</button>
+    </div>
+  </div>
+  <div class="tutorial_click1" id="back_tutorial1">
+  </div>
+  <div class="tutorial_click2" id="back_tutorial2">
+  </div>
 </body>
 
 <script>
+var tutorial = 0;
+
+var tutorialNv = <?php echo $tutorial; ?>;
+if (tutorialNv == 1) {
+  removeTutorialPrincipal();
+}
+
+function removeTutorialPrincipal() {
+  document.getElementById("back_tutorial").classList.remove("back_tutorial0");
+  document.getElementById("back_tutorial").classList.remove("back_tutorial4");
+  document.getElementById("back_tutorial").classList.remove("tutorial");
+  document.getElementById("next").style.display = "none";
+  document.getElementById("finish").style.display = "none";
+  document.getElementById("bt_next").style.display = "none";
+  document.getElementById("bt_finish").style.display = "none";
+}
+
+function next() {
+  tutorial++;
+  if (tutorial == 1) {
+    document.getElementById("back_tutorial").classList.remove("back_tutorial0");
+    document.getElementById("back_tutorial").classList.add("back_tutorial1");
+  } else if (tutorial == 2) {
+    document.getElementById("back_tutorial").classList.remove("back_tutorial1");
+    document.getElementById("back_tutorial").classList.add("back_tutorial1_5");
+  } else if (tutorial == 3) {
+    document.getElementById("back_tutorial").classList.remove("back_tutorial1_5");
+    document.getElementById("back_tutorial").classList.add("back_tutorial2");
+  } else if (tutorial == 4) {
+    document.getElementById("back_tutorial").classList.remove("back_tutorial2");
+    document.getElementById("back_tutorial").classList.add("back_tutorial3");
+  } else if (tutorial == 5) {
+    document.getElementById("back_tutorial").classList.remove("back_tutorial3");
+    document.getElementById("back_tutorial").classList.add("back_tutorial4");
+  }
+  if (tutorial == 5) {
+    document.getElementById("next").style.display = "none";
+    document.getElementById("finish").style.display = "block";
+    document.getElementById("bt_next").style.display = "none";
+    document.getElementById("bt_finish").style.display = "block";
+  }
+}
+function finish() {
+  removeTutorialPrincipal();
+  document.getElementById("back_tutorial1").style.display = "block";
+}
 function quarto(i) {
+  if (tutorial == 5 && i == 0) {
+    document.getElementById("back_tutorial1").style.display = "none";
+    document.getElementById("back_tutorial2").style.display = "block";
+  }
   document.getElementById("acao-branco").style.display = "none";
   document.getElementById("cozinha").style.display = "none";
   document.getElementById("geral").style.display = "none";

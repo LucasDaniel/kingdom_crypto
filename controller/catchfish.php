@@ -26,6 +26,10 @@
             $data       = date("Y-m-d H:i:s");
             $time15     = date("Y-m-d H:i:s",strtotime('+15 minutes', strtotime($data)));
 
+            $query = "SELECT * FROM user_config WHERE id_user = $id";
+            $rowTutorial = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
+            $tutorial = $rowTutorial['tutorial'];
+
             $query = "UPDATE user SET last_hash='$data', hash_expires='$time15', hash='$hash' WHERE id = $id";
             if (mysqli_query($conn, $query)) {
                 $msg = "Would you like to put the servant to catch fish?";
@@ -40,6 +44,8 @@
 ?>
 
 <body class="hold-transition login-page background_index">
+    <div class="tutorial_click3" id="back_tutorial3">
+    </div>
     <div class="login-box">
         <div class="login-logo t_white">
             <?php echo $GLOBAL['title'] ?>
@@ -93,3 +99,16 @@
         </div>
   </div>
 </body>
+
+<script type="text/javascript">
+    var tutorial = 0;
+
+    var tutorialNv = <?php echo $tutorial; ?>;
+    if (tutorialNv == 1) {
+        removeTutorialPrincipal();
+    }
+
+    function removeTutorialPrincipal() {
+        document.getElementById("back_tutorial3").style.display = "none";
+    }
+</script>
