@@ -56,7 +56,7 @@
                                 $msg = "ERROR WHEN REGISTERING USER UPGRADE!";
                                 $erroCriarConta = true;
                             }
-                            $query = "INSERT INTO user_tutorial(id_user) 
+                            $query = "INSERT INTO user_config(id_user) 
                                         VALUES ($id)";
                             if ((!mysqli_query($conn, $query)) && ($msg == "")) {
                                 $msg = "ERROR WHEN REGISTERING USER TUTORIAL!";

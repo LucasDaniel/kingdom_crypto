@@ -15,7 +15,7 @@ if (!global.pause) {
 		if (scrVerifyQuantServants()) {
 			room_goto(room_start);
 		} else {
-			scrAsyncPostMultiplier();	
+			scrSendMultiplierServer();	
 		}
 	}
 }
