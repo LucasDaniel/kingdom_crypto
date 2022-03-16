@@ -30,10 +30,10 @@
                 $erro = false;
                 $msg = "Put your metamask to deposit or withdraw (Be attention to this)";
             } else {
-                $msg = "Sessão expirou 1";
+                $msg = "Session expired 1";
             }
         } else {
-            $msg = "Sessão expirou";
+            $msg = "Session expired";
         }
     }
 

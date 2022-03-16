@@ -86,7 +86,7 @@
                 }
                 
             } else {
-                $msg = "Sessão expirou";
+                $msg = "Session expired";
             }
         }
     }

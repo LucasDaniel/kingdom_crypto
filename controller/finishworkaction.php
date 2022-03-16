@@ -97,16 +97,20 @@
                         $recurso = "Respect";
                     } 
 
-                    $min = rand(1,$bonus)+($equip*2);
-                    $max = rand($min+1,$bonus+$bonus)+($equip*2);
-                    $bonus = rand($min,$max);
+
+                    $min = 1+($equip*2);
+                    $max = $bonus+$bonus+($cozinha*2);
                     if ($recurso != "Respect") {
-                        $ganho = 0.01; //A cada 1 = 0,01 cents de dolar (Por enquanto esta assim)
+                        $ganho = 1; //Modifica aqui para diminuir o ganho do jogador
                         $decimais = 2;
                     } else {
-                        $ganho = 0.0001; //A cada 1 = 0,01 cents de dolar (Por enquanto esta assim)
+                        $ganho = 0.01; //Modifica aqui para diminuir o ganho do jogador
                         $decimais = 4;
                     }
+                    $min = round($min*$ganho,$decimais);
+                    $max = round($max*$ganho,$decimais);
+                    
+                    $bonus = rand($min,$max);
                     $ganho *= $bonus*$multiplier;
                     if ($recurso != "Respect") $ganho = round($ganho,$decimais);
                     else $ganho = round($ganho,$decimais);
@@ -151,10 +155,10 @@
                     $msg = "Servant don't find"; 
                 }
             } else {
-                $msg = "Sessão expirou 1";
+                $msg = "Session expired 1";
             }
         } else {
-            $msg = "Sessão expirou";
+            $msg = "Session expired";
         }
     }
 ?>

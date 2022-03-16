@@ -28,10 +28,10 @@
                         Put images and explain the bug for better compression.<br>
                         Don't forget to say your metamask wallet.<br>";
             } else {
-                $msg = "Sessão expirou 1";
+                $msg = "Session expired 1";
             }
         } else {
-            $msg = "Sessão expirou";
+            $msg = "Session expired";
         }
 
     }

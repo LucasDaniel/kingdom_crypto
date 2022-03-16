@@ -60,7 +60,7 @@
                 $query = "SELECT count(id) quant FROM servant WHERE id_user = ".$rowUser['id']." AND profissao LIKE 'aventureiro'";
                 $rowQuantAventureiro = (int)mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC)['quant'];
                 
-                if ($rowQuant < 9) {
+                if ($rowQuant < 19) {
                     $precoRandom = 10*($rowQuant-($rowQuantAventureiro+1));
                     $precoOutros = 12*($rowQuant-($rowQuantAventureiro+1));
                     $precoAventureiro = 15*($rowQuantAventureiro+1);
@@ -113,14 +113,16 @@
                         }
 
                     } else {
-                        $msg = "Erro hire";
+                        $msg = "You don't have respect to hire";
+                        $erro = false;
                     }
 
                 } else {
-                    $msg = "Sessão expirou 1";
+                    $msg = "Maximum number of servants (Full House)";
+                    $erro = false;
                 }
             } else {
-                $msg = "Sessão expirou";
+                $msg = "Session expired";
             }
         }
     }

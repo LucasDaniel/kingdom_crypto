@@ -43,7 +43,7 @@
                     if ($respeito >= $preco) {
                         $msg = "To improve the kitchen you need $preco of respect.";
                     } else {
-                        $msg = "Kitchen could be improved. Do you have enough resources. ($preco respect)";
+                        $msg = "You don't have enough resources to upgrade Kitchen. ($preco respect)";
                         $back = true;
                     }
                 } else {
@@ -52,10 +52,10 @@
                 }
                 
             } else {
-                $msg = "Sessão expirou 1";
+                $msg = "Session expired 1";
             }
         } else {
-            $msg = "Sessão expirou";
+            $msg = "Session expired";
         }
     }
 ?>

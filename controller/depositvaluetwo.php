@@ -38,10 +38,10 @@
             if (mysqli_query($conn, $query)) {
                 $erro = false;
             } else {
-                $msg = "Sessão expirou 1";
+                $msg = "Session expired 1";
             }
         } else {
-            $msg = "Sessão expirou";
+            $msg = "Session expired";
         }
     }
 

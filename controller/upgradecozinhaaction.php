@@ -46,6 +46,7 @@
             $data       = date("Y-m-d H:i:s");
             $time15     = date("Y-m-d H:i:s",strtotime('+15 minutes', strtotime($data)));
 
+            $query = "UPDATE user SET last_hash='$data', hash_expires='$time15', hash='$hash' WHERE id = $id";
             if (mysqli_query($conn, $query)) {
                 $data = date("Y-m-d H:i:s");
 
@@ -72,10 +73,10 @@
                         $msg = "Critical error - call developer";
                     }
                 } else {
-                    $msg = "Sessão expirou 1";
+                    $msg = "Session expired 1";
                 }
             } else {
-                $msg = "Sessão expirou";
+                $msg = "Session expired";
             }
         }
     }
@@ -91,14 +92,25 @@
                 <div class="row">
                     <p class="login-box-msg"><?php echo $msg ?></p>
                 </div>
-                <form action="https://kingrespectcrypto.com/home.php" method="post">
-                    <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-                    <div class="row m-top-12px">
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block" name="submit">Voltar a tela principal</button>
+                <?php if (!$erro) { ?>
+                    <form action="https://kingrespectcrypto.com/home.php" method="post">
+                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                        <div class="row m-top-12px">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Back to home</button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                <?php } else { ?>
+                    <form action="https://kingrespectcrypto.com/login.php" method="post">
+                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                        <div class="row m-top-12px">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Back to login</button>
+                            </div>
+                        </div>
+                    </form>
+                <?php } ?>
             </div>
         </div>
   </div>

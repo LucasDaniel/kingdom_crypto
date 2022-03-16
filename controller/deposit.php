@@ -33,11 +33,12 @@
                 $row = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC);
 
                 $msg = "Loading metamask wallet";
+                $msg = "Deposit is unavailable"; //Manter esse botão para a versão beta 
             } else {
-                $msg = "Sessão expirou 1";
+                $msg = "Session expired 1";
             }
         } else {
-            $msg = "Sessão expirou";
+            $msg = "Session expired";
         }
     }
 
@@ -98,6 +99,18 @@
                         </div>
                     </form>
                 <?php } ?>
+
+                <!-- Manter esse botão para a versão beta -->
+                <form action="https://kingrespectcrypto.com/home.php" method="post">
+                    <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                    <div class="row m-top-12px">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block" name="submit">Back to house</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- Manter esse botão para a versão beta -->
+
             </div>
         </div>
   </div>
@@ -111,9 +124,9 @@
         var metamask = "";
     <?php } ?>
     var hash = "<?php echo $hash; ?>";
-    //document.getElementById("msgDeposit").innerHTML = msgDeposit;
-    document.getElementById("btsDeposit").style.display = "none";
-    var accounts = getAccount();
+    //document.getElementById("msgDeposit").innerHTML = msgDeposit; //Manter esse botão para a versão beta
+    document.getElementById("btsDeposit").style.display = "none"; //Manter esse botão para a versão beta
+    var accounts = 0;//getAccount(); //Manter esse botão para a versão beta
     async function getAccount() {
         accounts = await ethereum.request({ method: 'eth_requestAccounts' });
         setTimeout(() => {

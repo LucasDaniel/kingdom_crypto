@@ -36,6 +36,6 @@
 </script>
 <?php } else { ?>
 <script type="text/javascript">
-    window.location.href = 'https://kingrespectcrypto.com/homt.php';
+    window.location.href = 'https://kingrespectcrypto.com/home.php';
 </script>
 <?php } ?>

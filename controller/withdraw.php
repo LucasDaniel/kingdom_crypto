@@ -29,11 +29,12 @@
                 $erro = false;
                 $msg = "Withdraw an entire amount of respect to BUSD.<br>
                         Min 10 Respect";
+                $msg = "Withdraw is unavailable"; //Manter esse botão para a versão beta 
             } else {
-                $msg = "Sessão expirou 1";
+                $msg = "Session expired 1";
             }
         } else {
-            $msg = "Sessão expirou";
+            $msg = "Session expired";
         }
     }
 
@@ -50,15 +51,16 @@
                     <p class="login-box-msg"><?php echo $msg ?></p>
                 </div>
                 <?php if(!$erro) { ?>
+                    <!-- Retirar apos lançar o jogo
                     <form action="https://kingrespectcrypto.com/controller/withdrawaction.php" method="post">
-                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                        <input type="hidden" id="h" name="h" value="< ?php echo $hash ?>">
                         <div class="row m-top-12px">
                             <div class="col-12">
                                 <input type="text" name="v" class="form-control" placeholder="Value">
                             </div>
                         </div>
                         <div class="row m-left-0px m-top-12px">
-                            <div class="g-recaptcha" name="recaptcha" data-sitekey="<?php echo $GLOBAL['site_recaptcha']; ?>"></div>
+                            <div class="g-recaptcha" name="recaptcha" data-sitekey="< ?php echo $GLOBAL['site_recaptcha']; ?>"></div>
                         </div>
                         <div class="row m-top-12px">
                             <div class="col-12">
@@ -67,7 +69,7 @@
                         </div>
                     </form>
                     <form action="https://kingrespectcrypto.com/home.php" method="post">
-                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                        <input type="hidden" id="h" name="h" value="< ?php echo $hash ?>">
                         <div class="row m-top-12px">
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary btn-block" name="submit">Back to house</button>
@@ -76,7 +78,7 @@
                     </form>
                 <?php } else { ?>
                     <form action="https://kingrespectcrypto.com/login.php" method="post">
-                        <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                        <input type="hidden" id="h" name="h" value="< ?php echo $hash ?>">
                         <div class="row m-top-12px">
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary btn-block" name="submit">Back to login</button>
@@ -84,6 +86,19 @@
                         </div>
                     </form>
                 <?php } ?>
+                -->
+                
+                <!-- Manter esse botão para a versão beta -->
+                <form action="https://kingrespectcrypto.com/home.php" method="post">
+                    <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+                    <div class="row m-top-12px">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block" name="submit">Back to house</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- Manter esse botão para a versão beta -->
+
             </div>
         </div>
   </div>

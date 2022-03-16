@@ -35,10 +35,10 @@
                 $msg = "Would you like to put the servant to catch fish?";
                 $erro = false;
             } else {
-                $msg = "Sessão expirou 1";
+                $msg = "Session expired 1";
             }
         } else {
-            $msg = "Sessão expirou";
+            $msg = "Session expired";
         }
     }
 ?>

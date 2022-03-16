@@ -62,6 +62,14 @@ body .card {
     margin-top: 12px !important;
 }
 
+.m-top-9px {
+    margin-top: 9px !important;
+}
+
+.log-out-height {
+    height: 3.875em !important;
+}
+
 .logo {
     width: 100%;
     height: 80px;
@@ -121,7 +129,7 @@ body .card {
     margin-top: 5.5em;
     /* float: left; */
     background-image: url(../resources/images/fundo_acao.png);
-    padding: 1em;
+    padding: 0.5em;
     position: fixed;
     margin-left: 60em;
 }
@@ -184,46 +192,46 @@ body .card {
 }
 
 .quartonovo {
-    background-image: url(../resources/images/quartobranco.png);
+    background-image: url(../resources/images/quartoquebrado.png);
 }
 
-.cozinhanv1 {
+.cozinhanv0 {
     background-image: url(../resources/images/cozinhanv1.png);
 }
 
-.cozinhanv2 {
+.cozinhanv1 {
     background-image: url(../resources/images/cozinhanv2.png);
 }
 
-.cozinhanv3 {
+.cozinhanv2 {
     background-image: url(../resources/images/cozinhanv3.png);
 }
 
-.cozinhanv4 {
+.cozinhanv3 {
     background-image: url(../resources/images/cozinhanv4.png);
 }
 
-.cozinhanv5 {
+.cozinhanv4 {
     background-image: url(../resources/images/cozinhanv5.png);
 }
 
-.cozinhanv6 {
+.cozinhanv5 {
     background-image: url(../resources/images/cozinhanv6.png);
 }
 
-.cozinhanv7 {
+.cozinhanv6 {
     background-image: url(../resources/images/cozinhanv7.png);
 }
 
-.cozinhanv8 {
+.cozinhanv7 {
     background-image: url(../resources/images/cozinhanv8.png);
 }
 
-.cozinhanv9 {
+.cozinhanv8 {
     background-image: url(../resources/images/cozinhanv9.png);
 }
 
-.cozinhanv10 {
+.cozinhanv9 {
     background-image: url(../resources/images/cozinhanv10.png);
 }
 
@@ -391,4 +399,8 @@ body .card {
     margin-left: -44em;
     margin-top: -19em;
     background-image: url(../resources/images/tutorial_aviso_final.png);
+}
+
+.btn-primary {
+    background-color: #004794 !important;
 }

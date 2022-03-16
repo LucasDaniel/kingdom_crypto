@@ -29,10 +29,10 @@
                 $erro = false;
                 $msg = "Convert Stone to respect.";
             } else {
-                $msg = "Sessão expirou 1";
+                $msg = "Session expired 1";
             }
         } else {
-            $msg = "Sessão expirou";
+            $msg = "Session expired";
         }
     }
 

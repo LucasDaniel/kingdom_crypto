@@ -34,7 +34,7 @@
                 $query = "SELECT count(id) quant FROM servant WHERE id_user = ".$rowUser['id']." AND profissao LIKE 'aventureiro'";
                 $rowQuantAventureiro = mysqli_fetch_array(mysqli_query($conn, $query), MYSQLI_ASSOC)['quant'];
                 
-                if ($rowQuant < 9) {
+                if ($rowQuant < 19) {
                     $precoRandom = 10+(((int)$rowQuant)-(((int)$rowQuantAventureiro)+1));
                     $precoOutros = 12+(((int)$rowQuant)-(((int)$rowQuantAventureiro)+1));
                     $precoAventureiro = 15+(((int)$rowQuantAventureiro)+1);
@@ -65,14 +65,16 @@
                     }
                     
                 } else {
-                    $msg = "Erro hire";
+                    $msg = "Maximum number of servants (Full House)";
+                    $erro = false;
+                    $back = true;
                 }
 
             } else {
-                $msg = "Sessão expirou 1";
+                $msg = "Session expired 1";
             }
         } else {
-            $msg = "Sessão expirou";
+            $msg = "Session expired";
         }
     }
 ?>
@@ -125,7 +127,7 @@
                         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
                         <div class="row m-top-12px">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block" name="submit">Voltar a tela principal</button>
+                                <button type="submit" class="btn btn-primary btn-block" name="submit">Back to home</button>
                             </div>
                         </div>
                     </form>

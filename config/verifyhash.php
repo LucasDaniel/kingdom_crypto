@@ -76,7 +76,7 @@ if (mysqli_num_rows(mysqli_query($conn, $query)) > 0) {
     $expirou = true;
 }
 
-if ($expirou) $erroHash = "sessão expirou";
+if ($expirou) $erroHash = "Session expired";
 
 ?>
 

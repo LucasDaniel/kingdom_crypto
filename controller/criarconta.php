@@ -52,16 +52,16 @@
                         if (!mysqli_query($conn, $query)) {
                             $msg = "ERROR WHEN CREATE RESOURCES!";
                         } else {
-                            $msg = "Primeiro servo criado com sucesso";
+                            $msg = "First hired servant ";
                             $erro = false;
                         }
                     }
                 }
             } else {
-                $msg = "Sessão expirou 1";
+                $msg = "Session expired 1";
             }
         } else {
-            $msg = "Sessão expirou";
+            $msg = "Session expired";
         }
     }
 

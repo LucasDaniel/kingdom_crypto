@@ -11,7 +11,7 @@
   <div class="config f-left"> 
     <form action="https://kingrespectcrypto.com/controller/changepassword.php" method="post">
       <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-      <div class="row m-top-12px">
+      <div class="row m-top-9px">
         <div class="col-12">
           <button type="submit" class="btn btn-primary btn-block" name="submit">Change Password</button>
         </div>
@@ -21,16 +21,16 @@
   <div class="deslogar f-left">
     <form action="https://kingrespectcrypto.com/controller/logout.php" method="post">
       <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
-      <div class="row m-top-12px">
+      <div class="row m-top-9px">
         <div class="col-12">
-          <button type="submit" class="btn btn-primary btn-block" name="submit">Log out</button>
+          <button type="submit" class="log-out-height btn btn-primary btn-block" name="submit">Log out</button>
         </div>
       </div>
     </form>
   </div>
   <div class="quartos">
     <div class="quarto cozinhanv<?php echo $rowHouse['cozinha']; ?>" onclick="cozinha()">
-      <!-- Cozinha: < ?php echo $rowHouse['cozinha']; ?> -->
+      <!-- Kitchen: < ?php echo $rowHouse['cozinha']; ?> -->
     </div>
     <div class="quarto armazem" onclick="geral()">
       <!-- Imagem de armazem aqui<br>
@@ -89,10 +89,11 @@
         <?php } ?>
       </div>
       <?php if ($i+1 == count($rowsCharacters) && $i+1 < 10) { ?> 
-        <div class="quarto quartonovo" onclick="quarto('<?php echo $i+1; ?>')">
           <?php if ($rowHouse['cama'.($i+2)] < 1) { ?>
+            <div class="quarto quartonovo" onclick="quarto('<?php echo $i+1; ?>')">
             <!-- Novo quarto -->
           <?php } else { ?>
+            <div class="quarto quartonv1" onclick="quarto('<?php echo $i+1; ?>')">
             <!--Quarto vazio -->
           <?php } ?>
         </div>
@@ -108,7 +109,7 @@
   <?php for($i=0; $i < 10; $i++) { ?>
     <div class="tela-acao display-none" id="acao<?php echo $i; ?>" onclick="quarto('<?php echo $i; ?>')">
       <?php if ($rowHouse['cama'.($i+1)] == 0) { ?>
-        Construa um novo quarto
+        Build new room
         <form action="https://kingrespectcrypto.com/controller/opennewbed.php" method="post">
           <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
           <div class="row m-top-12px">
@@ -129,12 +130,12 @@
             </div>
           </form>
         <?php } else { ?>
-          Servo: <?php echo $i; ?><br> 
-          Cama: <?php echo $rowHouse['cama'.($i+1)]; ?><br>
-          Profissão: <?php echo $rowsCharacters[$i]['profissao']; ?><br>
-          Equipamento: <?php echo $rowsCharacters[$i]['equipamento']; ?><br>
+          Servant: <?php echo $i; ?><br> 
+          Room: <?php echo $rowHouse['cama'.($i+1)]; ?><br>
+          Profession: <?php echo $rowsCharacters[$i]['profissao']; ?><br>
+          Equipment: <?php echo $rowsCharacters[$i]['equipamento']; ?><br>
           <?php if ($rowsCharacters[$i]['work_init'] != "0000-00-00 00:00:00") { ?>
-            Trabalhando com: <?php echo $rowsCharacters[$i]['work_at']; ?><br>
+            Working with: <?php echo $rowsCharacters[$i]['work_at']; ?><br>
             <?php if (($rowsCharacters[$i]['work_finish'] < date("Y-m-d H:i:s"))) /* acabou o trabalho */ { ?>
               <form action="https://kingrespectcrypto.com/controller/finishwork.php" method="post">
                 <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
@@ -147,13 +148,12 @@
                 </div>
               </form>
             <?php } else { ?>
-              Finaliza em: <?php echo ($rowsCharacters[$i]['work_finish']); ?><br>
-              Codigo do app: <?php echo $rowsCharacters[$i]['app_code']; ?><br>
+              Finish work at: <?php echo ($rowsCharacters[$i]['work_finish']); ?>
             <?php } ?>
-            Multiplicador de ganhos: <?php echo $rowsCharacters[$i]['multiplier']; ?>x
+            Multiplier: <?php echo $rowsCharacters[$i]['multiplier']; ?>x
           <?php } else { ?>
             <?php if (($rowsCharacters[$i]['recovery_energy'] >= date("Y-m-d H:i:s"))) /* dormindo... */ { ?>
-                Acorda em: <?php echo ($rowsCharacters[$i]['recovery_energy']); ?><br>
+                Wake up at: <?php echo ($rowsCharacters[$i]['recovery_energy']); ?><br>
               <?php } else { ?>
                 <?php if ($rowHouse['cama'.($i+1)] < 10) { ?>
                   <form action="https://kingrespectcrypto.com/controller/upgradecama.php" method="post">
@@ -225,7 +225,7 @@
     </div>
   <?php } ?>
   <div class="tela-acao display-none" id="cozinha" onclick="cozinha()">
-    Cozinha: <?php echo $rowHouse['cozinha']; ?><br>
+    Kitchen: <?php echo $rowHouse['cozinha']; ?><br>
     <form action="https://kingrespectcrypto.com/controller/upgradecozinha.php" method="post">
       <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
       <div class="row m-top-12px">
@@ -236,7 +236,7 @@
     </form>
   </div>
   <div class="tela-acao display-none" id="geral" onclick="geral()">
-    Depositar, Retirar, reportar um bug, cadastrar uma carteira
+    General actions
     <form action="https://kingrespectcrypto.com/controller/woodtorespect.php" method="post">
       <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
       <div class="row m-top-12px">
