@@ -108,7 +108,7 @@
                     <input type="hidden" id="p" name="p" value="1">
                     <div class="row m-top-12px">
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block" name="submit">Lenhador</button>
+                            <button type="submit" class="btn btn-primary btn-block" name="submit">Lumberjack</button>
                         </div>
                     </div>
                 </form>
@@ -118,7 +118,7 @@
                     <input type="hidden" id="p" name="p" value="2">
                     <div class="row m-top-12px">
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block" name="submit">Pescador</button>
+                            <button type="submit" class="btn btn-primary btn-block" name="submit">Fisherman</button>
                         </div>
                     </div>
                 </form>
@@ -128,7 +128,7 @@
                     <input type="hidden" id="p" name="p" value="3">
                     <div class="row m-top-12px">
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block" name="submit">Minerador</button>
+                            <button type="submit" class="btn btn-primary btn-block" name="submit">Miner</button>
                         </div>
                     </div>
                 </form>

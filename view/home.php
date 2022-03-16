@@ -130,9 +130,15 @@
             </div>
           </form>
         <?php } else { ?>
+          <?php 
+            if ($rowsCharacters[$i]['profissao'] == 'lenhador') $profissaoEng = 'Lumberjack';
+            else if ($rowsCharacters[$i]['profissao'] == 'pescador') $profissaoEng = 'Fisherman';
+            else if ($rowsCharacters[$i]['profissao'] == 'minerador') $profissaoEng = 'Miner';
+            else $profissaoEng = 'Hunter';  
+          ?>
           Servant: <?php echo $i; ?><br> 
           Room: <?php echo $rowHouse['cama'.($i+1)]; ?><br>
-          Profession: <?php echo $rowsCharacters[$i]['profissao']; ?><br>
+          Profession: <?php echo $profissaoEng; ?><br>
           Equipment: <?php echo $rowsCharacters[$i]['equipamento']; ?><br>
           <?php if ($rowsCharacters[$i]['work_init'] != "0000-00-00 00:00:00") { ?>
             Working with: <?php echo $rowsCharacters[$i]['work_at']; ?><br>

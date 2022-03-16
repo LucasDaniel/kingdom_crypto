@@ -105,6 +105,10 @@
                         } else {
                             $query = "UPDATE resources SET respeito = respeito-$preco WHERE id_user = $id";
                             if (mysqli_query($conn, $query)) {
+                                if ($profissao == 'lenhador') $profissao = 'Lumberjack';
+                                else if ($profissao == 'pescador') $profissao = 'Fisherman';
+                                else if ($profissao == 'minerador') $profissao = 'Miner';
+                                else $profissao = 'Hunter';
                                 $msg = "You contract a new ".$profissao;
                                 $erro = false;
                             } else {
