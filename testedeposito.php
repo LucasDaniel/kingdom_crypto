@@ -132,6 +132,19 @@
             }
         }
     }
+
+    /*
+
+    PAREI AQUI
+
+    Fiz pegando a quantidade de dogezilla que o usuario tem na carteira
+    
+    PROXIMO PASSO
+    
+    Fazer a cobrança de algo por BUSD
+
+    */
+
     function executa() {
 
         console.log("---------------------");
