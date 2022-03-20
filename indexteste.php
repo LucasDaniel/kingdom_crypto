@@ -98,6 +98,14 @@ $DICIONARIO['play'] = "Play";
 
         <div class="beta_test row">
             <div class="col-12">
+                <div class="login-logo t_white">
+                    Game Play
+                </div>
+                <img src="resources/images/all_game.png" style="width:1000px">
+            </div>
+        </div>
+        <div class="beta_test row">
+            <div class="col-12">
                 <div class="login-box">
                     <div class="login-logo t_white">
                         Sign up for the beta test

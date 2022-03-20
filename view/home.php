@@ -28,6 +28,9 @@
       </div>
     </form>
   </div>
+  <div class="menu_app_aviso">
+    aaa
+  </div>
   <div class="quartos">
     <div class="quarto cozinhanv<?php echo $rowHouse['cozinha']; ?>" onclick="cozinha()">
       <!-- Kitchen: < ?php echo $rowHouse['cozinha']; ?> -->

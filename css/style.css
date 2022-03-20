@@ -124,8 +124,17 @@ body .card {
     padding-top: 18em;
     padding-left: 10%;
     padding-bottom: 1em;
-    margin-bottom: 3em;
-    margin-top: 32em;
+    margin-bottom: 1em;
+    margin-top: 97em;
+}
+
+.menu_app_aviso {
+    width: 58em;
+    display: block;
+    float: left;
+    margin-top: 1em;
+    margin-left: 1em;
+
 }
 
 .bt_menu {

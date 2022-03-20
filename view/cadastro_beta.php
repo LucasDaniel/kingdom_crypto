@@ -1,48 +1,28 @@
 <?php  ?>
 <body class="hold-transition login-page background_index">
-  <div class="menu_principal">
-      <div class="bt_menu m-left-0">
-          Play Game
-      </div>
-      <div class="bt_menu">
-          <a href="https://lucas-daniel-beltrame.gitbook.io/king-respect-crypto/" target="_blank">
-              Whitepaper
-          </a>
-      </div>
-      <div class="bt_menu">
-          Pre sale
-      </div>
-      <div class="bt_menu">
-          <a href="https://lucasgamestudio.com.br/" target="_blank">
-              Created By (Dev)
-          </a>
-      </div>
-      <div class="bt_menu">
-          Contact
-      </div>
-  </div>
+    <?php require_once("menu.php"); ?>
 
-  <!-- Inicio slideshow -->
-  <!-- Slideshow container -->
-  <div class="slideshow-container">
+    <!-- Inicio slideshow -->
+    <!-- Slideshow container -->
+    <div class="slideshow-container">
 
-      <!-- Full-width images with number and caption text -->
-      <div class="mySlides fade">
-          <img src="resources/images/back1.png" style="width:1043px">
-          <div class="text">1 / 3</div>
-      </div>
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+            <img src="resources/images/back1.png" style="width:1043px">
+            <div class="text">1 / 3</div>
+        </div>
 
-      <div class="mySlides fade">
-          <img src="resources/images/back2.png" style="width:1043px">
-          <div class="text">2 / 3</div>
-      </div>
+        <div class="mySlides fade">
+            <img src="resources/images/back2.png" style="width:1043px">
+            <div class="text">2 / 3</div>
+        </div>
 
-      <div class="mySlides fade">
-          <img src="resources/images/back3.png" style="width:1043px">
-          <div class="text">3 / 3</div>
-      </div>
-  </div>
-  <br>
+        <div class="mySlides fade">
+            <img src="resources/images/back3.png" style="width:1043px">
+            <div class="text">3 / 3</div>
+        </div>
+    </div>
+    <br>
 
   <!-- The dots/circles -->
   <div style="text-align:center; display:none;">
@@ -53,7 +33,15 @@
 
   <!-- Fim slideshow -->
 
-  <div class="beta_test row">
+    <div class="beta_test row">
+        <div class="col-12">
+            <div class="login-logo t_white">
+                Game Play
+            </div>
+            <img src="resources/images/all_game.png" style="width:1000px">
+        </div>
+    </div>
+    <div class="beta_test row">
       <div class="col-12">
           <div class="login-box">
               <div class="login-logo t_white">
