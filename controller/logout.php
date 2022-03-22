@@ -27,7 +27,9 @@
     } else {
         $erro = true;
     }
-
+    $url = $_SERVER["REQUEST_URI"];
+    $query = "INSERT INTO log(id_user,msg,url) VALUES ($id,'$msg','$url')";
+    mysqli_query($conn, $query);
 ?>
 
 <?php if(!$erro) { ?>

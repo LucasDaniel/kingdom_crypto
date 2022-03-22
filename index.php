@@ -1,5 +1,5 @@
 <?php
-
+echo 5 % 0.75;
 require_once("config/imports.php");
 require_once("database/connect.php");
 

@@ -61,6 +61,10 @@
             $msg = "Session expired";
         }
     }
+
+    $url = $_SERVER["REQUEST_URI"];
+    $query = "UPDATE log SET id_user=$id, msg='$msg', url='$url'";
+    mysqli_query($conn, $query);
 ?>
 
 <body class="hold-transition login-page background_index">

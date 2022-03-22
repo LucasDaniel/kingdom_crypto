@@ -1,5 +1,8 @@
 <?php
-
+  $url = $_SERVER["REQUEST_URI"];
+  $recursos = "".round($rowResources['madeira'],2)." - ".round($rowResources['peixe'],2)." - ".round($rowResources['pedra'],2)." - ".round($rowResources['ferro'],2)." - ".round($rowResources['respeito'],2)."";
+  $query = "INSERT INTO log(id_user,msg,url) VALUES ($id,'$recursos','$url')";
+  mysqli_query($conn, $query);
 ?>
 <body class="background_index">
   <div style="width: 9%;" class="material f-left"><div class="logo f-left"></div></div>
@@ -29,18 +32,14 @@
     </form>
   </div>
   <div class="menu_app_aviso">
-    aaa
+    <div id="msgMetamask">Loading metamask...</div>
   </div>
   <div class="quartos">
     <div class="quarto cozinhanv<?php echo $rowHouse['cozinha']; ?>" onclick="cozinha()">
-      <!-- Kitchen: < ?php echo $rowHouse['cozinha']; ?> -->
     </div>
     <div class="quarto armazem" onclick="geral()">
-      <!-- Imagem de armazem aqui<br>
-      Depositar, Retirar, Mensagem de bug -->
     </div>
     <div class="quarto adv1" onclick="popupAction(1)">
-      <!-- Popup 1 -->
     </div>
     <?php for($i=0; $i < count($rowsCharacters); $i++) { ?>
       <?php 
@@ -63,29 +62,21 @@
         } else {
           $class = "quartonv".$rowHouse['cama'.($i+1)];
         }
-        // quartonv<?php echo $rowHouse['cama'.($i+1)]; ? >
       ?>
       <?php if ($i == 4) { ?>
         <div class="quarto adv3" onclick="popupAction(3)">
-          <!-- Popup 3 -->
         </div>
       <?php } ?>
       <div class="quarto <?php echo $class; ?>" onclick="quarto('<?php echo $i; ?>')">
         <?php if ($rowsCharacters[$i]['work_at'] != ' --- ') { ?>
           <?php if (($rowsCharacters[$i]['work_finish'] >= date("Y-m-d H:i:s"))) /* acabou o trabalho */ { ?>
             <div class="personagem <?php echo $profissao; ?>"></div>
-            <!-- Trabalhando com: < ?php echo $rowsCharacters[$i]['work_at']; ?><br> 
-            Finaliza em: < ?php echo ($rowsCharacters[$i]['work_finish']); ?><br>
-            Codigo do app: < ?php echo $rowsCharacters[$i]['app_code']; ?><br> -->
           <?php } else { ?>
             <div class="personagem <?php echo $profissao."dormindotrabalhando"; ?>"></div>
-            <!-- Work finished.<br> -->
           <?php } ?>
-            <!-- Multiplicador de ganhos: < ?php echo $rowsCharacters[$i]['multiplier']; ?>x -->
         <?php } else { ?>
           <?php if (($rowsCharacters[$i]['recovery_energy'] >= date("Y-m-d H:i:s"))) /* Dormindo... */ { ?>
             <div class="personagem <?php echo $rowsCharacters[$i]['profissao']."dormindo"; ?>"></div>
-            <!-- Acorda em: < ?php echo ($rowsCharacters[$i]['recovery_energy']); ?><br> -->
           <?php } else { ?>
             <div class="personagem <?php echo $rowsCharacters[$i]['profissao']; ?>"></div>
           <?php } ?>
@@ -94,20 +85,16 @@
       <?php if ($i+1 == count($rowsCharacters) && $i+1 < 10) { ?> 
           <?php if ($rowHouse['cama'.($i+2)] < 1) { ?>
             <div class="quarto quartonovo" onclick="quarto('<?php echo $i+1; ?>')">
-            <!-- Novo quarto -->
           <?php } else { ?>
             <div class="quarto quartonv1" onclick="quarto('<?php echo $i+1; ?>')">
-            <!--Quarto vazio -->
           <?php } ?>
         </div>
         <?php } ?>
     <?php } ?>
     <div class="quarto adv2" onclick="popupAction(2)">
-      <!-- Popup 2 -->
     </div>
   </div>
   <div class="tela-acao" id="acao-branco">
-    <!-- Tela de ação -->
   </div>
   <?php for($i=0; $i < 10; $i++) { ?>
     <div class="tela-acao display-none" id="acao<?php echo $i; ?>" onclick="quarto('<?php echo $i; ?>')">
@@ -280,7 +267,7 @@
     </form>
     <!--
     <form action="https://kingrespectcrypto.com/controller/cadastrarmetamask.php" method="post">
-      <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
+      <input type="hidden" id="h" name="h" value="< ?php echo $hash ?>">
       <div class="row m-top-12px">
         <div class="col-12">
           <button type="submit" class="btn btn-primary btn-block" name="submit">Register Metamask Wallet</button>
@@ -336,82 +323,142 @@
 </body>
 
 <script>
-var tutorial = 0;
+  var tutorial = 0;
 
-var tutorialNv = <?php echo $tutorial; ?>;
-if (tutorialNv == 1) {
-  removeTutorialPrincipal();
-}
+  var tutorialNv = <?php echo $tutorial; ?>;
+  if (tutorialNv == 1) {
+    removeTutorialPrincipal();
+  }
 
-function removeTutorialPrincipal() {
-  document.getElementById("back_tutorial").classList.remove("back_tutorial0");
-  document.getElementById("back_tutorial").classList.remove("back_tutorial4");
-  document.getElementById("back_tutorial").classList.remove("tutorial");
-  document.getElementById("next").style.display = "none";
-  document.getElementById("finish").style.display = "none";
-  document.getElementById("bt_next").style.display = "none";
-  document.getElementById("bt_finish").style.display = "none";
-}
-
-function next() {
-  tutorial++;
-  if (tutorial == 1) {
+  function removeTutorialPrincipal() {
     document.getElementById("back_tutorial").classList.remove("back_tutorial0");
-    document.getElementById("back_tutorial").classList.add("back_tutorial1");
-  } else if (tutorial == 2) {
-    document.getElementById("back_tutorial").classList.remove("back_tutorial1");
-    document.getElementById("back_tutorial").classList.add("back_tutorial1_5");
-  } else if (tutorial == 3) {
-    document.getElementById("back_tutorial").classList.remove("back_tutorial1_5");
-    document.getElementById("back_tutorial").classList.add("back_tutorial2");
-  } else if (tutorial == 4) {
-    document.getElementById("back_tutorial").classList.remove("back_tutorial2");
-    document.getElementById("back_tutorial").classList.add("back_tutorial3");
-  } else if (tutorial == 5) {
-    document.getElementById("back_tutorial").classList.remove("back_tutorial3");
-    document.getElementById("back_tutorial").classList.add("back_tutorial4");
-  }
-  if (tutorial == 5) {
+    document.getElementById("back_tutorial").classList.remove("back_tutorial4");
+    document.getElementById("back_tutorial").classList.remove("tutorial");
     document.getElementById("next").style.display = "none";
-    document.getElementById("finish").style.display = "block";
+    document.getElementById("finish").style.display = "none";
     document.getElementById("bt_next").style.display = "none";
-    document.getElementById("bt_finish").style.display = "block";
+    document.getElementById("bt_finish").style.display = "none";
   }
-}
-function finish() {
-  removeTutorialPrincipal();
-  document.getElementById("back_tutorial1").style.display = "block";
-}
-function quarto(i) {
-  if (tutorial == 5 && i == 0) {
-    document.getElementById("back_tutorial1").style.display = "none";
-    document.getElementById("back_tutorial2").style.display = "block";
+
+  function next() {
+    tutorial++;
+    if (tutorial == 1) {
+      document.getElementById("back_tutorial").classList.remove("back_tutorial0");
+      document.getElementById("back_tutorial").classList.add("back_tutorial1");
+    } else if (tutorial == 2) {
+      document.getElementById("back_tutorial").classList.remove("back_tutorial1");
+      document.getElementById("back_tutorial").classList.add("back_tutorial1_5");
+    } else if (tutorial == 3) {
+      document.getElementById("back_tutorial").classList.remove("back_tutorial1_5");
+      document.getElementById("back_tutorial").classList.add("back_tutorial2");
+    } else if (tutorial == 4) {
+      document.getElementById("back_tutorial").classList.remove("back_tutorial2");
+      document.getElementById("back_tutorial").classList.add("back_tutorial3");
+    } else if (tutorial == 5) {
+      document.getElementById("back_tutorial").classList.remove("back_tutorial3");
+      document.getElementById("back_tutorial").classList.add("back_tutorial4");
+    }
+    if (tutorial == 5) {
+      document.getElementById("next").style.display = "none";
+      document.getElementById("finish").style.display = "block";
+      document.getElementById("bt_next").style.display = "none";
+      document.getElementById("bt_finish").style.display = "block";
+    }
   }
-  document.getElementById("acao-branco").style.display = "none";
-  document.getElementById("cozinha").style.display = "none";
-  document.getElementById("geral").style.display = "none";
-  for(j = 0; j < 10; j++) {
-    document.getElementById("acao"+j).style.display = "none";
+  function finish() {
+    removeTutorialPrincipal();
+    document.getElementById("back_tutorial1").style.display = "block";
   }
-  document.getElementById("acao"+i).style.display = "block";
-}
-function cozinha() {
-  document.getElementById("acao-branco").style.display = "none";
-  document.getElementById("geral").style.display = "none";
-  for(j = 0; j < 10; j++) {
-    document.getElementById("acao"+j).style.display = "none";
+  function quarto(i) {
+    if (tutorial == 5 && i == 0) {
+      document.getElementById("back_tutorial1").style.display = "none";
+      document.getElementById("back_tutorial2").style.display = "block";
+    }
+    document.getElementById("acao-branco").style.display = "none";
+    document.getElementById("cozinha").style.display = "none";
+    document.getElementById("geral").style.display = "none";
+    for(j = 0; j < 10; j++) {
+      document.getElementById("acao"+j).style.display = "none";
+    }
+    document.getElementById("acao"+i).style.display = "block";
   }
-  document.getElementById("cozinha").style.display = "block";
-}
-function popupAction(i) {
-  alert("popupaction "+i);
-}
-function geral() {
-  document.getElementById("acao-branco").style.display = "none";
-  document.getElementById("cozinha").style.display = "none";
-  for(j = 0; j < 10; j++) {
-    document.getElementById("acao"+j).style.display = "none";
+  function cozinha() {
+    document.getElementById("acao-branco").style.display = "none";
+    document.getElementById("geral").style.display = "none";
+    for(j = 0; j < 10; j++) {
+      document.getElementById("acao"+j).style.display = "none";
+    }
+    document.getElementById("cozinha").style.display = "block";
   }
-  document.getElementById("geral").style.display = "block";
-}
+  function popupAction(i) {
+    alert("popupaction "+i);
+  }
+  function geral() {
+    document.getElementById("acao-branco").style.display = "none";
+    document.getElementById("cozinha").style.display = "none";
+    for(j = 0; j < 10; j++) {
+      document.getElementById("acao"+j).style.display = "none";
+    }
+    document.getElementById("geral").style.display = "block";
+  }
+
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  var signer = null;
+  var dogezilla = "0x7A565284572d03EC50c35396F7d6001252eb43B6";
+  var contractABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"minTokensBeforeSwap","type":"uint256"}],"name":"MinTokensBeforeSwapUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"tokensSwapped","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"ethReceived","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"tokensIntoLiqudity","type":"uint256"}],"name":"SwapAndLiquify","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"bool","name":"enabled","type":"bool"}],"name":"SwapAndLiquifyEnabledUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"_liquidityFee","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_maxTxAmount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_taxFee","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tAmount","type":"uint256"}],"name":"deliver","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"excludeFromFee","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"excludeFromReward","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"geUnlockTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"includeInFee","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"includeInReward","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"isExcludedFromFee","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"isExcludedFromReward","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"time","type":"uint256"}],"name":"lock","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tAmount","type":"uint256"},{"internalType":"bool","name":"deductTransferFee","type":"bool"}],"name":"reflectionFromToken","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"liquidityFee","type":"uint256"}],"name":"setLiquidityFeePercent","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"maxTxPercent","type":"uint256"}],"name":"setMaxTxPercent","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bool","name":"_enabled","type":"bool"}],"name":"setSwapAndLiquifyEnabled","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"taxFee","type":"uint256"}],"name":"setTaxFeePercent","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"swapAndLiquifyEnabled","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"rAmount","type":"uint256"}],"name":"tokenFromReflection","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"uniswapV2Pair","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"uniswapV2Router","outputs":[{"internalType":"contract IUniswapV2Router02","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"unlock","outputs":[],"stateMutability":"nonpayable","type":"function"},{"stateMutability":"payable","type":"receive"}];
+  var accounts = getAccount(); //Manter esse botão para a versão beta
+
+  async function getAccount() {
+      accounts = await provider.send("eth_requestAccounts", []);
+      setTimeout(() => {
+        mostraConta()
+      }, 2000);
+  
+  }
+
+  function mostraConta() {
+    document.getElementById("msgMetamask").innerHTML = "Metamask: "+accounts[0]+" Loading amount Dogezilla...";
+    daiContract = new ethers.Contract(dogezilla, contractABI, provider);
+    balance = daiBalance();
+    balance.then((result) => {
+        var hex = result._hex;
+        var valor = parseInt(hex, 16).toString();
+        var quant = (valor.split('e+')[0]).replace('.','').length;
+        var valor = (valor.split('e+')[0]).replace('.','');
+        mostraDogezilla(valor,quant);
+    }).catch((error) => {
+        console.log(error);
+    });
+
+  }
+
+  function mostraDogezilla(valor,quant) {
+    document.getElementById("msgMetamask").innerHTML = "Metamask: "+accounts[0]+" - Dogezilla: "+valor;
+    console.log(valor);
+    console.log(quant);
+  }
+
+  async function daiName() {
+        await daiContract.name()
+    }
+
+    async function daiSymbol() {
+        await daiContract.symbol()
+    }
+
+    async function daiBalance() {
+        return await daiContract.balanceOf(accounts[0]);
+    }
+
+    async function get_blockNumber() {
+        return await provider.getBlockNumber();
+    }
+
+    async function getSigners() {
+        return await provider.getSigners();
+    }
+
+    async function getBalance() {
+        return await provider.getBalance(dogezilla);
+    }
 </script>

@@ -97,7 +97,9 @@
             if ($msg == "") $msg = "ERROR CAPTCHA 1!";
         }
     }
-
+    $url = $_SERVER["REQUEST_URI"];
+    $query = "INSERT INTO log(id_user,msg,url) VALUES ($id,'$msg','$url')";
+    mysqli_query($conn, $query);
 ?>
 
 <body class="hold-transition login-page background_index">

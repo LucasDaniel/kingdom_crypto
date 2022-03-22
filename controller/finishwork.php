@@ -45,6 +45,8 @@
 
                 if (count($rowCharacter) > 0) {
 
+                    $calculate = "The Calculate is:";
+
                     $cama = $rowHouse[$c];
                     $cozinha = $rowHouse['cozinha'];
                     $equip = $rowCharacter['equipamento'];
@@ -52,31 +54,50 @@
                     $profissao = $rowCharacter['profissao'];
                     $multiplier = $rowCharacter['multiplier'];
                     $bonus = 0;
+                    $bonus_calculate = 0;
+                    $bonus_season = "";
                     
                     if ($work_at == 'wood') {
                         if ($profissao == 'lenhador') $bonus += 3;
                         else $bonus += 2;
+                        $bonus_calculate = $bonus;
+                        $bonus_season = "<br> Season bonus: +".$rowSeason['madeira'];
                         $bonus *= $rowSeason['madeira'];
                         $recurso = "Wood";
                     } else if ($work_at == 'fish') {echo "<br>";
                         if ($profissao == 'pescador') $bonus += 3;
                         else $bonus += 2;
+                        $bonus_calculate = $bonus;
+                        $bonus_season = "<br> Season bonus: +".$rowSeason['peixe'];
                         $bonus *= $rowSeason['peixe'];
                         $recurso = "Fish";
                     } else if ($work_at == 'stoneiron') {echo "<br>";
                         if ($profissao == 'minerador') $bonus += 3;
                         else $bonus += 2;
+                        $bonus_calculate = $bonus;
+                        $bonus_season = "<br> Season bonus: +".$rowSeason['pedra'];
                         $bonus *= $rowSeason['pedra'];
                         $recurso = "Stone";
                         $recurso2 = "Iron";
                     } else if ($work_at == 'huntmonsters') {echo "<br>";
                         if ($profissao == 'aventureiro') $bonus += 3;
                         else $bonus += 2;
+                        $bonus_season = "<br> Season bonus: +0";
+                        $bonus_calculate = $bonus;
                         $recurso = "Respect";
                     } 
+
+                    //working in the profession
+                    $calculate .= "<br>Working in the profession bonus: +".$bonus_calculate;
+                    $calculate .= $bonus_season;
+                    $calculate .= "<br>If dogezilla holder: 2x";
+                    $calculate .= "<br>";
                     
                     $min = 1+($equip*2);
+                    $calculate .= "<br>Minimum gain (1+(equipament servant*2)): ".$min;
                     $max = $bonus+$bonus+($cozinha*2);
+                    $calculate .= "<br>Maximum gain ((bonus*2)+(kitchen house*2)): ".$max;
+                    $calculate .= "<br>";
                     if ($recurso != "Respect") {
                         $ganho = 1; //Modifica aqui para diminuir o ganho do jogador
                         $decimais = 2;
@@ -87,8 +108,8 @@
                     $min = round($min*$ganho,$decimais);
                     $max = round($max*$ganho,$decimais);
 
-                    if ($work_at != 'stoneiron') $msg = "Finish work and gain between $min and $max multiplied by $multiplier of $recurso.";
-                    else $msg = "Finish work and gain between $min and $max multiplied by $multiplier of $recurso and half $recurso of $recurso2.";
+                    if ($work_at != 'stoneiron') $msg = "Finish work and gain between $min and $max multiplied by from app $multiplier of $recurso.";
+                    else $msg = "Finish work and gain between $min and $max multiplied by $multiplier from app of $recurso and half $recurso of $recurso2.";
                     $erro = false;
 
                 } else {
@@ -102,10 +123,13 @@
             $msg = "Session expired";
         }
     }
+    $url = $_SERVER["REQUEST_URI"];
+    $query = "INSERT INTO log(id_user,msg,url) VALUES ($id,'$msg','$url')";
+    mysqli_query($conn, $query);
 ?>
 
 <body class="hold-transition login-page background_index">
-    <div class="login-box">
+    <div class="login-box" style="width: 30em;">
         <div class="login-logo t_white">
             <?php echo $GLOBAL['title'] ?>
         </div>
@@ -113,13 +137,14 @@
             <div class="card-body login-card-body">
                 <div class="row">
                     <p class="login-box-msg"><?php echo $msg ?></p>
+                    <p class="login-box-msg" style="width: 100%;"><?php echo $calculate ?></p>
                 </div>
                 <?php if (!$erro) { ?>
                     <form action="https://kingrespectcrypto.com/controller/finishworkaction.php" method="post">
                         <input type="hidden" id="h" name="h" value="<?php echo $hash ?>">
                         <input type="hidden" id="c" name="c" value="<?php echo $cama ?>">
                         <input type="hidden" id="ie" name="ie" value="<?php echo $idCharacter ?>">
-                        <div class="row m-left-0px">
+                        <div class="row m-left-0px" style="margin-left: 4.5em !important;">
                             <div class="g-recaptcha" name="recaptcha" data-sitekey="<?php echo $GLOBAL['site_recaptcha']; ?>"></div>
                         </div>
                         <div class="row m-top-12px">

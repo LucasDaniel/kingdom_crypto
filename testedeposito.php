@@ -58,9 +58,11 @@
                     <p id="msgDeposit" class="login-box-msg">Mensagem</p>
                 </div>
                 <!-- Manter esse botão para a versão beta -->
-                <button id="btsDeposit" type="submit" class="btn btn-primary btn-block" name="submit" onclick="executa()">Fazer deposito</button>
+                <button id="btsDeposit" type="submit" class="btn btn-primary btn-block" name="submit" onclick="cobraBUSD()">Fazer deposito</button>
                 <!-- Manter esse botão para a versão beta -->
-
+                <div class="row">
+                    <p id="msgs" class="login-box-msg">outra mensagem aqui</p>
+                </div>
             </div>
         </div>
   </div>
@@ -74,24 +76,28 @@
     var msgDeposit = "Choice amount of BNB to transform in king respect";
     var metamask = "0x5f914e746864ECd714180759f7Cc82f47bdC389b";
     var hash = "teste";//"< ?php echo $hash; ?>";
-    var signer = null;
-    var provider = null;
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = getSigner();
     var blockNumber = null;
     var daiContract = null;
+    var daiContract_rw = null;
     var balance = 0.0;
     var name = "";
     var symbol = "";
     var dogezilla = "0x7A565284572d03EC50c35396F7d6001252eb43B6";
+    var contractBUSD = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56";
     
     document.getElementById("msgDeposit").innerHTML = msgDeposit; //Manter esse botão para a versão beta
     document.getElementById("btsDeposit").style.display = "none"; //Manter esse botão para a versão beta
     var accounts = getAccount(); //Manter esse botão para a versão beta
     async function getAccount() {
         console.log("getAccount");
-        provider = new ethers.providers.Web3Provider(window.ethereum);
+        console.log(ethers);
+        
+        console.log(provider);
         accounts = await provider.send("eth_requestAccounts", []);
-        signer = provider.getSigner();
         setTimeout(() => {
+            console.log(signer);
             verifyAccounts()
         }, 1000);
     }
@@ -111,7 +117,7 @@
                     success: function (msg) {
                         console.log("success");
                         console.log(msg);
-                        document.getElementById("msgDeposit").innerHTML = msgDeposit;
+                        document.getElementById("msgDeposit").innerHTML = msgDeposit+" - "+accounts[0];
                         document.getElementById("btsDeposit").style.display = "block";
                     },
                     error: function (request, status, error) {
@@ -127,11 +133,56 @@
                     }
                 });
             } else {
-                document.getElementById("msgDeposit").innerHTML = msgDeposit;
+                document.getElementById("msgDeposit").innerHTML = msgDeposit+" - "+accounts[0];
                 document.getElementById("btsDeposit").style.display = "block";
             }
         }
     }
+
+    async function cobraBUSD() {
+        console.log("cobrar");
+        executa();
+        console.log("000")
+        var sender = "0x5Abe441997FD4f747f37A95E171b802F8E1393e2";
+        console.log("111")
+        daiContract = new ethers.Contract(dogezilla, contractABI, provider);
+        console.log(daiContract);
+        daiContract.transfer(sender,"1.0");
+        console.log("222")
+        const daiWithSigner = daiContract.connect(signer);
+        console.log("333")
+        // Each DAI has 18 decimal places
+        const dai = ethers.utils.parseUnits("1.0", 18);
+        console.log("444")
+        // Send 1 DAI to "ricmoo.firefly.eth"
+        tx = daiWithSigner.transfer(sender, dai);
+        console.log("555")
+
+        /*
+        console.log(signer);
+        console.log(accounts[0]);
+        console.log("-------------------");
+        console.log(dogezilla);
+        console.log(contractABI);
+        console.log(provider);
+        console.log("--");
+        daiContract = new ethers.Contract(dogezilla, contractABI, provider);
+        console.log(daiContract);
+        console.log("-------------------");
+        console.log(contractBUSD);
+        console.log(contractABI);
+        console.log(signer);
+        console.log("--");
+        daiContract_rw = new ethers.Contract(contractBUSD, contractABI, signer);
+        console.log(daiContract_rw);
+        console.log("-------------------");
+        var tx = await daiContract_rw.transfer(sender, "0.5");
+
+        */
+        console.log("-------");
+
+    }
+
 
     /*
 
@@ -141,6 +192,7 @@
     
     PROXIMO PASSO
     
+    parei aqui mesmo
     Fazer a cobrança de algo por BUSD
 
     */
@@ -149,6 +201,11 @@
 
         console.log("---------------------");
         console.log("verifica a quantidade de Dogezilla");
+
+        console.log("---");
+        console.log("O signer");
+        console.log(signer);
+        console.log("---");
 
         daiContract = new ethers.Contract(dogezilla, contractABI, provider);
         name = daiName();
@@ -180,21 +237,6 @@
                 console.log(error);
             });
         }, 2000);
-
-        /*
-        blockNumber = get_blockNumber();
-        setTimeout(() => {
-            console.log("blockNumber");
-            console.log(blockNumber);
-            balance = getBalance();
-            setTimeout(() => {
-                console.log("balance");
-                console.log(balance);
-                var a = ethers.utils.formatEther(balance);
-                console.log(a);
-            }, 2000);
-        }, 2000);
-        */
         
         console.log("verifica a quantidade de Dogezilla");
     }
@@ -215,8 +257,8 @@
         return await provider.getBlockNumber();
     }
 
-    async function getSigners() {
-        return await provider.getSigners();
+    async function getSigner() {
+        return await provider.getSigner(0);
     }
 
     async function getBalance() {
